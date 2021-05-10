@@ -14,6 +14,7 @@ const supplier = new Schema({
     province: String,
     postal_code: String,
     contact_person: String,
+    contact_phone: String,
     active: Boolean,
     date_added: Date,
     last_update: Date  
@@ -31,7 +32,8 @@ const product = new Schema({
         supplier:[{
             supplier_id: ObjectId,
             name: String,
-            contact_person: String
+            contact_person: String,
+            contact_phone: String
         }],
         date_added: Date,
         last_update: Date
@@ -76,7 +78,7 @@ const order = new Schema({
     },
     order_date: Date,
     comment: String,
-    details:[
+    detail:[
         {order_detail_id: ObjectID,
          product_name: String,
          product_description: String,
@@ -137,11 +139,21 @@ const inventory_transaction = new Schema({
 })
 
 
+const user_type = new Schema({
+    name: String,
+    description: String,
+    authority_level: Number,
+    active: Boolean,
+    date_added: Date,
+    last_update: Date    
+})
+
 const user = new Schema({
     first_name: String,
     last_name: String,
     password: String,  // encrypt
     type:{
+        user_type_id: ObjectID, 
         name: String,  // could be some kind of list
         description: String,
         authority_level: Number
