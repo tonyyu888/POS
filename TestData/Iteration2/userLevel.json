@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "609b04213fedfb45458a5f58"
+  },
+  "name": "Admin",
+  "level": 1,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "609b04383fedfb45458a5f6e"
+  },
+  "name": "Sales",
+  "level": 5,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "609b044c3fedfb45458a5f7b"
+  },
+  "name": "Inventory",
+  "level": 3,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]

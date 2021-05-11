@@ -1,0 +1,67 @@
+[{
+  "_id": {
+    "$oid": "6099d2f23fedfb45458a0a68"
+  },
+  "companyName": "Great North Merchandising",
+  "address1": "597 Westend Road SW,",
+  "address2": "",
+  "city": "Calgary",
+  "province": "Alberta",
+  "postalCode": "T2P 8N7",
+  "contactNumber": [
+    {
+      "type": "Office phone",
+      "number": "780-254-8964"
+    },
+    {
+      "type": "Fax number",
+      "number": "780-325-9457"
+    }
+  ],
+  "contactPerson": [
+    {
+      "firstName": "Richard",
+      "lastName": "Collins"
+    }
+  ],
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "609b02353fedfb45458a5dd5"
+  },
+  "companyName": "Fair Trade Corporation",
+  "address1": "65289 Ridgeback Lane NE,",
+  "address2": "",
+  "city": "Calgary",
+  "province": "Alberta",
+  "postalCode": "T8X 9R1",
+  "contactNumber": [
+    {
+      "type": "Office phone",
+      "number": "403-257-4596"
+    },
+    {
+      "type": "Fax number",
+      "number": "403-284-7254"
+    }
+  ],
+  "contactPerson": [
+    {
+      "firstName": "Rick",
+      "lastName": "Jorge"
+    }
+  ],
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]
