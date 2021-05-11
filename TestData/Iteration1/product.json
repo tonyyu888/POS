@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "6099d1e13fedfb45458a09ad"
+  },
+  "name": "Isopropyl Alcohol 99%",
+  "description": "Isopropyl Alcohol 99%. 500ml",
+  "productCategory": "Medical Liquid",
+  "unitPrice": 1.25,
+  "supplier": {
+    "supplierId": {
+      "$oid": "6099d2f23fedfb45458a0a68"
+    },
+    "companyName": "Great North Merchandising"
+  },
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "6099e32b3fedfb45458a0f90"
+  },
+  "name": "Cotton Swab",
+  "description": "No name cotton swab. 400 count.",
+  "productCategory": "Beauty",
+  "unitPrice": 2.25,
+  "supplier": {
+    "supplierId": {
+      "$oid": "6099d2f23fedfb45458a0a68"
+    },
+    "companyName": "Great North Merchandising"
+  },
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]

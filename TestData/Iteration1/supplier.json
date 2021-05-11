@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "6099d2f23fedfb45458a0a68"
+  },
+  "companyName": "Great North Merchandising",
+  "address1": "597 Westend Road SW,",
+  "address2": "",
+  "city": "Calgary",
+  "province": "Alberta",
+  "postalCode": "T2P 8N7",
+  "contactNumber": [
+    {
+      "type": "Office phone",
+      "number": "780-254-8964"
+    },
+    {
+      "type": "Fax number",
+      "number": "780-325-9457"
+    }
+  ],
+  "contactPerson": [
+    {
+      "firstName": "Richard",
+      "lastName": "Collins"
+    }
+  ],
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]

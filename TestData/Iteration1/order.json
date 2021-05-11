@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "6099c1593fedfb45458a037a"
+  },
+  "customer": {
+    "customerId": {
+      "$oid": "6099c83f3fedfb45458a048d"
+    },
+    "name": "Glacier Gate Pharmacy"
+  },
+  "orderDate": {
+    "$date": "2021-05-10T19:33:54.458Z"
+  },
+  "comment": "Order comment.",
+  "salesPerson": {
+    "salesPersonId": {
+      "$oid": "6099cdc63fedfb45458a073c"
+    },
+    "firstName": "Greg",
+    "lastName": "Hutton"
+  },
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T19:33:54.458Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T19:33:54.458Z"
+  }
+}]

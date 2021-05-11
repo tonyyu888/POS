@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "6099cdc63fedfb45458a073c"
+  },
+  "firstName": "Greg",
+  "lastName": "Hutton",
+  "accessLevel": [
+    "Order entry",
+    "Inventory entry"
+  ],
+  "password": "RTX123ABC",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]
