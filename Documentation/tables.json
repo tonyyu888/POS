@@ -1,0 +1,97 @@
+product_category
+{
+    "name": "name",
+    "description": "description",
+    "active": true,
+    "date_added":  ISODate("2021-05-10T00:15:53"),
+    "last_update": ISODate("2021-05-10T00:15:53")
+}
+
+
+supplier 
+{
+    "name": "name",
+    "address_1": "address_1",
+    "address_2": "address_2",
+    "city": "city",
+    "province": "province",
+    "postal_code": "tob1j0",
+    "contact_person": "Tony",
+    "contact_phone": "123 456 7890" ,
+    "active" : true,
+    "date_added": ISODate("2021-05-10T00:15:53"),
+    "last_update": ISODate("2021-05-10T00:15:53") 
+}
+
+product 
+{
+    "name": "name",
+    "description" : "description",
+    "category":{
+        "category_id": ObjectId("6099cb3b89302aa69b2aea8b"),
+        "name": "name",
+        "description": "description"
+    },
+    "supplier":[{
+        "supplier_id": ObjectId("6099cdea89302aa69b2aec94"),
+        "name": "name",
+        "contact_person": "contact_person",
+        "contact_phone": "123 456 7890"
+    }],
+    "date_added": ISODate("2021-05-10T00:15:53"),
+    "last_update": ISODate("2021-05-10T00:15:53")
+}
+
+customer
+{
+    "first_name": "first_name",
+    "last_name": "last_name",
+    "address_1": "address_1",
+    "address_2": "address_2",
+    "city": "city",
+    "province": "province",
+    "postal_code": "abcdef",
+    "phone_number": "123 456-7890",
+    "active": true,
+    "date_added": ISODate("2021-05-10T00:15:53"),
+    "last_update": ISODate("2021-05-10T00:15:53")
+}
+
+order_detail
+{
+    "order" : {
+        "order_id" : ObjectId("6099dbd289302aa69b2af7c4"),
+        "customer_first_name" : "first_name",
+        "customer_last_name" : "last_name"
+    },
+    "product" : {
+        "product_id" : ObjectId("6099cf9489302aa69b2aeddf"),
+        "name" : "name",
+        "description" : "description"
+    },
+    "quantity" : 1,
+    "date_added" : ISODate("2021-05-10T05:25:53.202Z"),
+    "last_update" : ISODate("2021-05-10T05:25:53.202Z")
+}
+
+order  - order must exist before details can be created.
+{
+    "customer" : {
+        "customer_id" : ObjectId("6099d2fc89302aa69b2af0c1"),
+        "first_name" : "first_name",
+        "last_name" : "last_name"
+    },
+    "order_date" : ISODate("2021-05-10T05:25:53.202Z"),
+    "comment" : "comment",
+    "detail" : [ 
+        {
+            "order_detail_id" : ObjectId("6099d78589302aa69b2af41f"),
+            "product_name" : "product_name",
+            "product_description" : "product_description",
+            "quantity" : 1
+        }
+    ],
+    "active" : true,
+    "date_added" : ISODate("2021-05-10T05:25:53.202Z"),
+    "last_update" : ISODate("2021-05-10T05:25:53.202Z")
+}
