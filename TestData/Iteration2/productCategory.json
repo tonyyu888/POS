@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "609b0fd23fedfb45458a6380"
+  },
+  "name": "Medical Liquid",
+  "description": "Medical liquid products",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "609b10193fedfb45458a639d"
+  },
+  "name": "Beauty",
+  "description": "Beauty related products",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]
