@@ -1,0 +1,58 @@
+Backlog.txt
+------------
+
+- Establish table structures & seeds:
+	- product_category, supplier, product, customer, order_detail, order
+            --> seed will go in .\POS\server\models\seeds
+
+- Each team member needs a POS database with the following collections:
+        - product_category, supplier, product, customer, order_detail, order
+            --> then given seed, they can populate some test data
+
+- Establish default project/directory structure, framework & readme(how to stage)
+       .\POS
+	   \client
+              \public
+              \src
+                  \components
+           \server
+              \models
+                  \seeds
+              \routes
+
+   - use C6-SUPERHEROS as template, create our environment and push to github:
+            https://github.com/tonyyu888/POS
+
+   - stage .\POS\server\models\db.js
+        ->mongoose.connect("mongodb://localhost:27017/POS", { useNewUrlParser: true, useUnifiedTopology: true });
+
+   - Create .\POS\server\models\
+            - product_category.js, supplier.js, product.js, customer.js, order_detail.js, order.js
+
+            - i.e. product_category.js:
+
+                 require('./db')
+                 const mongoose = require('mongoose');
+                 const Schema = mongoose.Schema;
+
+                 const product_category = new Schema({
+                     name: String,
+                     description: String,
+                     active: Boolean,
+                     date_added: Date,
+                     last_update: Date
+                 });
+
+                 module.exports = mongoose.model('POS', product_category, 'product_category');
+
+  - .\POS\server\app.js needs to be staged with routes as such
+
+  - .\POS\server\routes we'll need:
+         - product_category.js, supplier.js, product.js, customer.js, order_detail.js, order.js
+               --> each will have CRUD
+
+  - Tony is drafting form templates
+
+                   
+        
+ 
