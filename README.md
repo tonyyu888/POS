@@ -105,7 +105,7 @@ EOF
 $ cat <<- EOF > client/.env
 PORT=4444
 EOF
-$ git init
+$ git init   --->> we did not do!!!! Parker May 5, 2021
 $ git add .
 $ git status
    On branch main
