@@ -152,7 +152,8 @@ edited.  To do that:
 $ cd server
 $ npm install --save-dev nodemon
 $ perl -p -i -e 's/"start": "node /"start": "nodemon /' package.json
-$ git add package.json 
+$ npm install dotenv
+$ git add .
 $ git commit -m "adding nodemon to speed development"
 $ cd ..
 ```
