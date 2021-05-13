@@ -1,0 +1,10 @@
+.productCategory-table {
+    display: flex;
+    justify-content: center;
+}
+  
+.productCategory-table th {
+    background-color: grey;
+    color: white;
+    padding: 2px 20px 2px 20px;
+}

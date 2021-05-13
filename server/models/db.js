@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 // const localMongoUrl = "mongodb://localhost:27017/c6Superheroes"
 
 //mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect("mongodb://localhost:27017/c6Superheroes", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/POS", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.once('open', (_) =>
