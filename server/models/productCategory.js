@@ -3,11 +3,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productCategorySchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true,
+    unique: true
+  },
   description: String,
   active: Boolean,
   dateAdded: Date,
-  lastUpdate: Date
+  lastUpdateDate: Date
 });
 
 module.exports = mongoose.model('productCategory', productCategorySchema, 'productCategory');
