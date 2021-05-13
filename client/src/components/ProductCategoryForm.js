@@ -8,12 +8,7 @@ const ProductCategoryForm = ({onProductCategoryFromClick}) => {
     let [createError, setCreateError] = useState()
 
     async function onCreateClicked(e) {
-
-        e.preventDefault();
-
-        console.log('Create has been clicked!')
-
-        let currentDate = new Date();
+         let currentDate = new Date();
 
         let productCategoryToCreate = {
             name, 

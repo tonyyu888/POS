@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import moment from "moment";
+
 import './ProductCategoryTable.css';
 
 import ProductCategoryForm from "./ProductCategoryForm";
@@ -43,8 +45,8 @@ const ProductCategoryTable = () => {
                           <td>{row.name}</td>
                           <td>{row.description}</td>
                           <td>{row.active.toString()}</td>
-                          <td>{row.dateAdded}</td>
-                          <td>{row.lastUpdateDate}</td>
+                          <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm")}</td>
+                          <td>{moment(row.lastUpdateDate).format("MM/DD/yyyy hh:mm")}</td>
                       </tr>
                     )
                 })}                

@@ -1,12 +1,11 @@
 import './App.css';
 import ProductCategoryTable from './components/ProductCategoryTable'
-import ProductCategoryForm from './components/ProductCategoryForm'
 
 const App = () => {
   return (
     <div>
       <div className="title-bar">
-        <h1>Superhero Registry</h1>
+        <h1>Product Category Maintenance</h1>
       </div>
       <ProductCategoryTable />
     </div>
@@ -14,4 +13,3 @@ const App = () => {
 };
 
 export default App;
-
