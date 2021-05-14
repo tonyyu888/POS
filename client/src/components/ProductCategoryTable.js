@@ -45,16 +45,16 @@ const ProductCategoryTable = () => {
                           <td>{row.name}</td>
                           <td>{row.description}</td>
                           <td>{row.active.toString()}</td>
-                          <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm")}</td>
-                          <td>{moment(row.lastUpdateDate).format("MM/DD/yyyy hh:mm")}</td>
+                          <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm A")}</td>
+                          <td>{moment(row.lastUpdateDate).format("MM/DD/yyyy hh:mm A")}</td>
                       </tr>
                     )
                 })}                
               </tbody>
           </table>
         </div>
-
-        <div>
+        <br/>
+        <div className="productCategoryForm">
                 <ProductCategoryForm onProductCategoryFromClick={handleProductCategoryFormClick} />
         </div>
       </div>
