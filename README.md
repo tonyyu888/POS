@@ -1,6 +1,7 @@
 # Introduction
+Project 2 - Remote POS
 
-SUPERHEROES is a learning project, providing basic out-of-the-box capabilities
+A learning project, providing basic out-of-the-box capabilities
 for learners to build upon.
 
 This project is a MERN (MongoDB, ExpressJS, ReactJS, Node.js) application made
