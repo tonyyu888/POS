@@ -36,6 +36,7 @@ const ProductCategoryTable = () => {
     return (
       <div>
         <div className="productCategory-table">
+          <h2>Product Category Maintanence</h2>
           <table>
               <tbody>
                 <tr><th>Name</th><th>Description</th><th>Active</th><th>Date Added</th><th>Last Update</th></tr>
@@ -53,7 +54,6 @@ const ProductCategoryTable = () => {
               </tbody>
           </table>
         </div>
-        <br/>
         <div className="productCategoryForm">
                 <ProductCategoryForm onProductCategoryFromClick={handleProductCategoryFormClick} />
         </div>

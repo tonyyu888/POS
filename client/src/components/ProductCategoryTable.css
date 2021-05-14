@@ -1,12 +1,31 @@
-.productCategory-table {
+/* .productCategory-table {
     display: flex;
     justify-content: center;
 }
-  
-.productCategory-table th {
+  */
+table{
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    text-align: center; 
+    border-collapse: collapse;
+    margin-bottom: 70px;
+}
+
+th {
     background-color: grey;
     color: white;
     padding: 2px 20px 2px 20px;
+}
+td {
+    border: 1px solid #cecfd5;
+    padding: 10px 15px;
+  }
+
+.productCategory-table h2{
+    margin-bottom:30px;
+    text-align: center;
+
 }
 
 .productCategoryForm {

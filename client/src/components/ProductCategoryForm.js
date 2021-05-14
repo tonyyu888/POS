@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './ProductCategoryForm.css';
 
 const ProductCategoryForm = ({onProductCategoryFromClick}) => {
     let [name, setName] = useState()
@@ -56,20 +57,21 @@ const ProductCategoryForm = ({onProductCategoryFromClick}) => {
     let createProductCategoryDataInvalid = !name || (name.trim().length === 0)
 
     return (
-        <div>
+        <div className='create-form'>
+            <h4>Add a New Product Category</h4>
             <div>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Name:</label>
                 <input id="name" value={name} onChange={(event) => onInputChange(event,setName)}/>
             </div>
             <div>
-                <label htmlFor="description">Description</label>
+                <label htmlFor="description">Description:</label>
                 <input id="description" value={description} onChange={(event) => onInputChange(event,setDescription)}/>
             </div>
             <div>
-                <label htmlFor="active">Active</label>
+                <label htmlFor="active">Active:</label>
                 <input id="active" value={active} onChange={(event) => onInputChange(event,setActive)}/>
             </div>
-            <button disabled={ createProductCategoryDataInvalid } onClick={ onCreateClicked }>Create Product Category</button>
+            <button disabled={ createProductCategoryDataInvalid } onClick={ onCreateClicked }>Add Product Category</button>
             { createError && <div>{createError}</div> }            
         </div>
     )
