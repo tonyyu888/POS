@@ -1,19 +1,74 @@
 import React, { useEffect, useState } from 'react';
 import moment from "moment";
-
 import './ProductCategoryTable.css';
-
 import ProductCategoryForm from "./ProductCategoryForm";
 
 const ProductCategoryTable = () => {
+
     const [rows, setRows] = useState([]);
-    const [status, setStatus] = useState("");
-  
+    const [description, setDescription] = useState(null);
+    const [active, setActive] = useState(null);
+
+    const [inEditMode, setInEditMode] = useState({
+      status: false,
+      rowKey: null
+    });
+      
+    const updateProductCategory = ({id, newDescription, newActive}) => {
+
+      let currentDate = new Date();
+      let productCategoryToUpdate = {
+          description,
+          active,
+          lastUpdateDate : currentDate
+      }
+      
+      let updateResponse = fetch(`/productCategory/${id}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(productCategoryToUpdate)
+      })
+      .then(response => response.json())
+      .then(json => {
+          // reset inEditMode and unit price state values
+          onCancel();
+          // fetch the updated data
+          getProductCategories();
+      })    
+    }
+
+    const onEdit = ({id, currentDescription, currentActive}) => {
+      setInEditMode({
+        status: true,
+        rowKey: id
+      })    
+
+      console.log("id = ", id);
+      console.log("currentDescription = ", currentDescription);
+      console.log("currentActive = ", currentActive);  
+    
+      setDescription(currentDescription);
+      setActive(currentActive);
+    }      
+    
+    const onSave = ({id, newDescription, newActive}) => {
+      updateProductCategory({id, newDescription, newActive});
+    }
+    
+    const onCancel = () => {
+      setInEditMode({
+        status: false,
+        rowKey: null
+      })
+    }
+ 
     //callback
     function handleProductCategoryFormClick(productCategoryFormDate) {
 
         if (productCategoryFormDate === "Success")  {
-          setStatus(productCategoryFormDate);          
+          getProductCategories();     
         }
     }
 
@@ -25,24 +80,21 @@ const ProductCategoryTable = () => {
         },
       })
       if (deleteResponse.status === 200) {
-
-        console.log("INSIDE 200 Check");
-
-        setStatus("Success");
+        getProductCategories();
       }  
       console.log('Create response is', deleteResponse)      
     }
+
+    const getProductCategories = async () => {
+      // fetch uses the "proxy" value set in client/package.json
+      let response = await fetch('/productCategory');
+      let data = await response.json();
+      setRows(data);
+    };
     
     useEffect(() => {
-      const getProductCategories = async () => {
-        // fetch uses the "proxy" value set in client/package.json
-        let response = await fetch('/productCategory');
-        let data = await response.json();
-        setRows(data);
-        setStatus(undefined);
-      };
       getProductCategories();
-    }, [status]);
+    }, []);
   
     return (
       <div>
@@ -55,12 +107,52 @@ const ProductCategoryTable = () => {
                     return (
                       <tr key={row.name}>
                           <td>{row.name}</td>
-                          <td>{row.description}</td>
-                          <td>{row.active.toString()}</td>
+
+                          <td>{
+                            inEditMode.status && inEditMode.rowKey === row._id ? (
+                              <input value={description}
+                                onChange={(event) => setDescription(event.target.value)}
+                              />
+                            )  : (
+                              row.description
+                            )                         
+                          }</td>
+                          <td>{
+                            inEditMode.status && inEditMode.rowKey === row._id ? (
+                              <input value={active}
+                                onChange={(event) => setActive(event.target.value)}
+                              />
+                            )  : (
+                              row.active.toString()
+                            )                         
+                          }</td>
+
                           <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm A")}</td>
                           <td>{moment(row.lastUpdateDate).format("MM/DD/yyyy hh:mm A")}</td>
                           <td>
-                            <button>Edit</button> /
+
+                            {
+                              inEditMode.status && inEditMode.rowKey === row._id ? (
+                                <React.Fragment>
+                                  <button onClick={() => onSave({id: row._id, newDescription: description, newActive: active})}
+                                  >
+                                    Save
+                                  </button>
+                                  <button
+                                    onClick={() => onCancel()}
+                                  >
+                                    Cancel
+                                  </button>
+                                </React.Fragment>
+                              ) : (
+                                    <button
+                                          onClick={() => onEdit({id: row._id, newDescription: row.description, newActive: row.active})}
+                                    >
+                                    Edit
+                                    </button>                                
+                              )       
+                            }                          
+                            /
                             <button onClick={() => {handleDeleteClick(row._id)}} >Delete</button>
                           </td>
                       </tr>
@@ -74,6 +166,6 @@ const ProductCategoryTable = () => {
         </div>
       </div>
     )
-  }
+}
 
 export default ProductCategoryTable
