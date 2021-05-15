@@ -3,6 +3,8 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Customers from './components/Customers';
+import Suppliers from './components/Suppliers';
 import Products from './components/Products';
 import ProductCategoryTable from './components/ProductCategoryTable';
 import Orders from './components/Orders';
@@ -20,12 +22,18 @@ const App = () => {
           <Route path='/orders' component={Orders}/>
           <Route path='/order-detail' component={OrderDetail}/> */}
           <Route exact path='/'>
-            <Home/>
+            <Home/>            
+          </Route>
+          <Route path='/customers'>
+            <Customers/>
+          </Route>
+          <Route path='/suppliers'>
+            <Suppliers/>
           </Route>
           <Route path='/products'>
             <Products/>
           </Route>
-          <Route path='/product-catogary'>
+          <Route path='/product-category'>
             <ProductCategoryTable/>
           </Route>
           <Route path='/orders'>

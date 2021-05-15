@@ -17,17 +17,28 @@ const ProductCategoryTable = () => {
         }
     }
 
+    async function handleDeleteClick(itemID) {
+      let deleteResponse = await fetch(`/productCategory/${itemID}`, {
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      if (deleteResponse.status === 200) {
+
+        console.log("INSIDE 200 Check");
+
+        setStatus("Success");
+      }  
+      console.log('Create response is', deleteResponse)      
+    }
+    
     useEffect(() => {
       const getProductCategories = async () => {
         // fetch uses the "proxy" value set in client/package.json
-        console.log('1')
         let response = await fetch('/productCategory');
-        console.log('2',response)
         let data = await response.json();
-        console.log('3 data=',data)
         setRows(data);
-        console.log('4')
-
         setStatus(undefined);
       };
       getProductCategories();
@@ -50,7 +61,7 @@ const ProductCategoryTable = () => {
                           <td>{moment(row.lastUpdateDate).format("MM/DD/yyyy hh:mm A")}</td>
                           <td>
                             <button>Edit</button> /
-                            <button>Delete</button>
+                            <button onClick={() => {handleDeleteClick(row._id)}} >Delete</button>
                           </td>
                       </tr>
                     )

@@ -15,14 +15,26 @@ const Navbar = () => {
             class_name:'nav-text'
         },
         {
+            title:'Customers',
+            path:'/customers',
+            icon: <FaIcons.FaCartPlus />,
+            class_name:'nav-text'
+        },
+        {
+            title:'Suppliers',
+            path:'/suppliers',
+            icon: <FaIcons.FaCartPlus />,
+            class_name:'nav-text'
+        },
+        {
             title:'Products',
             path:'/products',
             icon: <FaIcons.FaCartPlus />,
             class_name:'nav-text'
         },
         {
-            title:'Products Catogary',
-            path:'/product-catogary',
+            title:'Products Category',
+            path:'/product-category',
             icon: <AiIcons.AiOutlineShoppingCart />,
             class_name:'nav-text'
         },

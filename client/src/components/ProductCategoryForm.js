@@ -5,11 +5,13 @@ const ProductCategoryForm = ({onProductCategoryFromClick}) => {
     let [name, setName] = useState()
     let [description, setDescription] = useState()
     let [active, setActive] = useState()
-
     let [createError, setCreateError] = useState()
 
     async function onCreateClicked(e) {
-         let currentDate = new Date();
+
+        //e.preventDefault();
+
+        let currentDate = new Date();
 
         let productCategoryToCreate = {
             name, 
@@ -30,6 +32,12 @@ const ProductCategoryForm = ({onProductCategoryFromClick}) => {
 
             if (createResponse.status === 200) {
                 onProductCategoryFromClick("Success");
+
+                //temporary    
+                setName("");
+                setDescription("");
+                setActive("");
+
             }
 
             // the server didn't like the data for some reason
