@@ -39,7 +39,7 @@ const ProductCategoryTable = () => {
           <h2>Product Category Maintanence</h2>
           <table>
               <tbody>
-                <tr><th>Name</th><th>Description</th><th>Active</th><th>Date Added</th><th>Last Update</th></tr>
+                <tr><th>Name</th><th>Description</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {rows.map((row) => {
                     return (
                       <tr key={row.name}>
@@ -48,6 +48,10 @@ const ProductCategoryTable = () => {
                           <td>{row.active.toString()}</td>
                           <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm A")}</td>
                           <td>{moment(row.lastUpdateDate).format("MM/DD/yyyy hh:mm A")}</td>
+                          <td>
+                            <button>Edit</button> /
+                            <button>Delete</button>
+                          </td>
                       </tr>
                     )
                 })}                
