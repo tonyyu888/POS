@@ -154,6 +154,10 @@ $ cd server
 $ npm install --save-dev nodemon
 $ perl -p -i -e 's/"start": "node /"start": "nodemon /' package.json
 $ npm install dotenv
+$ cd ../client
+$ npm install react-router-dom
+$ npm install react-icons --save
+$ cd ..
 $ git add .
 $ git commit -m "adding nodemon to speed development"
 $ cd ..
