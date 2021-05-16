@@ -3,9 +3,9 @@ import './ProductCategoryForm.css';
 
 const ProductCategoryForm = ({onProductCategoryFromClick}) => {
     let [name, setName] = useState()
-    let [description, setDescription] = useState()
-    let [active, setActive] = useState()
-    let [createError, setCreateError] = useState()
+    let [description, setDescription] = useState("")
+    let [active, setActive] = useState("true")
+    let [createError, setCreateError] = useState("")
 
     async function onCreateClicked(e) {
 
@@ -36,8 +36,7 @@ const ProductCategoryForm = ({onProductCategoryFromClick}) => {
                 //temporary    
                 setName("");
                 setDescription("");
-                setActive("");
-
+                setActive("true");
             }
 
             // the server didn't like the data for some reason
@@ -76,9 +75,13 @@ const ProductCategoryForm = ({onProductCategoryFromClick}) => {
                 <input id="description" value={description} onChange={(event) => onInputChange(event,setDescription)}/>
             </div>
             <div>
-                <label htmlFor="active">Active:</label>
-                <input id="active" value={active} onChange={(event) => onInputChange(event,setActive)}/>
+                <label htmlFor="active">Active:</label>                
+                <select value={active} onChange={(event) => onInputChange(event, setActive)}>
+                <option value="true">true</option>
+                <option value="false">false</option>
+                </select>
             </div>
+            <br/>            
             <button disabled={ createProductCategoryDataInvalid } onClick={ onCreateClicked }>Add Product Category</button>
             { createError && <div>{createError}</div> }            
         </div>

@@ -4,25 +4,23 @@ import './ProductCategoryTable.css';
 import ProductCategoryForm from "./ProductCategoryForm";
 
 const ProductCategoryTable = () => {
-
     const [rows, setRows] = useState([]);
-    const [description, setDescription] = useState(null);
-    const [active, setActive] = useState(null);
-
     const [inEditMode, setInEditMode] = useState({
       status: false,
       rowKey: null
     });
-      
-    const updateProductCategory = ({id, newDescription, newActive}) => {
 
+    const [description, setDescription] = useState("");
+    const [active, setActive] = useState("true");
+    
+    const updateProductCategory = ({id, newDescription, newActive}) => {
       let currentDate = new Date();
       let productCategoryToUpdate = {
           description,
           active,
           lastUpdateDate : currentDate
       }
-      
+
       let updateResponse = fetch(`/productCategory/${id}`, {
         method: "PUT",
         headers: {
@@ -36,19 +34,17 @@ const ProductCategoryTable = () => {
           onCancel();
           // fetch the updated data
           getProductCategories();
+          console.log("updateResponse = ", updateResponse);
       })    
     }
 
-    const onEdit = ({id, currentDescription, currentActive}) => {
+//    const onEdit = ({id, currentDescription, currentActive}) => {
+    const onEdit = (id, currentDescription, currentActive) => {
       setInEditMode({
         status: true,
         rowKey: id
       })    
 
-      console.log("id = ", id);
-      console.log("currentDescription = ", currentDescription);
-      console.log("currentActive = ", currentActive);  
-    
       setDescription(currentDescription);
       setActive(currentActive);
     }      
@@ -66,7 +62,6 @@ const ProductCategoryTable = () => {
  
     //callback
     function handleProductCategoryFormClick(productCategoryFormDate) {
-
         if (productCategoryFormDate === "Success")  {
           getProductCategories();     
         }
@@ -119,18 +114,19 @@ const ProductCategoryTable = () => {
                           }</td>
                           <td>{
                             inEditMode.status && inEditMode.rowKey === row._id ? (
-                              <input value={active}
-                                onChange={(event) => setActive(event.target.value)}
-                              />
+
+                              <select value={active} onChange={(event) => setActive(event.target.value)}>
+                              <option value="true">true</option>
+                              <option value="false">false</option>
+                              </select>
+
                             )  : (
-                              row.active.toString()
+                              String(row.active)
                             )                         
                           }</td>
-
                           <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm A")}</td>
                           <td>{moment(row.lastUpdateDate).format("MM/DD/yyyy hh:mm A")}</td>
                           <td>
-
                             {
                               inEditMode.status && inEditMode.rowKey === row._id ? (
                                 <React.Fragment>
@@ -145,10 +141,9 @@ const ProductCategoryTable = () => {
                                   </button>
                                 </React.Fragment>
                               ) : (
-                                    <button
-                                          onClick={() => onEdit({id: row._id, newDescription: row.description, newActive: row.active})}
+                                    <button value={row.description} onClick={() => onEdit(row._id, row.description, row.active)}
                                     >
-                                    Edit
+                                      Edit
                                     </button>                                
                               )       
                             }                          
