@@ -24,11 +24,11 @@ const ProductCategoryTable = () => {
       setPageNumber(selected)
     }
     
-    const updateProductCategory = ({id, newDescription, newActive}) => {
+    const updateProductCategory = (id, newDescription, newActive) => {
       let currentDate = new Date();
       let productCategoryToUpdate = {
-          description,
-          active,
+          description: newDescription,
+          active: newActive,
           lastUpdateDate : currentDate
       }
 
@@ -49,7 +49,6 @@ const ProductCategoryTable = () => {
       })    
     }
 
-//    const onEdit = ({id, currentDescription, currentActive}) => {
     const onEdit = (id, currentDescription, currentActive) => {
       setInEditMode({
         status: true,
@@ -60,8 +59,8 @@ const ProductCategoryTable = () => {
       setActive(currentActive);
     }      
     
-    const onSave = ({id, newDescription, newActive}) => {
-      updateProductCategory({id, newDescription, newActive});
+    const onSave = (id, newDescription, newActive) => {
+      updateProductCategory(id, newDescription, newActive);
     }
     
     const onCancel = () => {
@@ -134,7 +133,7 @@ const ProductCategoryTable = () => {
               {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <React.Fragment>
-                    <button onClick={() => onSave({id: row._id, newDescription: description, newActive: active})}
+                    <button onClick={() => onSave(row._id, description, active)}
                     >
                       Save
                     </button>
