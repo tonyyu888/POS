@@ -3,6 +3,8 @@ import moment from "moment";
 import './ProductCategoryTable.css';
 import ProductCategoryForm from "./ProductCategoryForm";
 import ReactPaginate from 'react-paginate';
+import * as RiIcons from 'react-icons/ri';
+import * as BsIcons from 'react-icons/bs';
 
 const ProductCategoryTable = () => {
     const [rows, setRows] = useState([]);
@@ -143,14 +145,14 @@ const ProductCategoryTable = () => {
                     </button>
                   </React.Fragment>
                 ) : (
-                      <button value={row.description} onClick={() => onEdit(row._id, row.description, row.active)}
+                      <span><button value={row.description} onClick={() => onEdit(row._id, row.description, row.active)}
                       >
-                        Edit
-                      </button>                                
+                        <BsIcons.BsPencilSquare />
+                      </button></span>                                
                 )       
               }                          
-              /
-              <button onClick={() => {handleDeleteClick(row._id)}} >Delete</button>
+              <span className="slash">/</span>
+              <button onClick={() => {handleDeleteClick(row._id)}} ><RiIcons.RiDeleteBinFill/></button>
             </td>
         </tr>
       )
