@@ -22,9 +22,11 @@
   "orderStatus": {
     "id": {
       "$oid": "60a2867e9fc7acc82853b427"
-    },	  
-	"status": "Created",
-	"dateAdded" : "$date": "2021-05-10T19:33:54.458Z"
+    },
+    "status": "Created",
+    "dateAdded": {
+      "$date": "2021-05-10T19:33:54.458Z"
+    }
   },
   "dateAdded": {
     "$date": "2021-05-10T19:33:54.458Z"
