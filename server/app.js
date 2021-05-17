@@ -22,6 +22,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/productCategory',productCategory)
+//app.use('/product',product)
+//app.use('/customer',customer)
+//app.use('/supplier',supplier)
+//app.use('/userLevel',userLevel)
+
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 

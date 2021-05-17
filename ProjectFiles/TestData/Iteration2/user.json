@@ -4,7 +4,7 @@
   },
   "firstName": "Greg",
   "lastName": "Hutton",
-  "accessLevel": [
+  "userLevel": [
     {
       "id": {
         "$oid": "609b04383fedfb45458a5f6e"
