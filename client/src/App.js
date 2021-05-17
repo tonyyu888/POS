@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import Customers from './components/Customers';
-import Suppliers from './components/Suppliers';
-import Products from './components/Products';
-import ProductCategoryTable from './components/ProductCategoryTable';
-import Orders from './components/Orders';
-import OrderDetail from './components/OrderDetail';
+import Navbar from './components/navbar/Navbar';
+import Home from './components/home/Home';
+import Customers from './components/customers/Customers';
+import Suppliers from './components/suppliers/Suppliers';
+import Products from './components/products/Products';
+import ProductCategoryTable from './components/products/ProductCategoryTable';
+import Orders from './components/orders/Orders';
+import OrderDetail from './components/orders/OrderDetail';
 
 const App = () => {
   return (

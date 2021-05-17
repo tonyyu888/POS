@@ -8,6 +8,10 @@ var logger = require('morgan');
 // var usersRouter = require('./routes/users');
 
 var productCategory = require('./routes/productCategory');
+// var product = require('./routes/product');
+// var customer = require('./routes/customer');
+// var supplier = require('./routes/supplier');
+// var userLevel = require('./routes/userLevel');
 
 var app = express();
 
