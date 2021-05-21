@@ -5,11 +5,26 @@ const ProductForm = (props) => {
     let [name, setName] = useState()
     let [description, setDescription] = useState("")
     let [productCategory, setProductCategory] = useState([])
-    let [productCategoryNameList, setProductCategoryNameList]= useState([])
+    let [productCategoryList, setProductCategoryList]= useState([])
     let [unitPrice, setUnitPrice] = useState(null)
     // let [supplier, setSupplier] = useState([])
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
+
+     //fetch productCategory 
+     const getProductCategoryList = async () =>{
+        let response= await fetch('/productCategory');
+        let data = await response.json();        
+        // let nameArray = data.map(item => item.name)
+        //console.log("names:", nameArray)
+        //setProductCategoryNamelist(NameArray)
+        setProductCategoryList(data)  
+    }
+
+    useEffect(()=>{
+        getProductCategoryList()
+    }, [])
+
 
     async function onCreateClicked() {
         let currentDate = new Date();
@@ -41,7 +56,7 @@ const ProductForm = (props) => {
                 //temporary    
                 setName("");
                 setDescription("");
-                //setProductCategory([])
+                setProductCategory("")
                 setUnitPrice(null)
                 //setSupplier("")
                 setActive("true");
@@ -70,18 +85,7 @@ const ProductForm = (props) => {
        
     };
 
-     //fetch productCategory names
-     const getProductCategoryNames = async () =>{
-        let response= await fetch('/productCategory');
-        let data = await response.json();        
-        // let nameArray = data.map(item => item.name)
-        //console.log("names:", nameArray)
-        setProductCategoryNameList(data)  
-    }
-
-    useEffect(()=>{
-        getProductCategoryNames()
-    }, [])
+    
 
     const onClickAdd = ()=>{
         onCreateClicked();
@@ -107,7 +111,7 @@ const ProductForm = (props) => {
             <div>
             <label htmlFor="productcategory">Product Category:</label> 
                 <select value={productCategory} onChange={(event) => onInputChange(event, setProductCategory)}>
-                  {productCategoryNameList.map(item=><option value={item._id}>{item.name}</option>
+                  {productCategoryList.map(item=><option value={item._id}>{item.name}</option>
                 )} 
                 </select>
             </div>
