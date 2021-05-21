@@ -27,6 +27,11 @@ td {
     text-align: center;
 }
 
+.product-table h2{
+    margin-bottom:30px;
+    text-align: center;
+}
+
 .paginationBttns{
     margin: 0 auto;
     width:80%;

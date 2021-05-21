@@ -14,4 +14,4 @@ const productCategorySchema = new Schema({
   lastUpdateDate: Date
 });
 
-module.exports = mongoose.model('productCategory', productCategorySchema, 'productCategory');
+module.exports = mongoose.model('ProductCategory', productCategorySchema, 'productCategory');

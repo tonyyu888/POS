@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
+import * as ImIcons from 'react-icons/im';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -17,13 +18,13 @@ const Navbar = () => {
         {
             title:'Customers',
             path:'/customers',
-            icon: <FaIcons.FaCartPlus />,
+            icon: <ImIcons.ImUserTie />,
             class_name:'nav-text'
         },
         {
             title:'Suppliers',
             path:'/suppliers',
-            icon: <FaIcons.FaCartPlus />,
+            icon: <RiIcons.RiUserFill />,
             class_name:'nav-text'
         },
         {

@@ -8,7 +8,7 @@ var logger = require('morgan');
 // var usersRouter = require('./routes/users');
 
 var productCategory = require('./routes/productCategory');
-// var product = require('./routes/product');
+var product = require('./routes/product');
 // var customer = require('./routes/customer');
 // var supplier = require('./routes/supplier');
 // var userLevel = require('./routes/userLevel');
@@ -25,8 +25,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/productCategory',productCategory)
-//app.use('/product',product)
+app.use('/productCategory',productCategory);
+app.use('/product', product);
 //app.use('/customer',customer)
 //app.use('/supplier',supplier)
 //app.use('/userLevel',userLevel)
@@ -47,7 +47,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error');
 });
 
 module.exports = app;

@@ -5,12 +5,13 @@ import Navbar from './components/navbar/Navbar';
 import Home from './components/home/Home';
 import Customers from './components/customers/Customers';
 import Suppliers from './components/suppliers/Suppliers';
-import Products from './components/products/Products';
+import Products from './components/products/ProductTable';
 import ProductCategoryTable from './components/products/ProductCategoryTable';
 import Orders from './components/orders/Orders';
 import OrderDetail from './components/orders/OrderDetail';
 
 const App = () => {
+  
   return (
     <>
       <Router>

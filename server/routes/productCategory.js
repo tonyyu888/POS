@@ -1,10 +1,10 @@
 var express = require('express');
-const productCategory = require('../models/productCategory');
 var router = express.Router();
+const ProductCategory = require('../models/productCategory');
 
 /* List all product categories */
 router.get('/', async (req, res) => {
-  let data = await productCategory.find({});
+  let data = await ProductCategory.find({});
   console.info(`records retrieved from mongoose:`, data?.length)
   console.log('data returned=',data)
   res.send(data);
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async function(req, res) {
   
   try {
-    const data = await productCategory.findOne({_id: req.params.id});
+    const data = await ProductCategory.findOne({_id: req.params.id});
     console.info(`Found Product Category:`, data)
     res.send(data);
   } catch (error) {
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
   let productCategoryCreate = req.body
 
   try {
-    let newProductCategory = new productCategory(productCategoryCreate)
+    let newProductCategory = new ProductCategory(productCategoryCreate)
     await newProductCategory.save()
     console.log("Created Product Category", newProductCategory)
     res.send(newProductCategory)  
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
   catch (error) {
     console.log(error)
     if (error.code === 11000) {
-      res.status(409).send('Product Category ' + productCategoryCreate.name + ' already exists');      
+      res.status(409).send('Product Category ' + ProductCategoryCreate.name + ' already exists');      
     }
     else {
       res.sendStatus(500)
@@ -56,7 +56,7 @@ router.post('/', async (req, res) => {
     console.log("productCategoryToUpdate = ", productCategoryToUpdate);
 
 //    let data = await productCategory.findByIdAndUpdate(req.params.name, productCategoryToUpdate);
-    let data = await productCategory.findByIdAndUpdate(req.params.id, productCategoryToUpdate);
+    let data = await ProductCategory.findByIdAndUpdate(req.params.id, productCategoryToUpdate);
     console.log("Updated Product Category", data)
     res.send(data);
   }
@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
 /* Delete a product category by ID. */
 router.delete("/:id", async (req, res) => {
   try {
-    const data = await productCategory.findByIdAndDelete(req.params.id);
+    const data = await ProductCategory.findByIdAndDelete(req.params.id);
 
     if (!data) {
       res.sendStatus(404);
