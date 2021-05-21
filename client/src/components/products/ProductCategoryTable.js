@@ -71,8 +71,8 @@ const ProductCategoryTable = () => {
     }
  
     //callback
-    function handleProductCategoryFormClick(productCategoryFormDate) {
-        if (productCategoryFormDate === "Success")  {
+    function handleProductCategoryFormClick(productCategoryFormData) {
+        if (productCategoryFormData === "Success")  {
           getProductCategories();     
         }
     }

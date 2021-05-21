@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import Home from './components/home/Home';
 import CustomerTable from './components/customers/CustomerTable';
-import Suppliers from './components/suppliers/Suppliers';
+import SupplierTable from './components/suppliers/SupplierTable';
 import Products from './components/products/Products';
 import ProductCategoryTable from './components/products/ProductCategoryTable';
 import Orders from './components/orders/Orders';
@@ -28,7 +28,7 @@ const App = () => {
             <CustomerTable/>
           </Route>
           <Route path='/suppliers'>
-            <Suppliers/>
+            <SupplierTable/>
           </Route>
           <Route path='/products'>
             <Products/>
