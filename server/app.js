@@ -9,8 +9,8 @@ var logger = require('morgan');
 
 var productCategory = require('./routes/productCategory');
 var product = require('./routes/product');
-// var customer = require('./routes/customer');
-// var supplier = require('./routes/supplier');
+var customer = require('./routes/customer');
+var supplier = require('./routes/supplier');
 // var userLevel = require('./routes/userLevel');
 
 var app = express();
@@ -27,8 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/productCategory',productCategory);
 app.use('/product', product);
-//app.use('/customer',customer)
-//app.use('/supplier',supplier)
+app.use('/customer',customer)
+app.use('/supplier',supplier)
 //app.use('/userLevel',userLevel)
 
 // app.use('/', indexRouter);

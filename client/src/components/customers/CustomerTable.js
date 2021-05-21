@@ -1,19 +1,32 @@
+// const Customers = () => {
+//     return (
+//         <div className="customers">
+//             <h2>Customers</h2>
+//         </div>
+//     );
+// }
+ 
+// export default Customers;
 import React, { useEffect, useState } from 'react';
 import moment from "moment";
-import './ProductCategoryTable.css';
-import ProductCategoryForm from "./ProductCategoryForm";
+import './CustomerTable.css';
+import CustomerForm from "./CustomerForm";
 import ReactPaginate from 'react-paginate';
 import * as RiIcons from 'react-icons/ri';
 import * as BsIcons from 'react-icons/bs';
 
-const ProductCategoryTable = () => {
+const Customer = () => {
     const [rows, setRows] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const [inEditMode, setInEditMode] = useState({
       status: false,
       rowKey: null
     });
-    const [description, setDescription] = useState("");
+    const [address1, setAddress1] = useState("");
+    const [address2, setAddress2] = useState("");
+    const [city, setCity] = useState("");
+    const [province, setProvince] = useState("");
+    const [postalCode, setPostalCode] = useState("");
     const [active, setActive] = useState("true");
 
     const rowsPerPage = 10;
@@ -24,43 +37,51 @@ const ProductCategoryTable = () => {
       setPageNumber(selected)
     }
     
-    const updateProductCategory = (id, newDescription, newActive) => {
+    const updateCustomer = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newActive) => {
       let currentDate = new Date();
-      let productCategoryToUpdate = {
-          description: newDescription,
+      let customerToUpdate = {
+          address1: newAddress1,
+          address2: newAddress2,
+          city: newCity,
+          province: newProvince,
+          postalCode: newPostalCode,
           active: newActive,
           lastUpdateDate : currentDate
       }
 
-      let updateResponse = fetch(`/productCategory/${id}`, {
+      let updateResponse = fetch(`/customer/${id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(productCategoryToUpdate)
+        body: JSON.stringify(customerToUpdate)
       })
       .then(response => response.json())
       .then(json => {
           // reset inEditMode and unit price state values
           onCancel();
           // fetch the updated data
-          getProductCategories();
+          getCustomer();
           console.log("updateResponse = ", updateResponse);
       })    
     }
 
-    const onEdit = (id, currentDescription, currentActive) => {
+    const onEdit = (id, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentActive) => {
       setInEditMode({
         status: true,
         rowKey: id
       })    
 
-      setDescription(currentDescription);
+      setAddress1(currentAddress1);
+      setAddress2(currentAddress2);
+      setCity(currentCity);
+      setProvince(currentProvince);
+      setPostalCode(currentPostalCode);
       setActive(currentActive);
     }      
     
-    const onSave = (id, newDescription, newActive) => {
-      updateProductCategory(id, newDescription, newActive);
+    const onSave = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newActive) => {
+      updateCustomer(id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newActive);
     }
     
     const onCancel = () => {
@@ -71,34 +92,34 @@ const ProductCategoryTable = () => {
     }
  
     //callback
-    function handleProductCategoryFormClick(productCategoryFormData) {
-        if (productCategoryFormData === "Success")  {
-          getProductCategories();     
+    function handleCustomerFormClick(customerFormDate) {
+        if (customerFormDate === "Success")  {
+          getCustomer();     
         }
     }
 
     async function handleDeleteClick(itemID) {
-      let deleteResponse = await fetch(`/productCategory/${itemID}`, {
+      let deleteResponse = await fetch(`/customer/${itemID}`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
         },
       })
       if (deleteResponse.status === 200) {
-        getProductCategories();
+        getCustomer();
       }  
       console.log('Create response is', deleteResponse)      
     }
 
-    const getProductCategories = async () => {
+    const getCustomer = async () => {
       // fetch uses the "proxy" value set in client/package.json
-      let response = await fetch('/productCategory');
+      let response = await fetch('/customer');
       let data = await response.json();
       setRows(data);
     };
     
     useEffect(() => {
-      getProductCategories();
+      getCustomer();
     }, []);
 
     const displayRows =rows.slice(rowsVisited, rowsVisited+rowsPerPage).map(row => {
@@ -108,11 +129,47 @@ const ProductCategoryTable = () => {
 
             <td>{
               inEditMode.status && inEditMode.rowKey === row._id ? (
-                <input value={description}
-                  onChange={(event) => setDescription(event.target.value)}
+                <input value={address1}
+                  onChange={(event) => setAddress1(event.target.value)}
                 />
               )  : (
-                row.description
+                row.address1
+              )                         
+            }</td>
+            <td>{
+              inEditMode.status && inEditMode.rowKey === row._id ? (
+                <input value={address2}
+                  onChange={(event) => setAddress2(event.target.value)}
+                />
+              )  : (
+                row.address2
+              )                         
+            }</td>
+            <td>{
+              inEditMode.status && inEditMode.rowKey === row._id ? (
+                <input value={city}
+                  onChange={(event) => setCity(event.target.value)}
+                />
+              )  : (
+                row.city
+              )                         
+            }</td>
+            <td>{
+              inEditMode.status && inEditMode.rowKey === row._id ? (
+                <input value={province}
+                  onChange={(event) => setProvince(event.target.value)}
+                />
+              )  : (
+                row.province
+              )                         
+            }</td>
+            <td>{
+              inEditMode.status && inEditMode.rowKey === row._id ? (
+                <input value={postalCode}
+                  onChange={(event) => setPostalCode(event.target.value)}
+                />
+              )  : (
+                row.postalCode
               )                         
             }</td>
             <td>{
@@ -133,7 +190,7 @@ const ProductCategoryTable = () => {
               {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <React.Fragment>
-                    <button onClick={() => onSave(row._id, description, active)}
+                    <button onClick={() => onSave(row._id, address1, address2, city, province, postalCode, active)}
                     >
                       Save
                     </button>
@@ -144,7 +201,7 @@ const ProductCategoryTable = () => {
                     </button>
                   </React.Fragment>
                 ) : (
-                      <span><button value={row.description} onClick={() => onEdit(row._id, row.description, row.active)}
+                      <span><button value={row.address1} onClick={() => onEdit(row._id, row.address1, row.address2, row.city, row.province, row.postalCode, row.active)}
                       >
                         <BsIcons.BsPencilSquare />
                       </button></span>                                
@@ -159,11 +216,11 @@ const ProductCategoryTable = () => {
   
     return (
       <div>
-        <div className="productCategory-table">
-          <h2>Product Category Maintanence</h2>
+        <div className="customer-table">
+          <h2>Customer Maintanence</h2>
           <table>
               <tbody>
-                <tr><th>Name</th><th>Description</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
+                <tr><th>Name</th><th>Address1</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Postal Code</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {displayRows}                
               </tbody>
           </table>
@@ -179,11 +236,11 @@ const ProductCategoryTable = () => {
             activeClassName= {"paginationActive"}
           />       
         </div>
-        <div className="productCategoryForm">
-                <ProductCategoryForm onProductCategoryFromClick={handleProductCategoryFormClick} />
+        <div className="customerForm">
+                <CustomerForm onCustomerFormClick={handleCustomerFormClick} />
         </div>
       </div>
     )
 }
 
-export default ProductCategoryTable
+export default Customer
