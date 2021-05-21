@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "6099c83f3fedfb45458a048d"
+  },
+  "name": "Glacier Gate Pharmacy",
+  "address1": "101-2504 Glacier Gate",
+  "address2": "n/a",
+  "city": "Cold Lake",
+  "province": "Alberta",
+  "postalCode": "T9M 0H1",
+  "contactNumber": [
+    {
+      "name": "Office phone",
+      "phoneNumber": "780-594-8129"
+    },
+    {
+      "name": "Fax Number",
+      "phoneNumber": "825-723-0060"
+    }
+  ],
+  "contactPerson": [
+    {
+      "firstName": "Rick",
+      "lastName": "Smith"
+    },
+    {
+      "firstName": "Matt",
+      "lastName": "Riley"
+    }
+  ],
+  "emailAddress": "glacierph@gmail.com",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]
