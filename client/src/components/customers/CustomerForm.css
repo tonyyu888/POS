@@ -1,0 +1,26 @@
+.create-form label{
+    text-align:left;
+    display:block;
+}
+
+.create-form h4{
+    margin-bottom: 20px;
+}
+
+.create-form input{
+    width:100%;
+    padding: 6px 10px;
+    margin:10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display:block;
+}
+
+.create-form button{
+    background-color: #86C232;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+
+}

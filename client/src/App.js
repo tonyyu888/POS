@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import Home from './components/home/Home';
-import Customers from './components/customers/Customers';
+import CustomerTable from './components/customers/CustomerTable';
 import Suppliers from './components/suppliers/Suppliers';
 import Products from './components/products/Products';
 import ProductCategoryTable from './components/products/ProductCategoryTable';
@@ -25,7 +25,7 @@ const App = () => {
             <Home/>            
           </Route>
           <Route path='/customers'>
-            <Customers/>
+            <CustomerTable/>
           </Route>
           <Route path='/suppliers'>
             <Suppliers/>
