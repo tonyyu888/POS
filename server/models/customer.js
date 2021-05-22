@@ -15,8 +15,8 @@ const customerSchema = new Schema({
   postalCode: String,
   contactNumber:[
     {
-      type: String,
-      number: String
+      name: String,
+      phoneNumber: String
     },
   ],
   contactPerson:[
@@ -25,6 +25,7 @@ const customerSchema = new Schema({
       lastName: String
     },
   ],
+  emailAddress: String,
   active: Boolean,
   dateAdded: Date,
   lastUpdateDate: Date

@@ -11,9 +11,9 @@ const ProductTable = () => {
     const [rows, setRows]= useState([]);
     const [inEditMode, setInEditMode] = useState({status:false, rowKey:null})
     const [description, setDescription] = useState("")
-    //const [productCategory, setProductCategory] = useState()
     const [unitPrice, setUnitPrice] = useState(null)
     const [active, setActive]= useState('true');
+    //const [suppliier, setSupplier] = useState()
     const [pageNumber, setPageNumber]= useState(0)
     const [addBtnPopupForm, setAddBtnPopupForm] = useState(false)
 
@@ -21,6 +21,7 @@ const ProductTable = () => {
     const rowsVisited = pageNumber * rowsPerPage;
     const pageCount = Math.ceil(rows.length / rowsPerPage);
 
+  
     const changePage = ({selected}) =>{
         setPageNumber(selected)
     }
@@ -35,7 +36,7 @@ const ProductTable = () => {
 
     useEffect(()=>{
         getProducts()
-    }, [])
+    }, [addBtnPopupForm])
 
     //update a Product
     let updateProduct = (id, newDescription, newUnitPrice, newActive) =>{
@@ -66,12 +67,14 @@ const ProductTable = () => {
         setDescription(currentDescription)
         // add a click event for product catagory to take it to it's main page
         setUnitPrice(currentUnitPrice)
+        //setSupplier(currentSupplier)
         setActive(currentActive);
 
     }
 
     const onSave = (id, newDescription, newUnitPrice, newActive) => {
         updateProduct(id, newDescription, newUnitPrice, newActive)
+        //updateProduct(id, newDescription, newUnitPrice, newSupplier, newActive)
     }
 
     const onCancel =() =>{
@@ -113,7 +116,9 @@ const ProductTable = () => {
                         row.unitPrice
                     )}
                 </td>
-                <td>Supplier</td>
+                <td>
+                    <p>{row.supplier.name}</p>
+                </td>
                 <td>{
                     inEditMode.status && inEditMode.rowKey === row._id ? (
                         <select>
@@ -177,7 +182,6 @@ const ProductTable = () => {
             </div>
             {/* <div className="productForm">
                 <ProductForm onProductFormClick = {handleProductFormClick} />
-
             </div> */}
         </div>
         
@@ -185,5 +189,3 @@ const ProductTable = () => {
 }
  
 export default ProductTable;
-
-
