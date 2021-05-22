@@ -134,12 +134,12 @@ const SupplierTable = () => {
       console.log("INSIDE userEffect()");
       console.log("*******************");
 
-      if (!refreshScreenOnly) {
+//      if (!refreshScreenOnly) {
         getSuppliers();
-      }
+//      }
 
-      setRefreshScreenOnly(false);
-      console.log("** INSIDE useEffect() - refreshScreenOnly = ", refreshScreenOnly);
+//      setRefreshScreenOnly(false);
+//      console.log("** INSIDE useEffect() - refreshScreenOnly = ", refreshScreenOnly);
 
     }, []);
 
@@ -371,7 +371,7 @@ const SupplierTable = () => {
                 row.contactPerson.map( (cp, index) => { 
 
                     console.log("## Inside row.contactPerson ##");
-                    console.log("refreshScreenOnly = ", refreshScreenOnly);
+//                    console.log("refreshScreenOnly = ", refreshScreenOnly);
                   return ( <tr key={index}>                          
                              <td>{
                                inEditMode.status && inEditMode.rowKey === row._id ? (

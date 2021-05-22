@@ -10,6 +10,7 @@ const SupplierForm = ({onSupplierFromClick}) => {
     let [postalCode, setPostalCode] = useState("");
     let [contactNumber, setContactNumber] = useState([]);
     let [contactPerson, setContactPerson] = useState([]);
+    let [emailAddress, setEmailAddress] = useState("");
     let [active, setActive] = useState("true");
     let [createError, setCreateError] = useState("");
 
@@ -25,6 +26,7 @@ const SupplierForm = ({onSupplierFromClick}) => {
             postalCode,
             contactNumber,
             contactPerson,
+            emailAddress,
             active,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
@@ -52,6 +54,7 @@ const SupplierForm = ({onSupplierFromClick}) => {
                 setPostalCode("");
                 setContactNumber([]);
                 setContactPerson([]);
+                setEmailAddress("");
                 setActive("true");
             }
 
@@ -77,10 +80,32 @@ const SupplierForm = ({onSupplierFromClick}) => {
         setFunction(event.target.value);
     };
 
+    const onContactNumberChange = (e, i) => {
+        let newContactNumber = [...contactNumber]
+        newContactNumber[i][e.target.name] = e.target.value 
+        setContactNumber(newContactNumber); 
+      }  
+
+    const onContactNumberDelete = (id, index) => {
+        let newContactNumber = contactNumber;
+        newContactNumber.splice(index, 1);
+        setContactNumber(newContactNumber);
+    }
+  
+    const onContactNumberAdd = () =>  {      
+        let newContactNumber = [...contactNumber]
+        newContactNumber.push({name: "",  phoneNumber: ""})
+        setContactNumber(newContactNumber);
+    }
+  
     let createSupplierDataInvalid = !name || (name.trim().length === 0)
 
     return (
+
         <div className='create-form'>
+            
+            {console.log("Contact number state", contactNumber)}
+
             <h4>Add a New Supplier</h4>
             <div>
                 <label htmlFor="name">Name:</label>
@@ -106,6 +131,56 @@ const SupplierForm = ({onSupplierFromClick}) => {
                 <label htmlFor="postalCode">Postal Code:</label>
                 <input id="postalCode" value={postalCode} onChange={(event) => onInputChange(event,setPostalCode)}/>
             </div>
+
+            <label htmlFor="contactNumber">Contact Number:</label>
+            {console.log("*** contactNumber line 166 = ", contactNumber)}            
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <table>                      
+                                <tbody>
+                                    {
+
+                                        contactNumber.map( (cn, index) => { 
+
+                                            console.log("*** contactNumber = ", contactNumber);
+                                            console.log("*** cn = ", cn);
+                                            console.log("*** index = ", index);
+                                            return ( <tr key={index}>                          
+                                                        <td>{
+                                                            <input name="name" value={cn.name}
+                                                            onChange={ (e) => onContactNumberChange(e, index) }
+                                                            />
+                                                        }</td>
+                                                        <td>{
+                                                            <input name="phoneNumber" value={cn.phoneNumber}
+                                                            onChange={ (e) => onContactNumberChange(e, index) }
+                                                            />
+                                                        }</td>
+                                                        {   
+                                                        <td>                            
+                                                            <button onClick={ () => onContactNumberDelete(index) }>Delete</button>
+                                                        </td>
+                                                        }            
+                                                    </tr> )
+                                        })
+                                    }
+                                    <tr>                                
+                                        <td>
+                                        <button onClick={ onContactNumberAdd }>Add Contact Number</button>
+                                        </td>
+                                    </tr>
+                                </tbody>    
+                            </table>            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <label htmlFor="emailAddress">Email Address:</label>
+                <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
+            </div>
             <div>
                 <label htmlFor="active">Active:</label>                
                 <select value={active} onChange={(event) => onInputChange(event, setActive)}>
@@ -116,8 +191,10 @@ const SupplierForm = ({onSupplierFromClick}) => {
             <br/>            
             <button disabled={ createSupplierDataInvalid } onClick={ onCreateClicked }>Add Supplier</button>
             { createError && <div>{createError}</div> }            
+
         </div>
     )
 }
+
 
 export default SupplierForm
