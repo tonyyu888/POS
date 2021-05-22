@@ -1,23 +1,23 @@
 import { useState , useEffect} from "react"
 import './ProductForm.css';
 
+
 const ProductForm = (props) => {
     let [name, setName] = useState()
     let [description, setDescription] = useState("")
-    let [productCategory, setProductCategory] = useState([])
+    let [productCategory, setProductCategory] = useState("")
     let [productCategoryList, setProductCategoryList]= useState([])
-    let [unitPrice, setUnitPrice] = useState(null)
-    // let [supplier, setSupplier] = useState([])
+    let [unitPrice, setUnitPrice] = useState()
+    let [supplier, setSupplier] = useState()
+    let [supplierList, setSupplierList]= useState([])
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
-
+   
+    
      //fetch productCategory 
      const getProductCategoryList = async () =>{
         let response= await fetch('/productCategory');
         let data = await response.json();        
-        // let nameArray = data.map(item => item.name)
-        //console.log("names:", nameArray)
-        //setProductCategoryNamelist(NameArray)
         setProductCategoryList(data)  
     }
 
@@ -25,6 +25,16 @@ const ProductForm = (props) => {
         getProductCategoryList()
     }, [])
 
+     //fetch supplier 
+     const getSupplierList = async () =>{
+        let response= await fetch('/supplier');
+        let data = await response.json();        
+        setSupplierList(data)  
+    }
+
+    useEffect(()=>{
+        getSupplierList()
+    }, [])
 
     async function onCreateClicked() {
         let currentDate = new Date();
@@ -33,12 +43,12 @@ const ProductForm = (props) => {
             description,
             productCategory,
             unitPrice,
-            // supplier,
+            supplier,
             active,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
         }
-        console.log('Creating a Product:', productToCreate )
+        //console.log('Creating a Product:', productToCreate )
         try {
             
             let createResponse = await fetch('/product', {
@@ -49,7 +59,7 @@ const ProductForm = (props) => {
                 body: JSON.stringify(productToCreate)
                 
             })
-
+            
             if (createResponse.status === 200) {
                 props.onProductFormClick("Success");
 
@@ -58,8 +68,9 @@ const ProductForm = (props) => {
                 setDescription("");
                 setProductCategory("")
                 setUnitPrice(null)
-                //setSupplier("")
+                setSupplier("")
                 setActive("true");
+                console.log('Creating a Product:', productToCreate )
             }
 
             // the server didn't like the data for some reason
@@ -80,16 +91,15 @@ const ProductForm = (props) => {
     }
 
     const onInputChange = (event, setFunction) => {
+        console.log('event: ', event)
         console.log('Changing input to be ', event.target.value)
-        setFunction(event.target.value);
-       
+        setFunction(event.target.value);   
     };
 
-    
 
     const onClickAdd = ()=>{
         onCreateClicked();
-        props.setTrigger(false);
+        props.setTrigger(false);   
     }
 
     let createProductDataInvalid = !name || (name.trim().length === 0)
@@ -111,21 +121,24 @@ const ProductForm = (props) => {
             <div>
             <label htmlFor="productcategory">Product Category:</label> 
                 <select value={productCategory} onChange={(event) => onInputChange(event, setProductCategory)}>
-                  {productCategoryList.map(item=><option value={item._id}>{item.name}</option>
+                    <option>--Select--</option>
+                  {productCategoryList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
                 )} 
                 </select>
             </div>
             <div>
             <label htmlFor="unitprice">Unit Price:</label>
-            <input id="unitprice" value={unitPrice} onChange={(event)=> onInputChange(event,setUnitPrice)}/>
+            <input id="unitprice" value={unitPrice} placeholder="Enter in Numbers" onChange={(event)=> onInputChange(event,setUnitPrice)}/>
             </div>
-            {/* <div>
+            <div>
             <label htmlFor="supplier">Supplier:</label> 
-                <select value={supplier} onChange={(event) => onInputChange(event, setSupplier)}>
-                supplier.map(())
-                <option value="">{}</option>
+               <select value={supplier} onChange={(event) => onInputChange(event, setSupplier)}>
+                 <option>--Select--</option>
+                {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
+                )}
                 </select>
-            </div> */}
+                 
+            </div>
             <div>
                 <label htmlFor="active">Active:</label>                
                 <select value={active} onChange={(event) => onInputChange(event, setActive)}>
