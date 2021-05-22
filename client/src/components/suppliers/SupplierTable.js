@@ -308,24 +308,24 @@ const SupplierTable = () => {
                                           cn.phoneNumber
                                         )                         
                                   }</td>
-                                  <td>
                                   {                              
                                     inEditMode.status && inEditMode.rowKey === row._id ? (
+                                        <td>
                                         <button onClick={ () => onContactNumberDelete(row._id, index) }>Delete</button>
+                                        </td>
                                       )  : null  
                                   }
-                                  </td>
                               </tr> )
                     })
                   }
                   <tr>
-                    <td>
                       {
                         inEditMode.status && inEditMode.rowKey === row._id ? (
+                          <td>
                           <button onClick={ () => onContactNumberAdd(row._id) }>Add Contact Number</button>
+                          </td>
                         )  : null                
                       }    
-                    </td>
                   </tr>
                 </tbody>          
               </table>
@@ -335,8 +335,8 @@ const SupplierTable = () => {
               <table>
                 <tbody>              
                   {
-                    row.contactPerson.map( (cp, index) => { 
-                      return ( <tr key={index}>                          
+                    row.contactPerson.map( (cp, index) => {
+                      return ( <tr key={index}>
                                 <td>{
                                       inEditMode.status && inEditMode.rowKey === row._id ? (
                                         <input name="firstName" value={contactPerson[index].firstName}
@@ -344,7 +344,7 @@ const SupplierTable = () => {
                                         />                                 
                                       ) : (
                                         cp.firstName
-                                      )                         
+                                      )
                                 }
                                 </td>
                                 <td>{
@@ -354,28 +354,28 @@ const SupplierTable = () => {
                                         />
                                       ) : (
                                         cp.lastName
-                                      )                         
+                                      )
                                 }</td>
-                                <td>
                                 {
                                   inEditMode.status && inEditMode.rowKey === row._id ? (
-                                      <button onClick={ () => onContactPersonDelete(row._id, index) }>Delete</button>
+                                      <td>
+                                        <button onClick={ () => onContactPersonDelete(row._id, index) }>Delete</button>
+                                      </td>
                                     )  : null
                                 }
-                                </td>          
                               </tr>
                               )
                     })
                   }
-                  <tr>
-                    <td>
+                    <tr>                  
                       {
                         inEditMode.status && inEditMode.rowKey === row._id ? (
-                          <button onClick={ () => onContactPersonAdd(row._id) }>Add Contact Person</button>
+                            <td>
+                              <button onClick={ () => onContactPersonAdd(row._id) }>Add Contact Person</button>
+                            </td>                  
                         )  : null
                       }
-                    </td>
-                  </tr>
+                    </tr>                      
                 </tbody>
               </table>
             </td>
