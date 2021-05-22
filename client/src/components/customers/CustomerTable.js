@@ -1,12 +1,3 @@
-// const Customers = () => {
-//     return (
-//         <div className="customers">
-//             <h2>Customers</h2>
-//         </div>
-//     );
-// }
- 
-// export default Customers;
 import React, { useEffect, useState } from 'react';
 import moment from "moment";
 import './CustomerTable.css';
@@ -57,7 +48,6 @@ const Customer = () => {
           active: newActive,
           lastUpdateDate : currentDate
       }
-console.log("custerToUpdate: ", customerToUpdate)
 
       let updateResponse = fetch(`/customer/${id}`, {
         method: "PUT",
@@ -134,10 +124,7 @@ console.log("custerToUpdate: ", customerToUpdate)
     };
     
     useEffect(() => {
-      if (!refreshScreenOnly) {
-         getCustomer();
-      }
-      setRefreshScreenOnly(false);
+      getCustomer();
     }, []);
 
     const onContactNumberChange = (name, index) => e => {
