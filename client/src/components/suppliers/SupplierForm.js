@@ -85,19 +85,38 @@ const SupplierForm = ({onSupplierFromClick}) => {
         newContactNumber[i][e.target.name] = e.target.value 
         setContactNumber(newContactNumber); 
       }  
-
-    const onContactNumberDelete = (id, index) => {
-        let newContactNumber = contactNumber;
-        newContactNumber.splice(index, 1);
-        setContactNumber(newContactNumber);
-    }
   
     const onContactNumberAdd = () =>  {      
         let newContactNumber = [...contactNumber]
         newContactNumber.push({name: "",  phoneNumber: ""})
         setContactNumber(newContactNumber);
     }
-  
+
+    const onContactNumberDelete = (index) => {
+        let newContactNumber = [...contactNumber];
+        newContactNumber.splice(index, 1);
+        setContactNumber(newContactNumber);
+    }
+    
+    const onContactPersonChange = (e, i) => {
+        let newContactPerson = [...contactPerson]
+        newContactPerson[i][e.target.name] = e.target.value 
+        setContactPerson(newContactPerson); 
+      }  
+    
+    const onContactPersonAdd = () =>  {      
+        let newContactPerson = [...contactPerson]
+        newContactPerson.push({firstName: "", lastName: ""})
+        setContactPerson(newContactPerson);
+    }
+
+    const onContactPersonDelete = (index) => {
+        let newContactPerson = [...contactPerson];
+        newContactPerson.splice(index, 1);
+        setContactPerson(newContactPerson);
+    }
+
+
     let createSupplierDataInvalid = !name || (name.trim().length === 0)
 
     return (
@@ -133,7 +152,6 @@ const SupplierForm = ({onSupplierFromClick}) => {
             </div>
 
             <label htmlFor="contactNumber">Contact Number:</label>
-            {console.log("*** contactNumber line 166 = ", contactNumber)}            
             <table>
                 <tbody>
                     <tr>
@@ -177,6 +195,47 @@ const SupplierForm = ({onSupplierFromClick}) => {
                     </tr>
                 </tbody>
             </table>
+
+            <label htmlFor="contactPerson">Contact Person:</label>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <table>                      
+                                <tbody>
+                                    {
+                                        contactPerson.map( (cn, index) => { 
+                                            return ( <tr key={index}>                          
+                                                        <td>{
+                                                            <input name="firstName" value={cn.firstName}
+                                                            onChange={ (e) => onContactPersonChange(e, index) }
+                                                            />
+                                                        }</td>
+                                                        <td>{
+                                                            <input name="lastName" value={cn.lastName}
+                                                            onChange={ (e) => onContactPersonChange(e, index) }
+                                                            />
+                                                        }</td>
+                                                        {   
+                                                        <td>                            
+                                                            <button onClick={ () => onContactPersonDelete(index) }>Delete</button>
+                                                        </td>
+                                                        }            
+                                                    </tr> )
+                                        })
+                                    }
+                                    <tr>                                
+                                        <td>
+                                        <button onClick={ onContactPersonAdd }>Add Contact Person</button>
+                                        </td>
+                                    </tr>
+                                </tbody>    
+                            </table>            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div>
                 <label htmlFor="emailAddress">Email Address:</label>
                 <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
@@ -195,6 +254,5 @@ const SupplierForm = ({onSupplierFromClick}) => {
         </div>
     )
 }
-
 
 export default SupplierForm
