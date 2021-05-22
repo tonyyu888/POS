@@ -2,12 +2,15 @@ import { useState } from "react"
 import './CustomerForm.css';
 
 const CustomerForm = ({onCustomerFormClick}) => {
-    let [name, setName] = useState()
+    let [name, setName] = useState("")
     let [address1, setAddress1] = useState("")
     let [address2, setAddress2] = useState("")
     let [city, setCity] = useState("")
     let [province, setProvince] = useState("")
     let [postalCode, setPostalCode] = useState("")
+    let [contactNumber, setContactNumber] = useState([])
+    let [contactPerson, setContactPerson] = useState([])
+    let [emailAddress, setEmailAddress] = useState("")
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
 
@@ -16,8 +19,6 @@ const CustomerForm = ({onCustomerFormClick}) => {
         //e.preventDefault();
 
         let currentDate = new Date()
-        let contactNumber =[]
-        let contactPerson=[]
 
         let customerToCreate = {
             name, 
@@ -28,6 +29,7 @@ const CustomerForm = ({onCustomerFormClick}) => {
             postalCode,
             contactNumber,
             contactPerson,
+            emailAddress,
             active,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
@@ -52,6 +54,9 @@ const CustomerForm = ({onCustomerFormClick}) => {
                 setCity("");
                 setProvince("");
                 setPostalCode("");
+                setContactNumber([]);
+                setContactPerson([]);
+                setEmailAddress("");
                 setActive("true");
             }
 
@@ -105,6 +110,10 @@ const CustomerForm = ({onCustomerFormClick}) => {
             <div>
                 <label htmlFor="postalCode">Postal Code:</label>
                 <input id="postalCode" value={postalCode} onChange={(event) => onInputChange(event,setPostalCode)}/>
+            </div>
+            <div>
+                <label htmlFor="emailAddress">Email Address:</label>
+                <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
             </div>
             <div>
                 <label htmlFor="active">Active:</label>                
