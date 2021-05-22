@@ -97,7 +97,7 @@ const SupplierForm = ({onSupplierFromClick}) => {
         newContactNumber.splice(index, 1);
         setContactNumber(newContactNumber);
     }
-    
+
     const onContactPersonChange = (e, i) => {
         let newContactPerson = [...contactPerson]
         newContactPerson[i][e.target.name] = e.target.value 
@@ -159,12 +159,7 @@ const SupplierForm = ({onSupplierFromClick}) => {
                             <table>                      
                                 <tbody>
                                     {
-
                                         contactNumber.map( (cn, index) => { 
-
-                                            console.log("*** contactNumber = ", contactNumber);
-                                            console.log("*** cn = ", cn);
-                                            console.log("*** index = ", index);
                                             return ( <tr key={index}>                          
                                                         <td>{
                                                             <input name="name" value={cn.name}
