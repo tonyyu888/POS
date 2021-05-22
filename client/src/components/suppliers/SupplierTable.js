@@ -23,6 +23,7 @@ const SupplierTable = () => {
     const [postalCode, setPostalCode] = useState("");
     const [contactNumber, setContactNumber] = useState([]);
     const [contactPerson, setContactPerson] = useState([]);
+    const [emailAddress, setEmailAddress] = useState("");    
     const [active, setActive] = useState("true");
 
     const rowsPerPage = 10;
@@ -33,7 +34,7 @@ const SupplierTable = () => {
       setPageNumber(selected)
     }
     
-    const updateSupplier = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newActive) => {
+    const updateSupplier = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newActive) => {
       let currentDate = new Date();
       let supplierToUpdate = {
           address1: newAddress1,
@@ -43,6 +44,7 @@ const SupplierTable = () => {
           postalCode: newPostalCode,
           contactNumber: newContactNumber,
           contactPerson: newContactPerson,
+          emailAddress: newEmailAddress,
           active: newActive,
           lastUpdateDate : currentDate
       }
@@ -64,7 +66,7 @@ const SupplierTable = () => {
       })    
     }
 
-    const onEdit = (id, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentContactNumber, currentContactPerson, currentActive) => {
+    const onEdit = (id, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentContactNumber, currentContactPerson, currentEmailAddress, currentActive) => {
       setInEditMode({
         status: true,
         rowKey: id
@@ -77,11 +79,12 @@ const SupplierTable = () => {
       setPostalCode(currentPostalCode);
       setContactNumber(currentContactNumber);
       setContactPerson(currentContactPerson);
+      setEmailAddress(currentEmailAddress);
       setActive(currentActive);
     }      
     
-    const onSave = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newActive) => {
-      updateSupplier(id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newActive);
+    const onSave = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newActive) => {
+      updateSupplier(id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newActive);
     }
     
     const onCancel = () => {
@@ -127,17 +130,20 @@ const SupplierTable = () => {
     
     useEffect(() => {
 
+      console.log("*******************");
       console.log("INSIDE userEffect()");
+      console.log("*******************");
 
       if (!refreshScreenOnly) {
         getSuppliers();
       }
 
       setRefreshScreenOnly(false);
+      console.log("** INSIDE useEffect() - refreshScreenOnly = ", refreshScreenOnly);
 
     }, []);
 
-    const onContactNumberChange = (name, index) => e => {
+    const onContactNumberChange = (name, id, index) => e => {
       let newContactNumber = contactNumber.map((item, i) => {
         if (index === i) {
           return {...item, [name]: e.target.value};          
@@ -147,6 +153,18 @@ const SupplierTable = () => {
         }
       })
       setContactNumber(newContactNumber);
+
+      let newRows = rows;
+
+      for (let i=0; i< newRows.length; i++) {
+        if (newRows[i]._id === id) {
+          newRows[i].contactNumber = newContactNumber;
+          break;
+        }        
+      }
+ 
+      setRefreshScreenOnly(true);
+      setRows(newRows);
     }
 
     const onContactPersonChange = (name, index) => e => {
@@ -163,12 +181,17 @@ const SupplierTable = () => {
 
     const onContactNumberAdd = (id) => {
 
+      console.log("*** inside onContactNumberAdd ***")
+
       let newContactNumber = {
         name: "",
         phoneNumber: ""
       }
 
       let newRows = rows;
+
+      console.log("1 - newRows", newRows);
+      console.log("1 - contactNumber", contactNumber);
 
       for (let i=0; i< newRows.length; i++) {
 
@@ -179,6 +202,9 @@ const SupplierTable = () => {
         }        
       }
  
+      console.log("2 - newRows", newRows);
+      console.log("1 - contactNumber", contactNumber);
+
       setRefreshScreenOnly(true);
       setRows(newRows);
     }
@@ -205,10 +231,19 @@ const SupplierTable = () => {
 
     const onContactPersonDelete = (id, index) => {
 
+      console.log("**Inside onContactPersonDelete **");
+      console.log("refreshScreenOnly = ", refreshScreenOnly); 
+      console.log("id, index = ", id, index); 
+      console.log("Before contactPerson = ", contactPerson); 
+
       let newContactPerson = contactPerson;
 
       newContactPerson.splice(index, 1);
       setContactPerson(newContactPerson);
+
+    
+      console.log("After contactPerson = ", contactPerson); 
+
 
       let newRows = rows;
 
@@ -301,7 +336,7 @@ const SupplierTable = () => {
                              <td>{
                                inEditMode.status && inEditMode.rowKey === row._id ? (
                                  <input value={contactNumber[index].name}
-                                   onChange={onContactNumberChange("name", index)}
+                                   onChange={onContactNumberChange("name", row._id, index)}
                                  />
                                ) : (
                                  cn.name
@@ -310,7 +345,7 @@ const SupplierTable = () => {
                              <td>{
                                inEditMode.status && inEditMode.rowKey === row._id ? (
                                  <input value={contactNumber[index].phoneNumber}
-                                   onChange={onContactNumberChange("phoneNumber", index)}
+                                   onChange={onContactNumberChange("phoneNumber", row._id, index)}
                                  />
                                ) : (
                                  cn.phoneNumber
@@ -319,9 +354,7 @@ const SupplierTable = () => {
                              {                              
                               inEditMode.status && inEditMode.rowKey === row._id ? (
                                   <button onClick={ () => onContactNumberDelete(row._id, index) }>Delete</button>
-                                )  : (
-                                  <span></span>
-                                )      
+                                )  : null  
                              }            
                           </tr> )
                 })
@@ -329,13 +362,16 @@ const SupplierTable = () => {
             {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <button onClick={ () => onContactNumberAdd(row._id) }>Add Contact Number</button>
-                )  : (
-                  <span></span>
-                )      
+                )  : 
+                 null
+                
             }            
             </td>
             <td>{
                 row.contactPerson.map( (cp, index) => { 
+
+                    console.log("## Inside row.contactPerson ##");
+                    console.log("refreshScreenOnly = ", refreshScreenOnly);
                   return ( <tr key={index}>                          
                              <td>{
                                inEditMode.status && inEditMode.rowKey === row._id ? (
@@ -356,25 +392,31 @@ const SupplierTable = () => {
                                  cp.lastName
                                )                         
                              }</td>
-                             {                              
+                             {
                               inEditMode.status && inEditMode.rowKey === row._id ? (
                                   <button onClick={ () => onContactPersonDelete(row._id, index) }>Delete</button>
-                                )  : (
-                                  <span></span>
-                                )      
+                                )  : null
                              }            
                           </tr>
                           )
                 })
-            }            
+            }           
+
             {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <button onClick={ () => onContactPersonAdd(row._id) }>Add Contact Person</button>
-                )  : (
-                  <span></span>
-                )         
+                )  : null
             }
             </td>
+            <td>{
+              inEditMode.status && inEditMode.rowKey === row._id ? (
+                <input value={emailAddress}
+                  onChange={(event) => setEmailAddress(event.target.value)}
+                />
+              )  : (
+                row.emailAddress
+              )                         
+            }</td>
 
             <td>{
               inEditMode.status && inEditMode.rowKey === row._id ? (
@@ -392,7 +434,7 @@ const SupplierTable = () => {
               {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <React.Fragment>
-                    <button onClick={() => onSave(row._id, address1, address2, city, province, postalCode, contactNumber, contactPerson, active)}
+                    <button onClick={() => onSave(row._id, address1, address2, city, province, postalCode, contactNumber, contactPerson, emailAddress, active)}
                     >
                       Save
                     </button>
@@ -404,7 +446,7 @@ const SupplierTable = () => {
                   </React.Fragment> 
                 ) : (
                       <span><button value={row.description} onClick={() => onEdit(row._id, row.address1, row.address2, row.city, row.province, row.postalCode,
-                                                                                  row.contactNumber, row.contactPerson, row.active )}
+                                                                                  row.contactNumber, row.contactPerson, row.emailAddress, row.active )}
                       >
                         <BsIcons.BsPencilSquare />
                       </button></span>                                
@@ -424,7 +466,7 @@ const SupplierTable = () => {
           <table>
               <tbody>
                 <tr><th>Name</th><th>Address 1</th><th>Address 2</th><th>City</th><th>Province</th><th>Postal Code</th>
-                <th>Contact Number</th><th>Contact Person</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
+                <th>Contact Number</th><th>Contact Person</th><th>Email Address</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {displayRows}  
               </tbody>
           </table>
