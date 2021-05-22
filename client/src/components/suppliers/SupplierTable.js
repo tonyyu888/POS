@@ -14,8 +14,6 @@ const SupplierTable = () => {
       rowKey: null
     });
 
-    const [refreshScreenOnly, setRefreshScreenOnly] = useState(false);
-
     const [address1, setAddress1] = useState("");
     const [address2, setAddress2] = useState("");   
     const [city, setCity] = useState("");
@@ -94,8 +92,6 @@ const SupplierTable = () => {
       })
 
       getSuppliers();
-      setRefreshScreenOnly(false);
-
     }
 
     //callback
@@ -130,31 +126,17 @@ const SupplierTable = () => {
     
     useEffect(() => {
 
-      console.log("*******************");
-      console.log("INSIDE userEffect()");
-      console.log("*******************");
-
-      if (!refreshScreenOnly) {
         getSuppliers();
-      }
-
-      setRefreshScreenOnly(false);
-      console.log("** INSIDE useEffect() - refreshScreenOnly = ", refreshScreenOnly);
 
     }, []);
 
-    const onContactNumberChange = (name, id, index) => e => {
-      let newContactNumber = contactNumber.map((item, i) => {
-        if (index === i) {
-          return {...item, [name]: e.target.value};          
-        }
-        else {
-          return item;
-        }
-      })
-      setContactNumber(newContactNumber);
+    const onContactNumberChange = (e, id, index) => {
 
-      let newRows = rows;
+      let newContactNumber = [...contactNumber]
+      newContactNumber[index][e.target.name] = e.target.value 
+      setContactNumber(newContactNumber); 
+
+      let newRows = [...rows];
 
       for (let i=0; i< newRows.length; i++) {
         if (newRows[i]._id === id) {
@@ -163,60 +145,49 @@ const SupplierTable = () => {
         }        
       }
  
-      setRefreshScreenOnly(true);
       setRows(newRows);
     }
 
-    const onContactPersonChange = (name, index) => e => {
-      let newContactPerson = contactPerson.map((item, i) => {
-        if (index === i) {
-          return {...item, [name]: e.target.value};          
-        }
-        else {
-          return item;
-        }
-      })
-      setContactPerson(newContactPerson);
+    const onContactPersonChange = (e, id, index) => {
+
+      let newContactPerson = [...contactPerson]
+      newContactPerson[index][e.target.name] = e.target.value 
+      setContactPerson(newContactPerson); 
+
+      let newRows = [...rows];
+
+      for (let i=0; i< newRows.length; i++) {
+        if (newRows[index]._id === id) {
+          newRows[i].contactPerson = newContactPerson;
+          break;
+        }        
+      }
+
+      setRows(newRows);
     }
 
     const onContactNumberAdd = (id) => {
 
-      console.log("*** inside onContactNumberAdd ***")
-
-      let newContactNumber = {
-        name: "",
-        phoneNumber: ""
-      }
-
-      let newRows = rows;
-
-      console.log("1 - newRows", newRows);
-      console.log("1 - contactNumber", contactNumber);
+      let newRows = [...rows];
 
       for (let i=0; i< newRows.length; i++) {
-
         if (newRows[i]._id === id) {
-          newRows[i].contactNumber.push(newContactNumber);
+          newRows[i].contactNumber.push({name: "", phoneNumber: ""});
           setContactNumber(newRows[i].contactNumber);
           break;
         }        
       }
  
-      console.log("2 - newRows", newRows);
-      console.log("1 - contactNumber", contactNumber);
-
-      setRefreshScreenOnly(true);
       setRows(newRows);
     }
 
     const onContactNumberDelete = (id, index) => {
 
-      let newContactNumber = contactNumber;
-
+      let newContactNumber = [...contactNumber];
       newContactNumber.splice(index, 1);
       setContactNumber(newContactNumber);
 
-      let newRows = rows;
+      let newRows = [...rows];
 
       for (let i=0; i< newRows.length; i++) {
         if (newRows[i]._id === id) {
@@ -225,27 +196,16 @@ const SupplierTable = () => {
         }        
       }
  
-      setRefreshScreenOnly(true);
       setRows(newRows);
     }
 
     const onContactPersonDelete = (id, index) => {
 
-      console.log("**Inside onContactPersonDelete **");
-      console.log("refreshScreenOnly = ", refreshScreenOnly); 
-      console.log("id, index = ", id, index); 
-      console.log("Before contactPerson = ", contactPerson); 
-
-      let newContactPerson = contactPerson;
-
+      let newContactPerson = [...contactPerson];
       newContactPerson.splice(index, 1);
       setContactPerson(newContactPerson);
 
-    
-      console.log("After contactPerson = ", contactPerson); 
-
-
-      let newRows = rows;
+      let newRows = [...rows];
 
       for (let i=0; i< newRows.length; i++) {
         if (newRows[i]._id === id) {
@@ -254,29 +214,22 @@ const SupplierTable = () => {
         }        
       }
  
-      setRefreshScreenOnly(true);
       setRows(newRows);
     }
 
     const onContactPersonAdd = (id) => {
 
-      let newContactPerson = {
-        firstName: "",
-        lastName: ""
-      }
-
-      let newRows = rows;
+      let newRows = [...rows];
 
       for (let i=0; i< newRows.length; i++) {
 
         if (newRows[i]._id === id) {
-          newRows[i].contactPerson.push(newContactPerson);
+          newRows[i].contactPerson.push({firstName: "", lastName: ""});
           setContactPerson(newRows[i].contactPerson);
           break;
         }        
       }
  
-      setRefreshScreenOnly(true);
       setRows(newRows);
     }
 
@@ -330,84 +283,103 @@ const SupplierTable = () => {
                 row.postalCode
               )                         
             }</td>
-            <td>{               
-                row.contactNumber.map( (cn, index) => { 
-                  return ( <tr key={index}>                          
-                             <td>{
-                               inEditMode.status && inEditMode.rowKey === row._id ? (
-                                 <input value={contactNumber[index].name}
-                                   onChange={onContactNumberChange("name", row._id, index)}
-                                 />
-                               ) : (
-                                 cn.name
-                               )                         
-                             }</td>
-                             <td>{
-                               inEditMode.status && inEditMode.rowKey === row._id ? (
-                                 <input value={contactNumber[index].phoneNumber}
-                                   onChange={onContactNumberChange("phoneNumber", row._id, index)}
-                                 />
-                               ) : (
-                                 cn.phoneNumber
-                               )                         
-                             }</td>
-                             {                              
-                              inEditMode.status && inEditMode.rowKey === row._id ? (
-                                  <button onClick={ () => onContactNumberDelete(row._id, index) }>Delete</button>
-                                )  : null  
-                             }            
-                          </tr> )
-                })
-            }            
-            {
-                inEditMode.status && inEditMode.rowKey === row._id ? (
-                  <button onClick={ () => onContactNumberAdd(row._id) }>Add Contact Number</button>
-                )  : 
-                 null
-                
-            }            
-            </td>
-            <td>{
-                row.contactPerson.map( (cp, index) => { 
 
-                    console.log("## Inside row.contactPerson ##");
-                    console.log("refreshScreenOnly = ", refreshScreenOnly);
-                  return ( <tr key={index}>                          
-                             <td>{
-                               inEditMode.status && inEditMode.rowKey === row._id ? (
-                                 <input value={contactPerson[index].firstName}
-                                   onChange={onContactPersonChange("firstName", index)}
-                                 />                                 
-                               ) : (
-                                 cp.firstName
-                               )                         
-                             }
-                             </td>
-                             <td>{
-                               inEditMode.status && inEditMode.rowKey === row._id ? (
-                                 <input value={contactPerson[index].lastName}
-                                   onChange={onContactPersonChange("lastName", index)}
-                                 />
-                               ) : (
-                                 cp.lastName
-                               )                         
-                             }</td>
-                             {
-                              inEditMode.status && inEditMode.rowKey === row._id ? (
-                                  <button onClick={ () => onContactPersonDelete(row._id, index) }>Delete</button>
-                                )  : null
-                             }            
-                          </tr>
-                          )
-                })
-            }           
-
-            {
-                inEditMode.status && inEditMode.rowKey === row._id ? (
-                  <button onClick={ () => onContactPersonAdd(row._id) }>Add Contact Person</button>
-                )  : null
-            }
+            <td>
+              <table>
+                <tbody>               
+                  {               
+                    row.contactNumber.map( (cn, index) => { 
+                      return ( <tr key={index}>                          
+                                  <td>{
+                                        inEditMode.status && inEditMode.rowKey === row._id ? (
+                                          <input name="name" value={contactNumber[index].name}
+                                            onChange={(e) => onContactNumberChange(e, row._id, index)}
+                                          />
+                                        ) : (
+                                          cn.name
+                                        )                         
+                                  }</td>
+                                  <td>{
+                                        inEditMode.status && inEditMode.rowKey === row._id ? (
+                                          <input name="phoneNumber" value={contactNumber[index].phoneNumber}
+                                            onChange={(e) => onContactNumberChange(e, row._id, index)}
+                                          />
+                                        ) : (
+                                          cn.phoneNumber
+                                        )                         
+                                  }</td>
+                                  <td>
+                                  {                              
+                                    inEditMode.status && inEditMode.rowKey === row._id ? (
+                                        <button onClick={ () => onContactNumberDelete(row._id, index) }>Delete</button>
+                                      )  : null  
+                                  }
+                                  </td>
+                              </tr> )
+                    })
+                  }
+                  <tr>
+                    <td>
+                      {
+                        inEditMode.status && inEditMode.rowKey === row._id ? (
+                          <button onClick={ () => onContactNumberAdd(row._id) }>Add Contact Number</button>
+                        )  : null                
+                      }    
+                    </td>
+                  </tr>
+                </tbody>          
+              </table>
             </td>
+            
+            <td>
+              <table>
+                <tbody>              
+                  {
+                    row.contactPerson.map( (cp, index) => { 
+                      return ( <tr key={index}>                          
+                                <td>{
+                                      inEditMode.status && inEditMode.rowKey === row._id ? (
+                                        <input name="firstName" value={contactPerson[index].firstName}
+                                          onChange={(e) => onContactPersonChange(e, "firstName", index) }
+                                        />                                 
+                                      ) : (
+                                        cp.firstName
+                                      )                         
+                                }
+                                </td>
+                                <td>{
+                                      inEditMode.status && inEditMode.rowKey === row._id ? (
+                                        <input name="lastName" value={contactPerson[index].lastName}
+                                          onChange={ (e) => onContactPersonChange(e, "lastName", index) }
+                                        />
+                                      ) : (
+                                        cp.lastName
+                                      )                         
+                                }</td>
+                                <td>
+                                {
+                                  inEditMode.status && inEditMode.rowKey === row._id ? (
+                                      <button onClick={ () => onContactPersonDelete(row._id, index) }>Delete</button>
+                                    )  : null
+                                }
+                                </td>          
+                              </tr>
+                              )
+                    })
+                  }
+                  <tr>
+                    <td>
+                      {
+                        inEditMode.status && inEditMode.rowKey === row._id ? (
+                          <button onClick={ () => onContactPersonAdd(row._id) }>Add Contact Person</button>
+                        )  : null
+                      }
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+
             <td>{
               inEditMode.status && inEditMode.rowKey === row._id ? (
                 <input value={emailAddress}

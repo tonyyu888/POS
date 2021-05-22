@@ -5,7 +5,9 @@ import Navbar from './components/navbar/Navbar';
 import Home from './components/home/Home';
 import Products from './components/products/ProductTable';
 import CustomerTable from './components/customers/CustomerTable';
+
 import SupplierTable from './components/suppliers/SupplierTable';
+
 import ProductCategoryTable from './components/products/ProductCategoryTable';
 import Orders from './components/orders/Orders';
 import OrderDetail from './components/orders/OrderDetail';
