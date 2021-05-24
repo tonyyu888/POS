@@ -6,7 +6,7 @@ const Product = require('../models/Product');
 router.get('/', async (req, res) =>{
     //let data = await Product.find({}).populate("productCategory", {name:1});
     //let data = await Product.find({}).populate("productCategory").populate("supplier").sort({name:1});
-    let data = await Product.find({}).populate("productCategory").populate("supplier");
+    let data = await Product.find({}).populate("productCategory", {name:1}).populate("supplier", {name:1});
     console.info('Records retrieved from mongoose:', data?.length);
     res.send(data);
 })
@@ -14,7 +14,7 @@ router.get('/', async (req, res) =>{
 //Find one product by id
 router.get('/:id', async (req,res) => {
     try{
-        let data = await Product.find({}).populate("productCategory").populate("supplier");
+        let data = await Product.find({}).populate("productCategory", {name:1}).populate("supplier", {name:1});
         console.info('Found the Product:', data);
         res.send(data);
     } catch(error){
