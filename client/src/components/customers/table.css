@@ -22,7 +22,7 @@ td {
     padding: 10px 15px;
   }
 
-.customer-table h2{
+.table h2{
     margin-bottom:30px;
     text-align: center;
 }
@@ -55,7 +55,7 @@ td {
     background-color: #86C232;
 }
 
-.customerForm {
+.tableForm {
     display: flex;
     justify-content: center; 
     margin-top: 70px;   
