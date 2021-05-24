@@ -42,6 +42,10 @@ const ProductTable = () => {
 
     //update a Product
     let updateProduct = (id, newDescription, newUnitPrice, newSupplier, newActive) =>{
+
+
+        console.log("newSupplier =", newSupplier );
+
         let currentDate = new Date();
         let productToUpdate = {
             description: newDescription,
@@ -58,7 +62,7 @@ const ProductTable = () => {
             body: JSON.stringify(productToUpdate)
         }).then(response => response.json())
         .then(json => {
-            oncancel(); //reset inEditMode  values
+            onCancel(); //reset inEditMode  values
             getProducts(); //fetch the updated data
             console.log("updateResponse:", updateResponse)
         })
@@ -114,9 +118,19 @@ const ProductTable = () => {
     }, [])
 
     const onSupplierChange = (e, id , index)=> {
+
+        console.log("!!! supplier =", supplier)
+        console.log("!!! rows =", rows)
+        console.log("!!! e =", e._id)
+
         let newSupplier = [...supplier]
-        console.log()
-        newSupplier[index][e.target.name]= e.target.value
+
+//        let newSupplierName = supplierList.find(e => e._id = id).name;
+//        newSupplier[index][e.target.name]= e.target.value
+//        newSupplier[index].name = newSupplierName;
+          newSupplier[index] = e.target.value
+
+
         setSupplier(newSupplier)
 
         let newRows = [...rows]
@@ -191,7 +205,7 @@ const ProductTable = () => {
                                     return(<tr key={index}>
                                         <td>{
                                             inEditMode.status && inEditMode.rowKey === row._id ? (
-                                                <select value={s[index].name} onChange={(e) => onSupplierChange(e, row._id, index)}>
+                                                <select name="_id" value={supplier[index]._id} onChange={(e) => onSupplierChange(e, row._id, index)}>
                                                 <option>--Select--</option>
                                                 {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
                                                 )}
@@ -199,25 +213,24 @@ const ProductTable = () => {
                                             ):(
                                                 s.name
                                             )
-                                            }
-                                        </td>
-                                        <td>{
+                                        }</td>
+                                        {
                                             inEditMode.status && inEditMode.rowKey === row._id ? (
-                                            <button onClick={() => onSupplierDelete(row._id, index) }>Delete</button>  
+                                            <td>    
+                                                <button onClick={() => onSupplierDelete(row._id, index) }>Delete</button>  
+                                            </td>
                                             ) : null
-                                            }
-                                        </td>
-                                    </tr>)
+                                        }                                        
+                                        </tr>)
                                 })
                             }
-                            <tr>
+                            <tr>{
+                                inEditMode.status && inEditMode.rowKey === row._id ? (
                                 <td>
-                                {
-                                    inEditMode.status && inEditMode.rowKey === row._id ? (
                                     <button onClick={() => onSupplierAdd(row._id) }>Add</button>
-                                    )  : null                
-                                }    
                                 </td>
+                                )  : null                
+                            }    
                             </tr>
                         </tbody>
                     </table>
@@ -244,11 +257,11 @@ const ProductTable = () => {
                     {
                        inEditMode.status && inEditMode.rowKey === row._id ? (
                         <React.Fragment>
-                            <button onClick = {() => onSave(row._id, description,unitPrice, active)}>Save</button>
+                            <button onClick = {() => onSave(row._id, description, unitPrice, supplier, active)}>Save</button>
                             <button onClick = {() => onCancel()}>Cancel</button>
                         </React.Fragment>
                        ) : (
-                           <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice, row.active)}><BsIcons.BsPencilSquare /></button>
+                           <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice, row.supplier, row.active)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
                     {/* <span className='slash'>/</span> */}
