@@ -157,7 +157,7 @@ const SupplierTable = () => {
       let newRows = [...rows];
 
       for (let i=0; i< newRows.length; i++) {
-        if (newRows[index]._id === id) {
+        if (newRows[i]._id === id) {
           newRows[i].contactPerson = newContactPerson;
           break;
         }        
@@ -311,7 +311,7 @@ const SupplierTable = () => {
                                   {                              
                                     inEditMode.status && inEditMode.rowKey === row._id ? (
                                         <td>
-                                        <button onClick={ () => onContactNumberDelete(row._id, index) }>Delete</button>
+                                          <button onClick={ () => onContactNumberDelete(row._id, index) }>Delete</button>
                                         </td>
                                       )  : null  
                                   }
@@ -322,7 +322,7 @@ const SupplierTable = () => {
                       {
                         inEditMode.status && inEditMode.rowKey === row._id ? (
                           <td>
-                          <button onClick={ () => onContactNumberAdd(row._id) }>Add Contact Number</button>
+                            <button onClick={ () => onContactNumberAdd(row._id) }>Add Contact Number</button>
                           </td>
                         )  : null                
                       }    
