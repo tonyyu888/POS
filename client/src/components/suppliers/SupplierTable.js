@@ -94,13 +94,13 @@ const SupplierTable = () => {
       getSuppliers();
     }
 
-    //callback
     function handleSupplierFormClick(supplierFormData) {
         if (supplierFormData === "Success")  {
           getSuppliers();     
         }
     }
 
+    //callback
     async function handleDeleteClick(itemID) {
       let deleteResponse = await fetch(`/supplier/${itemID}`, {
         method: "DELETE",
