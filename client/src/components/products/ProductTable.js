@@ -10,13 +10,15 @@ import './ProductTable.css';
 const ProductTable = () => {
     const [rows, setRows]= useState([]);
     const [inEditMode, setInEditMode] = useState({status:false, rowKey:null})
-    const [description, setDescription] = useState("")
-    const [unitPrice, setUnitPrice] = useState(null)
-    const [active, setActive]= useState('true');
-    //const [suppliier, setSupplier] = useState()
     const [pageNumber, setPageNumber]= useState(0)
     const [addBtnPopupForm, setAddBtnPopupForm] = useState(false)
-
+    
+    const [description, setDescription] = useState("")
+    const [unitPrice, setUnitPrice] = useState(null)
+    const [supplier, setSupplier] = useState([])
+    const [supplierList, setSupplierList]= useState([])
+    const [active, setActive]= useState('true');
+    
     const rowsPerPage = 10;
     const rowsVisited = pageNumber * rowsPerPage;
     const pageCount = Math.ceil(rows.length / rowsPerPage);
@@ -39,12 +41,12 @@ const ProductTable = () => {
     }, [addBtnPopupForm])
 
     //update a Product
-    let updateProduct = (id, newDescription, newUnitPrice, newActive) =>{
+    let updateProduct = (id, newDescription, newUnitPrice, newSupplier, newActive) =>{
         let currentDate = new Date();
         let productToUpdate = {
             description: newDescription,
             unitPrice: newUnitPrice,
-            // supplier: newSupplier,
+            supplier: newSupplier,
             active: newActive,
             lastUpdateDate: currentDate
         }
@@ -62,23 +64,23 @@ const ProductTable = () => {
         })
     }
 
-    const onEdit = (id, currentDescription, currentUnitPrice, currentActive) =>{
+    const onEdit = (id, currentDescription, currentUnitPrice, currentSupplier, currentActive) =>{
         setInEditMode({status: true, rowKey: id})
+        
         setDescription(currentDescription)
-        // add a click event for product catagory to take it to it's main page
         setUnitPrice(currentUnitPrice)
-        //setSupplier(currentSupplier)
+        setSupplier(currentSupplier)
         setActive(currentActive);
-
     }
 
-    const onSave = (id, newDescription, newUnitPrice, newActive) => {
-        updateProduct(id, newDescription, newUnitPrice, newActive)
-        //updateProduct(id, newDescription, newUnitPrice, newSupplier, newActive)
+    const onSave = (id, newDescription, newUnitPrice, newSupplier, newActive) => {
+        updateProduct(id, newDescription, newUnitPrice, newSupplier, newActive)
     }
-
+    
     const onCancel =() =>{
         setInEditMode({status:false, rowKey:null});
+
+        getProducts()
     }
 
     //delete a row
@@ -86,14 +88,80 @@ const ProductTable = () => {
         let deleteResponse = await fetch(`/product/${itemId}`, {
             method:"DELETE",
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json'}
         })
         if(deleteResponse.status === 200){
             getProducts()
         }
         console.log('deleteResponse:',deleteResponse );
     }
+
+    const handleProductFormClick = (productFormData) => {
+        if(productFormData === 'success'){
+            getProducts()
+        }
+    }
+
+     //fetch supplierlist 
+     const getSupplierList = async () =>{
+        let response= await fetch('/supplier');
+        let data = await response.json();        
+        setSupplierList(data)  
+    }
+
+    useEffect(()=>{
+        getSupplierList()
+    }, [])
+
+    const onSupplierChange = (e, id , index)=> {
+        let newSupplier = [...supplier]
+        console.log()
+        newSupplier[index][e.target.name]= e.target.value
+        setSupplier(newSupplier)
+
+        let newRows = [...rows]
+
+        for(let i=0; i<newRows.length; i++){
+            if(newRows[i]._id ===id){
+                newRows[i].supplier= newSupplier
+                break
+            }
+        }
+        setRows(newRows)
+    }
+
+    const onSupplierAdd = (id)=>{
+        let newRows = [...rows]
+
+        for(let i=0; i<newRows.length; i++){
+            if(newRows[i]._id ===id){
+                newRows[i].supplier.push({name:""})
+                setSupplier(newRows[i].supplier)
+                break
+            }
+        }
+        setRows(newRows)
+    }
+
+    const onSupplierDelete = (id, index) => {
+
+        let newSupplier = [...supplier];
+        newSupplier.splice(index, 1);
+        setSupplier(newSupplier);
+  
+        let newRows = [...rows];
+  
+        for (let i=0; i< newRows.length; i++) {
+          if (newRows[i]._id === id) {
+            newRows[i].supplier = newSupplier;
+            break;
+          }        
+        }
+   
+        setRows(newRows);
+      }
+  
+ 
 
     const displayRows = rows.slice(rowsVisited, rowsVisited+rowsPerPage).map(row => {
         return(
@@ -117,7 +185,48 @@ const ProductTable = () => {
                     )}
                 </td>
                 <td>
-                    <p>{row.supplier.name}</p>
+                    <table>
+                        <tbody>
+                            {row.supplier.map((s, index)=>{
+                                    return(<tr key={index}>
+                                        <td>{
+                                            inEditMode.status && inEditMode.rowKey === row._id ? (
+                                                <select value={s[index].name} onChange={(e) => onSupplierChange(e, row._id, index)}>
+                                                <option>--Select--</option>
+                                                {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
+                                                )}
+                                                </select>
+                                            ):(
+                                                s.name
+                                            )
+                                            }
+                                        </td>
+                                        <td>{
+                                            inEditMode.status && inEditMode.rowKey === row._id ? (
+                                            <button onClick={() => onSupplierDelete(row._id, index) }>Delete</button>  
+                                            ) : null
+                                            }
+                                        </td>
+                                    </tr>)
+                                })
+                            }
+                            <tr>
+                                <td>
+                                {
+                                    inEditMode.status && inEditMode.rowKey === row._id ? (
+                                    <button onClick={() => onSupplierAdd(row._id) }>Add</button>
+                                    )  : null                
+                                }    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {/* {
+                        row.supplier.map(s => { 
+                            return (<p>{s.name}</p>)
+                        })
+                    } */}
+                    
                 </td>
                 <td>{
                     inEditMode.status && inEditMode.rowKey === row._id ? (
@@ -139,28 +248,22 @@ const ProductTable = () => {
                             <button onClick = {() => onCancel()}>Cancel</button>
                         </React.Fragment>
                        ) : (
-                           <span><button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice, row.active)}><BsIcons.BsPencilSquare /></button></span>
+                           <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice, row.active)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
-                    <span className='slash'>/</span>
+                    {/* <span className='slash'>/</span> */}
                     <button onClick={() => {handleDeleteClick(row._id)}}><RiIcons.RiDeleteBinFill/></button>
                 </td> 
             </tr>
         )
     })
 
-    const handleProductFormClick = (productForm) => {
-        if(productForm === 'success'){
-            getProducts()
-        }
-    }
-
 
     return (
         <div>
             <div className="product-table">
                 <h2>Products</h2>
-                <button className="product-form" onClick={()=>setAddBtnPopupForm(true)}>New Product</button>
+                <button onClick={()=>setAddBtnPopupForm(true)}>New Product</button>
                 <ProductForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onProductFormClick = {handleProductFormClick} />
                 <table>
                     <tbody>
@@ -180,9 +283,6 @@ const ProductTable = () => {
                     activeClassName = {"paginationActive"}
                 />   
             </div>
-            {/* <div className="productForm">
-                <ProductForm onProductFormClick = {handleProductFormClick} />
-            </div> */}
         </div>
         
     );

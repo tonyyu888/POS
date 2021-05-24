@@ -1,6 +1,6 @@
 import { useState , useEffect} from "react"
 import './ProductForm.css';
-
+//import Select from 'react-select';
 
 const ProductForm = (props) => {
     let [name, setName] = useState()
@@ -8,7 +8,7 @@ const ProductForm = (props) => {
     let [productCategory, setProductCategory] = useState("")
     let [productCategoryList, setProductCategoryList]= useState([])
     let [unitPrice, setUnitPrice] = useState()
-    let [supplier, setSupplier] = useState()
+    let [supplier, setSupplier] = useState([])
     let [supplierList, setSupplierList]= useState([])
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
@@ -48,7 +48,7 @@ const ProductForm = (props) => {
             dateAdded : currentDate,
             lastUpdateDate : currentDate
         }
-        //console.log('Creating a Product:', productToCreate )
+        console.log('Creating a Product:', productToCreate )
         try {
             
             let createResponse = await fetch('/product', {
@@ -59,7 +59,8 @@ const ProductForm = (props) => {
                 body: JSON.stringify(productToCreate)
                 
             })
-            
+            console.log('Creating a Product:', productToCreate )
+
             if (createResponse.status === 200) {
                 props.onProductFormClick("Success");
 
@@ -68,9 +69,9 @@ const ProductForm = (props) => {
                 setDescription("");
                 setProductCategory("")
                 setUnitPrice(null)
-                setSupplier("")
+                setSupplier([])
                 setActive("true");
-                console.log('Creating a Product:', productToCreate )
+                
             }
 
             // the server didn't like the data for some reason
@@ -96,7 +97,33 @@ const ProductForm = (props) => {
         setFunction(event.target.value);   
     };
 
+    const onSupplierChange = (e, i)=>{
+        let newSupplier = [...supplier]
+        console.log("e.target:", e.target)
+        newSupplier[i][e.target.name]= e.target.value
+        console.log("e.target.value:", e.target.value)
+        console.log("newSupplier:", newSupplier)
+        
+        setSupplier(newSupplier)
+    }
 
+    const onSupplierAdd = () =>{
+        let newSupplier = [...supplier]
+        newSupplier.push({name:""})
+        setSupplier(newSupplier)
+    }
+
+    const onSupplierDelete = (index) => {
+        let newSupplier = [...supplier]
+        newSupplier.splice(index, 1)
+        setSupplier(newSupplier)
+    }
+
+    // const onMultipleInputChange = (event, setFunction) =>{
+    //     for(let i=0; i<event.length; i++){
+    //         setFunction(event[i][1])
+    //     }
+    // }
     const onClickAdd = ()=>{
         onCreateClicked();
         props.setTrigger(false);   
@@ -121,7 +148,7 @@ const ProductForm = (props) => {
             <div>
             <label htmlFor="productcategory">Product Category:</label> 
                 <select value={productCategory} onChange={(event) => onInputChange(event, setProductCategory)}>
-                    <option>--Select--</option>
+                <option>--Select--</option>
                   {productCategoryList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
                 )} 
                 </select>
@@ -132,12 +159,48 @@ const ProductForm = (props) => {
             </div>
             <div>
             <label htmlFor="supplier">Supplier:</label> 
-               <select value={supplier} onChange={(event) => onInputChange(event, setSupplier)}>
+            <table>
+                <tbody>
+                    {
+                        supplier.map((s, index) =>{
+                            return (<tr key={index}>
+                                <td>{
+                                        <select  name="name" value={s.name} onChange={(event) => onSupplierChange(event, index)}>
+                                        <option>--Select--</option>
+                                        {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
+                                        )}
+                                        </select>
+                                    }
+                                </td>
+                                {
+                                    <td>
+                                        <button onClick ={()=> onSupplierDelete(index)} >Delete</button>
+                                    </td>
+                                }
+                            </tr>)
+                        })
+                    }
+                     <tr>
+                         <td>
+                             <button onClick= {onSupplierAdd}>Add</button>
+                         </td>
+                    </tr>   
+                    
+                </tbody>
+            </table>
+            {/* <Select 
+            value={supplier.name}
+            onChange={(e)=> onMultipleInputChange(e, setSupplier)}
+            isMulti
+            options={supplierList.map(item=>{return {value: item._id, label:item.name}})}
+            className='basic-multi-select'
+            /> */}
+               {/* <select value={supplier} onChange={(event) => onInputChange(event, setSupplier)}>
                  <option>--Select--</option>
                 {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
                 )}
                 </select>
-                 
+                <button className="addSupplier">Add</button> */}
             </div>
             <div>
                 <label htmlFor="active">Active:</label>                
