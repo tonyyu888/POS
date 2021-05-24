@@ -24,3 +24,30 @@
     top: 16px;
     right:16px;
 }
+
+.createform label{
+    text-align:left;
+    display:block;
+}
+
+.createform h4{
+    margin-bottom: 20px;
+}
+
+.createform input, select{
+    width:100%;
+    padding: 6px 10px;
+    margin:10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display:block;
+}
+
+.createform button{
+    background-color: #86C232;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
