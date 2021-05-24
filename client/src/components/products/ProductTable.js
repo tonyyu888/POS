@@ -58,7 +58,7 @@ const ProductTable = () => {
             body: JSON.stringify(productToUpdate)
         }).then(response => response.json())
         .then(json => {
-            oncancel(); //reset inEditMode  values
+            onCancel(); //reset inEditMode  values
             getProducts(); //fetch the updated data
             console.log("updateResponse:", updateResponse)
         })
@@ -115,8 +115,9 @@ const ProductTable = () => {
 
     const onSupplierChange = (e, id , index)=> {
         let newSupplier = [...supplier]
-        console.log()
-        newSupplier[index][e.target.name]= e.target.value
+        // console.log("e.target:", e.target)
+        // console.log("e.target.name:", e.target.name)
+        newSupplier[index]= e.target.value
         setSupplier(newSupplier)
 
         let newRows = [...rows]
@@ -185,14 +186,14 @@ const ProductTable = () => {
                     )}
                 </td>
                 <td>
-                    <table>
+                    <table className="inner-table">
                         <tbody>
                             {row.supplier.map((s, index)=>{
                                     return(<tr key={index}>
                                         <td>{
                                             inEditMode.status && inEditMode.rowKey === row._id ? (
-                                                <select value={s[index].name} onChange={(e) => onSupplierChange(e, row._id, index)}>
-                                                <option>--Select--</option>
+                                                <select name="_id" value={supplier[index]._id} onChange={(e) => onSupplierChange(e, row._id, index)}>
+                                                <option >--Select--</option>
                                                 {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
                                                 )}
                                                 </select>
@@ -220,13 +221,7 @@ const ProductTable = () => {
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
-                    {/* {
-                        row.supplier.map(s => { 
-                            return (<p>{s.name}</p>)
-                        })
-                    } */}
-                    
+                    </table>   
                 </td>
                 <td>{
                     inEditMode.status && inEditMode.rowKey === row._id ? (
@@ -244,11 +239,11 @@ const ProductTable = () => {
                     {
                        inEditMode.status && inEditMode.rowKey === row._id ? (
                         <React.Fragment>
-                            <button onClick = {() => onSave(row._id, description,unitPrice, active)}>Save</button>
+                            <button onClick = {() => onSave(row._id, description,unitPrice,supplier, active)}>Save</button>
                             <button onClick = {() => onCancel()}>Cancel</button>
                         </React.Fragment>
                        ) : (
-                           <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice, row.active)}><BsIcons.BsPencilSquare /></button>
+                           <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice,row.supplier, row.active)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
                     {/* <span className='slash'>/</span> */}
