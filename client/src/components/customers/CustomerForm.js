@@ -1,5 +1,5 @@
 import { useState } from "react"
-import './CustomerForm.css';
+import './form.css';
 
 const CustomerForm = ({onCustomerFormClick}) => {
     let [name, setName] = useState("")
@@ -15,9 +15,6 @@ const CustomerForm = ({onCustomerFormClick}) => {
     let [createError, setCreateError] = useState("")
 
     async function onCreateClicked(e) {
-
-        //e.preventDefault();
-
         let currentDate = new Date()
 
         let customerToCreate = {
@@ -82,6 +79,42 @@ const CustomerForm = ({onCustomerFormClick}) => {
         setFunction(event.target.value);
     };
 
+    const onContactNumberChange = (e, i) => {
+        let newContactNumber = [...contactNumber]
+        newContactNumber[i][e.target.name] = e.target.value 
+        setContactNumber(newContactNumber); 
+      }  
+  
+    const onContactNumberAdd = () =>  {      
+        let newContactNumber = [...contactNumber]
+        newContactNumber.push({name: "",  phoneNumber: ""})
+        setContactNumber(newContactNumber);
+    }
+
+    const onContactNumberDelete = (index) => {
+        let newContactNumber = [...contactNumber];
+        newContactNumber.splice(index, 1);
+        setContactNumber(newContactNumber);
+    }
+
+    const onContactPersonChange = (e, i) => {
+        let newContactPerson = [...contactPerson]
+        newContactPerson[i][e.target.name] = e.target.value 
+        setContactPerson(newContactPerson); 
+      }  
+    
+    const onContactPersonAdd = () =>  {      
+        let newContactPerson = [...contactPerson]
+        newContactPerson.push({firstName: "", lastName: ""})
+        setContactPerson(newContactPerson);
+    }
+
+    const onContactPersonDelete = (index) => {
+        let newContactPerson = [...contactPerson];
+        newContactPerson.splice(index, 1);
+        setContactPerson(newContactPerson);
+    }
+
     let createProductCategoryDataInvalid = !name || (name.trim().length === 0)
 
     return (
@@ -111,6 +144,87 @@ const CustomerForm = ({onCustomerFormClick}) => {
                 <label htmlFor="postalCode">Postal Code:</label>
                 <input id="postalCode" value={postalCode} onChange={(event) => onInputChange(event,setPostalCode)}/>
             </div>
+
+            <label htmlFor="contactNumber">Contact Number:</label>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <table>                      
+                                <tbody>
+                                    {
+                                        contactNumber.map( (cn, index) => { 
+                                            return ( <tr key={index}>                          
+                                                        <td>{
+                                                            <input name="name" value={cn.name}
+                                                            onChange={ (e) => onContactNumberChange(e, index) }
+                                                            />
+                                                        }</td>
+                                                        <td>{
+                                                            <input name="phoneNumber" value={cn.phoneNumber}
+                                                            onChange={ (e) => onContactNumberChange(e, index) }
+                                                            />
+                                                        }</td>
+                                                        {   
+                                                        <td>                            
+                                                            <button onClick={ () => onContactNumberDelete(index) }>Delete</button>
+                                                        </td>
+                                                        }            
+                                                    </tr> )
+                                        })
+                                    }
+                                    <tr>                                
+                                        <td>
+                                        <button onClick={ onContactNumberAdd }>Add Contact Number</button>
+                                        </td>
+                                    </tr>
+                                </tbody>    
+                            </table>            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <label htmlFor="contactPerson">Contact Person:</label>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <table>                      
+                                <tbody>
+                                    {
+                                        contactPerson.map( (cn, index) => { 
+                                            return ( <tr key={index}>                          
+                                                        <td>{
+                                                            <input name="firstName" value={cn.firstName}
+                                                            onChange={ (e) => onContactPersonChange(e, index) }
+                                                            />
+                                                        }</td>
+                                                        <td>{
+                                                            <input name="lastName" value={cn.lastName}
+                                                            onChange={ (e) => onContactPersonChange(e, index) }
+                                                            />
+                                                        }</td>
+                                                        {   
+                                                        <td>                            
+                                                            <button onClick={ () => onContactPersonDelete(index) }>Delete</button>
+                                                        </td>
+                                                        }            
+                                                    </tr> )
+                                        })
+                                    }
+                                    <tr>                                
+                                        <td>
+                                        <button onClick={ onContactPersonAdd }>Add Contact Person</button>
+                                        </td>
+                                    </tr>
+                                </tbody>    
+                            </table>            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div>
                 <label htmlFor="emailAddress">Email Address:</label>
                 <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
