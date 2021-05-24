@@ -42,6 +42,10 @@ const ProductTable = () => {
 
     //update a Product
     let updateProduct = (id, newDescription, newUnitPrice, newSupplier, newActive) =>{
+
+
+        console.log("newSupplier =", newSupplier );
+
         let currentDate = new Date();
         let productToUpdate = {
             description: newDescription,
@@ -114,10 +118,9 @@ const ProductTable = () => {
     }, [])
 
     const onSupplierChange = (e, id , index)=> {
+
         let newSupplier = [...supplier]
-        // console.log("e.target:", e.target)
-        // console.log("e.target.name:", e.target.name)
-        newSupplier[index]= e.target.value
+        newSupplier[index] = e.target.value
         setSupplier(newSupplier)
 
         let newRows = [...rows]
@@ -200,25 +203,24 @@ const ProductTable = () => {
                                             ):(
                                                 s.name
                                             )
-                                            }
-                                        </td>
-                                        <td>{
+                                        }</td>
+                                        {
                                             inEditMode.status && inEditMode.rowKey === row._id ? (
-                                            <button onClick={() => onSupplierDelete(row._id, index) }>Delete</button>  
+                                            <td>    
+                                                <button onClick={() => onSupplierDelete(row._id, index) }>Delete</button>  
+                                            </td>
                                             ) : null
-                                            }
-                                        </td>
-                                    </tr>)
+                                        }                                        
+                                        </tr>)
                                 })
                             }
-                            <tr>
+                            <tr>{
+                                inEditMode.status && inEditMode.rowKey === row._id ? (
                                 <td>
-                                {
-                                    inEditMode.status && inEditMode.rowKey === row._id ? (
                                     <button onClick={() => onSupplierAdd(row._id) }>Add</button>
-                                    )  : null                
-                                }    
                                 </td>
+                                )  : null                
+                            }    
                             </tr>
                         </tbody>
                     </table>   
@@ -239,11 +241,11 @@ const ProductTable = () => {
                     {
                        inEditMode.status && inEditMode.rowKey === row._id ? (
                         <React.Fragment>
-                            <button onClick = {() => onSave(row._id, description,unitPrice,supplier, active)}>Save</button>
+                            <button onClick = {() => onSave(row._id, description, unitPrice, supplier, active)}>Save</button>
                             <button onClick = {() => onCancel()}>Cancel</button>
                         </React.Fragment>
                        ) : (
-                           <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice,row.supplier, row.active)}><BsIcons.BsPencilSquare /></button>
+                           <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice, row.supplier, row.active)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
                     {/* <span className='slash'>/</span> */}
