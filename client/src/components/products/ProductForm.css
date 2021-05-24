@@ -23,6 +23,9 @@
     position: absolute;
     top: 16px;
     right:16px;
+    font-weight: bold;
+    background-color: white;
+    font-size: larger;
 }
 
 .createform label{
@@ -50,4 +53,10 @@
     border-radius: 8px;
     cursor: pointer;
 
+}
+
+.createform .clear{
+    font-weight: bold;
+    background-color: white;
+    font-size: larger;
 }

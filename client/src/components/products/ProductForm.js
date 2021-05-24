@@ -1,5 +1,8 @@
 import { useState , useEffect} from "react"
 import './ProductForm.css';
+import * as  AiIcons from 'react-icons/ai';
+import * as  SiIcons from 'react-icons/si';
+import * as  RiIcons from 'react-icons/ri';
 //import Select from 'react-select';
 
 const ProductForm = (props) => {
@@ -135,7 +138,7 @@ const ProductForm = (props) => {
         <div className="createform">
             <div className="popup-in">
                 <h4>Add a New Product</h4>
-                <button className="closebtn" onClick={()=>props.setTrigger(false)}> close </button>
+                <button className="closebtn" onClick={()=>props.setTrigger(false)}><AiIcons.AiOutlineClose/></button>
                 {props.children}
                 <div>
                 <label htmlFor="name">Name:</label>
@@ -165,7 +168,7 @@ const ProductForm = (props) => {
                         supplier.map((s, index) =>{
                             return (<tr key={index}>
                                 <td>{
-                                        <select  name="name" value={s.name} onChange={(event) => onSupplierChange(event, index)}>
+                                        <select  name="_id" value={s._id} onChange={(event) => onSupplierChange(event, index)}>
                                         <option>--Select--</option>
                                         {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
                                         )}
@@ -174,7 +177,8 @@ const ProductForm = (props) => {
                                 </td>
                                 {
                                     <td>
-                                        <button onClick ={()=> onSupplierDelete(index)} >Delete</button>
+                                        <button className="clear"
+                                        onClick ={()=> onSupplierDelete(index)} ><RiIcons.RiDeleteBinFill/></button>
                                     </td>
                                 }
                             </tr>)
@@ -182,7 +186,7 @@ const ProductForm = (props) => {
                     }
                      <tr>
                          <td>
-                             <button onClick= {onSupplierAdd}>Add</button>
+                             <button onClick= {onSupplierAdd}><SiIcons.SiAddthis/></button>
                          </td>
                     </tr>   
                     
