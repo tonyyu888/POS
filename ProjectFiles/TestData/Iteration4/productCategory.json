@@ -1,0 +1,307 @@
+[{
+  "_id": {
+    "$oid": "609b0fd23fedfb45458a6380"
+  },
+  "name": "Medical Liquid",
+  "description": "Medical liquid products",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "609b10193fedfb45458a639d"
+  },
+  "name": "Beauty",
+  "description": "Beauty related products",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "60a00323ea6d6f08ec0771b5"
+  },
+  "name": "test11",
+  "description": "test11",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-15T17:21:39.686Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-15T17:21:39.686Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a003cdea6d6f08ec0771b6"
+  },
+  "name": "test1",
+  "description": "test1",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-15T17:24:28.772Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-15T17:24:28.772Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a00449ea6d6f08ec0771b7"
+  },
+  "name": "test2",
+  "description": "test2",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-15T17:26:32.812Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-15T17:26:32.812Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a004e5ea6d6f08ec0771b8"
+  },
+  "name": "test4",
+  "description": "test4",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-15T17:29:09.645Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-15T17:29:09.645Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a0472c80469d5ee4384aa8"
+  },
+  "name": "test5",
+  "description": "test5 ",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-15T22:11:56.835Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:19:50.011Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a0784122c21f287c2b961f"
+  },
+  "name": "test6",
+  "description": "test6",
+  "dateAdded": {
+    "$date": "2021-05-16T01:41:21.467Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:19:45.864Z"
+  },
+  "__v": 0,
+  "active": true
+},{
+  "_id": {
+    "$oid": "60a07dd422c21f287c2b9620"
+  },
+  "name": "test7",
+  "description": "test7",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T02:05:08.855Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T02:06:55.884Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a07eb422c21f287c2b9622"
+  },
+  "name": "test8",
+  "description": "test8",
+  "dateAdded": {
+    "$date": "2021-05-16T02:08:52.713Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T02:11:09.265Z"
+  },
+  "__v": 0,
+  "active": true
+},{
+  "_id": {
+    "$oid": "60a07f4822c21f287c2b9623"
+  },
+  "name": "test9",
+  "description": "test9",
+  "dateAdded": {
+    "$date": "2021-05-16T02:11:20.492Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:19:33.453Z"
+  },
+  "__v": 0,
+  "active": true
+},{
+  "_id": {
+    "$oid": "60a08cb822c21f287c2b9624"
+  },
+  "name": "test10",
+  "description": "test10",
+  "active": false,
+  "dateAdded": {
+    "$date": "2021-05-16T03:08:40.273Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:19:59.772Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08d0522c21f287c2b9626"
+  },
+  "name": "test12",
+  "description": "test12",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:09:57.485Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:09:57.485Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08db922c21f287c2b9628"
+  },
+  "name": "test14",
+  "description": "test14",
+  "dateAdded": {
+    "$date": "2021-05-16T03:12:57.581Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:19:38.413Z"
+  },
+  "__v": 0,
+  "active": true
+},{
+  "_id": {
+    "$oid": "60a08de622c21f287c2b962b"
+  },
+  "name": "test15",
+  "description": "test15",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:13:41.719Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:13:41.719Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08e0722c21f287c2b962c"
+  },
+  "name": "test16",
+  "description": "test16",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:14:15.540Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:14:15.540Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08e4c22c21f287c2b962f"
+  },
+  "name": "test17",
+  "description": "test17",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:15:24.686Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:15:24.686Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08e9f22c21f287c2b9631"
+  },
+  "name": "test18",
+  "description": "test18",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:16:46.892Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:16:46.892Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08ea622c21f287c2b9632"
+  },
+  "name": "test19",
+  "description": "test19",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:16:54.750Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:16:54.750Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08eb022c21f287c2b9633"
+  },
+  "name": "test20",
+  "description": "test20",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:17:04.058Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:18:58.609Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08eb822c21f287c2b9634"
+  },
+  "name": "test21",
+  "description": "test21",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:17:12.034Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-16T03:17:12.034Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a08f0722c21f287c2b9635"
+  },
+  "name": "test22",
+  "description": "test22",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-16T03:18:31.531Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-17T21:21:29.067Z"
+  },
+  "__v": 0
+}]

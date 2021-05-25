@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "6099cef33fedfb45458a07f8"
+  },
+  "ordedId": {
+    "$oid": "6099c1593fedfb45458a037a"
+  },
+  "product": {
+    "_id": {
+      "$oid": "6099d1e13fedfb45458a09ad"
+    }
+  },
+  "quantity": 10,
+  "priceOverride": 0,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]
