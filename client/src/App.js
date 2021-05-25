@@ -11,6 +11,8 @@ import SupplierTable from './components/suppliers/SupplierTable';
 import ProductCategoryTable from './components/products/ProductCategoryTable';
 import Orders from './components/orders/Orders';
 import OrderDetail from './components/orders/OrderDetail';
+import UserTable from './components/users/UserTable';
+
 
 const App = () => {
   
@@ -44,6 +46,9 @@ const App = () => {
           </Route>
           <Route path='/order-detail'>
             <OrderDetail/>
+          </Route>
+          <Route path='/users'>
+            <UserTable/>
           </Route>
         </Switch>
       </Router>

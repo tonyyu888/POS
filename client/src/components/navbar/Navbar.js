@@ -50,7 +50,13 @@ const Navbar = () => {
             path:'/order-detail',
             icon: <RiIcons.RiFileList3Line />,
             class_name:'nav-text'
-        }  
+        }, 
+        {
+            title:'Users',
+            path:'/users',
+            icon: <RiIcons.RiFileList3Fill />,
+            class_name:'nav-text'
+        }
     ]
 
     const [sidebar, setSidebar] = useState(false)
