@@ -1,7 +1,10 @@
 import { useState } from "react"
-import './SupplierForm.css';
+import './form.css';
+import * as  AiIcons from 'react-icons/ai';
+import * as  SiIcons from 'react-icons/si';
+import * as  RiIcons from 'react-icons/ri';
 
-const SupplierForm = ({onSupplierFromClick}) => {
+const SupplierForm = ({onSupplierFromClick, trigger, setTrigger}) => {
     let [name, setName] = useState();
     let [address1, setAddress1] = useState("");
     let [address2, setAddress2] = useState("");   
@@ -116,64 +119,68 @@ const SupplierForm = ({onSupplierFromClick}) => {
         setContactPerson(newContactPerson);
     }
 
+    const onClickAdd = ()=>{
+        onCreateClicked();
+        setTrigger(false);   
+    }
 
     let createSupplierDataInvalid = !name || (name.trim().length === 0)
 
-    return (
+    return (trigger)?(
+        <div className='createform'>
+            <div className="popup-in">
+                {console.log("Contact number state", contactNumber)}
 
-        <div className='create-form'>
-            
-            {console.log("Contact number state", contactNumber)}
+                <h4>Add a New Supplier</h4>
+                <button className="closebtn" onClick={()=>setTrigger(false)}><AiIcons.AiOutlineClose/></button>
 
-            <h4>Add a New Supplier</h4>
-            <div>
-                <label htmlFor="name">Name:</label>
-                <input id="name" value={name} onChange={(event) => onInputChange(event,setName)}/>
-            </div>
-            <div>
-                <label htmlFor="address1">Address 1:</label>
-                <input id="address1" value={address1} onChange={(event) => onInputChange(event,setAddress1)}/>
-            </div>
-            <div>
-                <label htmlFor="address2">Address 2:</label>
-                <input id="address2" value={address2} onChange={(event) => onInputChange(event,setAddress2)}/>
-            </div>
-            <div>
-                <label htmlFor="city">City:</label>
-                <input id="city" value={city} onChange={(event) => onInputChange(event,setCity)}/>
-            </div>
-            <div>
-                <label htmlFor="province">Province:</label>
-                <input id="province" value={province} onChange={(event) => onInputChange(event,setProvince)}/>
-            </div>
-            <div>
-                <label htmlFor="postalCode">Postal Code:</label>
-                <input id="postalCode" value={postalCode} onChange={(event) => onInputChange(event,setPostalCode)}/>
-            </div>
-
-            <label htmlFor="contactNumber">Contact Number:</label>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
+                <div>
+                    <label htmlFor="name">Name:</label>
+                    <input id="name" value={name} onChange={(event) => onInputChange(event,setName)}/>
+                </div>
+                <div>
+                    <label htmlFor="address1">Address 1:</label>
+                    <input id="address1" value={address1} onChange={(event) => onInputChange(event,setAddress1)}/>
+                </div>
+                <div>
+                    <label htmlFor="address2">Address 2:</label>
+                    <input id="address2" value={address2} onChange={(event) => onInputChange(event,setAddress2)}/>
+                </div>
+                <div className="row">
+                    <div className="col3">
+                        <label htmlFor="city">City:</label>
+                        <input id="city" value={city} onChange={(event) => onInputChange(event,setCity)}/>
+                    </div>
+                    <div className="col3">
+                        <label htmlFor="province">Province:</label>
+                        <input id="province" value={province} onChange={(event) => onInputChange(event,setProvince)}/>
+                    </div>
+                    <div className="col3">
+                        <label htmlFor="postalCode">Postal Code:</label>
+                        <input id="postalCode" value={postalCode} onChange={(event) => onInputChange(event,setPostalCode)}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col2">
+                        <label htmlFor="contactNumber">Contact Number:</label>
                             <table>                      
                                 <tbody>
                                     {
                                         contactNumber.map( (cn, index) => { 
                                             return ( <tr key={index}>                          
                                                         <td>{
-                                                            <input name="name" value={cn.name}
+                                                            <input name="name" value={cn.name} placeholder="Type"
                                                             onChange={ (e) => onContactNumberChange(e, index) }
                                                             />
                                                         }</td>
                                                         <td>{
-                                                            <input name="phoneNumber" value={cn.phoneNumber}
+                                                            <input name="phoneNumber" value={cn.phoneNumber} placeholder="Phone #"
                                                             onChange={ (e) => onContactNumberChange(e, index) }
                                                             />
                                                         }</td>
                                                         {   
                                                         <td>                            
-                                                            <button onClick={ () => onContactNumberDelete(index) }>Delete</button>
+                                                            <button className="clear" onClick={ () => onContactNumberDelete(index) }><RiIcons.RiDeleteBinFill/></button>
                                                         </td>
                                                         }            
                                                     </tr> )
@@ -181,39 +188,32 @@ const SupplierForm = ({onSupplierFromClick}) => {
                                     }
                                     <tr>                                
                                         <td>
-                                        <button onClick={ onContactNumberAdd }>Add Contact Number</button>
+                                        <button onClick={ onContactNumberAdd }><SiIcons.SiAddthis/></button>
                                         </td>
                                     </tr>
                                 </tbody>    
                             </table>            
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <label htmlFor="contactPerson">Contact Person:</label>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
+                        </div>                   
+                        <div className="col2">
+                        <label htmlFor="contactPerson">Contact Person:</label>
                             <table>                      
                                 <tbody>
                                     {
                                         contactPerson.map( (cn, index) => { 
                                             return ( <tr key={index}>                          
                                                         <td>{
-                                                            <input name="firstName" value={cn.firstName}
+                                                            <input name="firstName" value={cn.firstName} placeholder="First Name"
                                                             onChange={ (e) => onContactPersonChange(e, index) }
                                                             />
                                                         }</td>
                                                         <td>{
-                                                            <input name="lastName" value={cn.lastName}
+                                                            <input name="lastName" value={cn.lastName} placeholder="Last Name"
                                                             onChange={ (e) => onContactPersonChange(e, index) }
                                                             />
                                                         }</td>
                                                         {   
                                                         <td>                            
-                                                            <button onClick={ () => onContactPersonDelete(index) }>Delete</button>
+                                                            <button className="clear" onClick={ () => onContactPersonDelete(index) }><RiIcons.RiDeleteBinFill/></button>
                                                         </td>
                                                         }            
                                                     </tr> )
@@ -221,33 +221,31 @@ const SupplierForm = ({onSupplierFromClick}) => {
                                     }
                                     <tr>                                
                                         <td>
-                                        <button onClick={ onContactPersonAdd }>Add Contact Person</button>
+                                        <button onClick={ onContactPersonAdd }><SiIcons.SiAddthis/></button>
                                         </td>
                                     </tr>
                                 </tbody>    
                             </table>            
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>            
+                    </div> 
 
-            <div>
-                <label htmlFor="emailAddress">Email Address:</label>
-                <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
+                <div>
+                    <label htmlFor="emailAddress">Email Address:</label>
+                    <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
+                </div>
+                <div>
+                    <label htmlFor="active">Active:</label>                
+                    <select value={active} onChange={(event) => onInputChange(event, setActive)}>
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                    </select>
+                </div>
+                <br/>            
+                <button disabled={ createSupplierDataInvalid } onClick={onClickAdd }>Add Supplier</button>
+                { createError && <div>{createError}</div> }            
             </div>
-            <div>
-                <label htmlFor="active">Active:</label>                
-                <select value={active} onChange={(event) => onInputChange(event, setActive)}>
-                <option value="true">true</option>
-                <option value="false">false</option>
-                </select>
-            </div>
-            <br/>            
-            <button disabled={ createSupplierDataInvalid } onClick={ onCreateClicked }>Add Supplier</button>
-            { createError && <div>{createError}</div> }            
-
         </div>
-    )
+    ):"";
 }
 
 export default SupplierForm

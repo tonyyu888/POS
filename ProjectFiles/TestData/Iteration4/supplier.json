@@ -1,0 +1,115 @@
+[{
+  "_id": {
+    "$oid": "6099d2f23fedfb45458a0a68"
+  },
+  "name": "Great North Merchandising",
+  "address1": "597 Westend Road SW,",
+  "address2": "",
+  "city": "Edmonton",
+  "province": "Alberta",
+  "postalCode": "T2P 8N7",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60a438e6dea9894da07f818e"
+      },
+      "name": "Office phone",
+      "phoneNumber": "888-888-8888"
+    },
+    {
+      "_id": {
+        "$oid": "60a438e6dea9894da07f818f"
+      },
+      "name": "Fax number",
+      "phoneNumber": "888-888-8888"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60a4453b2fa2cd6928dc80bf"
+      },
+      "firstName": "Richard Mar",
+      "lastName": "Collin"
+    },
+    {
+      "_id": {
+        "$oid": "60a5c73408b33313d89b13b5"
+      },
+      "firstName": "Cindy",
+      "lastName": "Smith"
+    },
+    {
+      "_id": {
+        "$oid": "60a68733e3dae84e78f22e64"
+      },
+      "firstName": "Alex",
+      "lastName": "Thomas"
+    }
+  ],
+  "emailAddress": "gnm@telus.com",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-20T22:44:47.242Z"
+  }
+},{
+  "_id": {
+    "$oid": "609b02353fedfb45458a5dd5"
+  },
+  "name": "Fair Trade Corporation",
+  "address1": "65289 Ridgeback Lane NE,",
+  "address2": "",
+  "city": "Edmonton",
+  "province": "Alberta",
+  "postalCode": "T8X 9R1",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60a445ac2fa2cd6928dc80c3"
+      },
+      "name": "Office phone",
+      "phoneNumber": "555-555-5555"
+    },
+    {
+      "_id": {
+        "$oid": "60a445ac2fa2cd6928dc80c4"
+      },
+      "name": "Fax number",
+      "phoneNumber": "777-777-7777"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60a6bbe173ab9140a03494cb"
+      },
+      "firstName": "Hansen",
+      "lastName": "Rom"
+    },
+    {
+      "_id": {
+        "$oid": "60a6bd8d73ab9140a03494dc"
+      },
+      "firstName": "Reily",
+      "lastName": "Greene"
+    },
+    {
+      "_id": {
+        "$oid": "60a6e464f0a45e2a3445dfe0"
+      },
+      "firstName": "Greg",
+      "lastName": "Newman"
+    }
+  ],
+  "emailAddress": "fairtrade@yahoo.com",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-20T22:45:10.961Z"
+  }
+}]

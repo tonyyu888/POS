@@ -1,9 +1,8 @@
 import { useState , useEffect} from "react"
-import './ProductForm.css';
+import './Form.css';
 import * as  AiIcons from 'react-icons/ai';
 import * as  SiIcons from 'react-icons/si';
 import * as  RiIcons from 'react-icons/ri';
-//import Select from 'react-select';
 
 const ProductForm = (props) => {
     let [name, setName] = useState()
@@ -139,7 +138,7 @@ const ProductForm = (props) => {
             <div className="popup-in">
                 <h4>Add a New Product</h4>
                 <button className="closebtn" onClick={()=>props.setTrigger(false)}><AiIcons.AiOutlineClose/></button>
-                {props.children}
+                
                 <div>
                 <label htmlFor="name">Name:</label>
                 <input id="name" value={name} onChange={(event) => onInputChange(event,setName)}/>

@@ -1,9 +1,4 @@
-/* .productCategory-table {
-    display: flex;
-    justify-content: center;
-}
-  */
-  table{
+table{
     margin: 0 auto;
     display:flex;
     justify-content: center;
@@ -14,20 +9,17 @@
 
 th {
     background-color: black;
-    color: #86C232;
-    padding: 2px 20px 2px 20px;
+    color: #86C232;  
 }
+
 td {
-    border: 1px solid #cecfd5;
-    padding: 10px 15px;
-  }
-
-.productCategory-table h2{
-    margin-bottom:30px;
+    border: 1px solid #cecfd5;  
+    padding: 5px 10px;
     text-align: center;
+    
 }
 
-.product-table h2{
+.list-table h2{
     margin-bottom:30px;
     text-align: center;
 }
@@ -60,12 +52,30 @@ td {
     background-color: #86C232;
 }
 
-.productCategoryForm {
+/* .product-form {
     display: flex;
     justify-content: center; 
     margin-top: 70px;   
+} */
+
+
+
+/* New product button */
+.list-table button {
+    background-color: #86C232;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-weight: bold;
+    margin-right: 8px;
 }
 
-.slash{
-padding-right: 15px;
+.list-table .add-p{
+    margin-left: 120px;
+}
+
+.list-table .add-pc{
+    margin-left: 360px;
 }

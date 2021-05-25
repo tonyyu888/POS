@@ -23,7 +23,7 @@ const productSchema = new Schema({
     supplier:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: "supplier" 
-    },],
+    }],
     active: Boolean,
     dateAdded: Date,
     lastUpdateDate: Date
