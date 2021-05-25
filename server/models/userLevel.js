@@ -14,4 +14,4 @@ const userLevelSchema = new Schema({
   lastUpdateDate: Date
 });
 
-module.exports = mongoose.model('UserLevel', userLevelSchema, 'userLevel');
+module.exports = mongoose.model('userLevel', userLevelSchema, 'userLevel');
