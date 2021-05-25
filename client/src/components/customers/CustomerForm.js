@@ -14,6 +14,8 @@ const CustomerForm = ({onCustomerFormClick, trigger, setTrigger}) => {
     let [contactNumber, setContactNumber] = useState([])
     let [contactPerson, setContactPerson] = useState([])
     let [emailAddress, setEmailAddress] = useState("")
+    let [gstRate, setGstRate] = useState("")
+    let [pstRate, setPstRate] = useState("")
     let [active, setActive] = useState("true")
     let [createError, setCreateError] = useState("")
 
@@ -30,6 +32,8 @@ const CustomerForm = ({onCustomerFormClick, trigger, setTrigger}) => {
             contactNumber,
             contactPerson,
             emailAddress,
+            gstRate,
+            pstRate,
             active,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
@@ -57,6 +61,8 @@ const CustomerForm = ({onCustomerFormClick, trigger, setTrigger}) => {
                 setContactNumber([]);
                 setContactPerson([]);
                 setEmailAddress("");
+                setGstRate("");
+                setPstRate("");
                 setActive("true");
             }
             // the server didn't like the data for some reason
@@ -230,6 +236,14 @@ const CustomerForm = ({onCustomerFormClick, trigger, setTrigger}) => {
                 <div>
                     <label htmlFor="emailAddress">Email Address:</label>
                     <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
+                </div>
+                <div>
+                    <label htmlFor="gstRate">GST Rate:</label>
+                    <input id="gstRate" value={gstRate} onChange={(event) => onInputChange(event,setGstRate)}/>
+                </div>
+                <div>
+                    <label htmlFor="pstRate">PST Rate:</label>
+                    <input id="pstRate" value={pstRate} onChange={(event) => onInputChange(event,setPstRate)}/>
                 </div>
                 <div>
                     <label htmlFor="active">Active:</label>                
