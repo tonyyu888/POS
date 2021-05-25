@@ -145,13 +145,13 @@ const ProductCategoryTable = () => {
                     </button>
                   </React.Fragment>
                 ) : (
-                      <span><button value={row.description} onClick={() => onEdit(row._id, row.description, row.active)}
+                      <button value={row.description} onClick={() => onEdit(row._id, row.description, row.active)}
                       >
                         <BsIcons.BsPencilSquare />
-                      </button></span>                                
+                      </button>                               
                 )       
               }                          
-              <span className="slash">/</span>
+             
               <button onClick={() => {handleDeleteClick(row._id)}} ><RiIcons.RiDeleteBinFill/></button>
             </td>
         </tr>
