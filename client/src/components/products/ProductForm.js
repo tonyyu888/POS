@@ -3,7 +3,6 @@ import './Form.css';
 import * as  AiIcons from 'react-icons/ai';
 import * as  SiIcons from 'react-icons/si';
 import * as  RiIcons from 'react-icons/ri';
-//import Select from 'react-select';
 
 const ProductForm = (props) => {
     let [name, setName] = useState()

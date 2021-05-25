@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import moment from "moment";
-import './table.css';
+import './Table.css';
 import CustomerForm from "./CustomerForm";
 import ReactPaginate from 'react-paginate';
 import * as RiIcons from 'react-icons/ri';
 import * as BsIcons from 'react-icons/bs';
+import * as SiIcons from 'react-icons/si';
 
 const Customer = () => {
     const [rows, setRows] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
+    const [addBtnPopupForm, setAddBtnPopupForm] = useState(false)
     const [inEditMode, setInEditMode] = useState({
       status: false,
       rowKey: null
@@ -122,7 +124,7 @@ const Customer = () => {
     
     useEffect(() => {
       getCustomer();
-    }, []);
+    }, [addBtnPopupForm]);
 
     const onContactNumberChange = (e, id, index) => {
 
@@ -306,7 +308,7 @@ const Customer = () => {
                                   {                              
                                     inEditMode.status && inEditMode.rowKey === row._id ? (
                                       <td>
-                                        <button onClick={ () => onContactNumberDelete(row._id, index) }>Delete</button>
+                                        <button className="clear" onClick={ () => onContactNumberDelete(row._id, index) }><RiIcons.RiDeleteBinFill/></button>
                                       </td>
                                       )  : null  
                                   }                           
@@ -317,7 +319,7 @@ const Customer = () => {
                       {
                         inEditMode.status && inEditMode.rowKey === row._id ? (
                           <td>
-                            <button onClick={ () => onContactNumberAdd(row._id) }>Add Contact Number</button>
+                            <button className="clear" onClick={ () => onContactNumberAdd(row._id) }><SiIcons.SiAddthis/></button>
                           </td>
                         )  : null                
                       }                    
@@ -354,7 +356,7 @@ const Customer = () => {
                                 {
                                   inEditMode.status && inEditMode.rowKey === row._id ? (
                                     <td>
-                                      <button onClick={ () => onContactPersonDelete(row._id, index) }>Delete</button>
+                                      <button className="clear" onClick={ () => onContactPersonDelete(row._id, index) }><RiIcons.RiDeleteBinFill/></button>
                                     </td>    
                                     )  : null
                                 }      
@@ -366,7 +368,7 @@ const Customer = () => {
                       {
                         inEditMode.status && inEditMode.rowKey === row._id ? (
                           <td>
-                            <button onClick={ () => onContactPersonAdd(row._id) }>Add Contact Person</button>
+                            <button className="clear" onClick={ () => onContactPersonAdd(row._id) }><SiIcons.SiAddthis/></button>
                           </td>
                         )  : null
                       }
@@ -413,13 +415,13 @@ const Customer = () => {
                     </button>
                   </React.Fragment>
                 ) : (
-                      <span><button value={row.address1} onClick={() => onEdit(row._id, row.address1, row.address2, row.city, row.province, row.postalCode,  row.contactNumber, row.contactPerson, row.emailAddress, row.active)}
+                      <button value={row.address1} onClick={() => onEdit(row._id, row.address1, row.address2, row.city, row.province, row.postalCode,  row.contactNumber, row.contactPerson, row.emailAddress, row.active)}
                       >
                         <BsIcons.BsPencilSquare />
-                      </button></span>                                
+                      </button>                              
                 )       
               }                          
-              <span className="slash">/</span>
+              
               <button onClick={() => {handleDeleteClick(row._id)}} ><RiIcons.RiDeleteBinFill/></button>
             </td>
         </tr>
@@ -428,8 +430,10 @@ const Customer = () => {
   
     return (
       <div>
-        <div className="table">
+        <div className="list-table">
           <h2>Customer Maintanence</h2>
+          <button onClick={()=>setAddBtnPopupForm(true)}>New Customer</button>
+          <CustomerForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onCustomerFormClick={handleCustomerFormClick} />
           <table>
               <tbody>
                 <tr><th>Name</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Postal Code</th><th>Contact Number</th><th>Contact Person</th><th>Email Address</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
@@ -447,9 +451,6 @@ const Customer = () => {
             disabledClassName={"paginationDisabled"}
             activeClassName= {"paginationActive"}
           />       
-        </div>
-        <div className="tableForm">
-                <CustomerForm onCustomerFormClick={handleCustomerFormClick} />
         </div>
       </div>
     )

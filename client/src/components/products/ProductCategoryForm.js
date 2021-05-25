@@ -1,8 +1,6 @@
 import { useState } from "react"
 import './Form.css';
 import * as AiIcons from 'react-icons/ai';
-import * as SiIcons from 'react-icons/si';
-import * as RiIcons from 'react-icons/ri';
 
 const ProductCategoryForm = ({onProductCategoryFromClick, trigger, setTrigger}) => {
     let [name, setName] = useState()
@@ -11,9 +9,6 @@ const ProductCategoryForm = ({onProductCategoryFromClick, trigger, setTrigger}) 
     let [createError, setCreateError] = useState("")
 
     async function onCreateClicked(e) {
-
-        //e.preventDefault();
-
         let currentDate = new Date();
 
         let productCategoryToCreate = {
@@ -42,7 +37,6 @@ const ProductCategoryForm = ({onProductCategoryFromClick, trigger, setTrigger}) 
                 setActive("true");
             }
 
-            // the server didn't like the data for some reason
             console.log('Create response is', createResponse)
             if (createResponse.status !== 200) {
                 let errorMessage = await createResponse.text()
