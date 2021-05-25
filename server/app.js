@@ -11,7 +11,9 @@ var productCategory = require('./routes/productCategory');
 var product = require('./routes/product');
 var customer = require('./routes/customer');
 var supplier = require('./routes/supplier');
+var user = require('./routes/user');
 var userLevel = require('./routes/userLevel');
+
 
 var app = express();
 
@@ -29,6 +31,7 @@ app.use('/productCategory',productCategory);
 app.use('/product', product);
 app.use('/customer',customer)
 app.use('/supplier',supplier)
+app.use('/user',user)
 app.use('/userLevel',userLevel)
 
 // app.use('/', indexRouter);

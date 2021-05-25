@@ -53,12 +53,12 @@ const Navbar = () => {
             icon: <RiIcons.RiFileList3Line />,
             class_name:'nav-text'
         },
-        // {
-        //     title:'Users',
-        //     path:'/users',
-        //     icon: <FaIcons.FaUsers />,
-        //     class_name:'nav-text'
-        // },
+        {
+            title:'Users',
+            path:'/users',
+            icon: <FaIcons.FaUsers />,
+            class_name:'nav-text'
+        },
         {
             title:'User Level',
             path:'/user-level',

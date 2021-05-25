@@ -1,0 +1,71 @@
+table{
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    text-align: center; 
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th {
+    background-color: black;
+    color: #86C232;  
+}
+
+td {
+    border: 1px solid #cecfd5;  
+}
+
+.product-table h2{
+    margin-bottom:30px;
+    text-align: center;
+}
+
+.paginationBttns{
+    margin: 0 auto;
+    width:80%;
+    height: 10px;
+    list-style: none;
+    display:flex;
+    justify-content: center;
+}
+
+.paginationBttns a{
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.paginationBttns a:hover{
+    color:black;
+    background-color: #86C232;
+}
+.paginationActive a{
+    color:black;
+    background-color: #86C232;
+}
+
+.user-form {
+    display: flex;
+    justify-content: center; 
+    margin-top: 70px;   
+}
+
+/* .slash{
+padding-right: 15px;
+} */
+
+.user-table button {
+    background-color: #86C232;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+

@@ -10,6 +10,7 @@ import SupplierTable from './components/suppliers/SupplierTable';
 import Orders from './components/orders/Orders';
 import OrderDetail from './components/orders/OrderDetail';
 import UserLevelTable from './components/users/UserLevelTable';
+import UserTable from './components/users/UserTable';
 
 
 const App = () => {
@@ -19,11 +20,6 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          {/* <Route path='/' exact component={Home}/>
-          <Route path='/products' component={Products}/>
-          <Route path='/products-catogary' component={ProductCategoryTable}/>
-          <Route path='/orders' component={Orders}/>
-          <Route path='/order-detail' component={OrderDetail}/> */}
           <Route exact path='/'>
             <Home/>            
           </Route>
@@ -47,6 +43,9 @@ const App = () => {
           </Route>
           <Route path='/user-level'>
             <UserLevelTable/>
+          </Route>
+          <Route path='/users'>
+            <UserTable/>
           </Route>
         </Switch>
       </Router>
