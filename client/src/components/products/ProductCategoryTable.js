@@ -162,7 +162,7 @@ const ProductCategoryTable = () => {
       <div>
         <div className="list-table">
           <h2>Product Category Maintanence</h2>
-          <button onClick={()=>setAddBtnPopupForm(true)}>New Product Category</button>
+          <button className="add-pc" onClick={()=>setAddBtnPopupForm(true)}>New Product Category</button>
           <ProductCategoryForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onProductCategoryFromClick={handleProductCategoryFormClick} />
           <table>
               <tbody>

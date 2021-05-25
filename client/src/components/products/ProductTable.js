@@ -259,8 +259,8 @@ const ProductTable = () => {
     return (
         <div>
             <div className="list-table">
-                <h2>Products</h2>
-                <button onClick={()=>setAddBtnPopupForm(true)}>New Product</button>
+                <h2>Product Maintanence</h2>
+                <button className="add-p" onClick={()=>setAddBtnPopupForm(true)}>New Product</button>
                 <ProductForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onProductFormClick = {handleProductFormClick} />
                 <table>
                     <tbody>

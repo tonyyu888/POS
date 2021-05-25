@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import moment from "moment";
-import './SupplierTable.css';
+import './table.css';
 import SupplierForm from "./SupplierForm";
 import ReactPaginate from 'react-paginate';
 import * as RiIcons from 'react-icons/ri';

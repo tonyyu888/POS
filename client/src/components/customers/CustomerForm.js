@@ -1,5 +1,5 @@
 import { useState } from "react"
-import './Form.css';
+import './form.css';
 import * as  AiIcons from 'react-icons/ai';
 import * as  SiIcons from 'react-icons/si';
 import * as  RiIcons from 'react-icons/ri';
@@ -59,7 +59,6 @@ const CustomerForm = ({onCustomerFormClick, trigger, setTrigger}) => {
                 setEmailAddress("");
                 setActive("true");
             }
-
             // the server didn't like the data for some reason
             console.log('Create response is', createResponse)
             if (createResponse.status !== 200) {
