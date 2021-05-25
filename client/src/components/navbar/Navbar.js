@@ -4,6 +4,8 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as ImIcons from 'react-icons/im';
+import * as FiIcons from 'react-icons/fi';
+
 import './Navbar.css';
 
 const Navbar = () => {
@@ -49,6 +51,18 @@ const Navbar = () => {
             title:'Order Detail',
             path:'/order-detail',
             icon: <RiIcons.RiFileList3Line />,
+            class_name:'nav-text'
+        },
+        // {
+        //     title:'Users',
+        //     path:'/users',
+        //     icon: <FaIcons.FaUsers />,
+        //     class_name:'nav-text'
+        // },
+        {
+            title:'User Level',
+            path:'/user-level',
+            icon: <FiIcons.FiUsers />,
             class_name:'nav-text'
         }  
     ]

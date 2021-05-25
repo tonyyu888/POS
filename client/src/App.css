@@ -22,7 +22,9 @@
 .products,
 .productCatogary-table,
 .orders,
-.order-detail {
+.order-detail, 
+.users,
+.user-level {
   display: flex;
   height: 90vh;
   align-items: center;
