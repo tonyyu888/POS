@@ -1,28 +1,24 @@
-/* .productCategory-table {
-    display: flex;
-    justify-content: center;
-}
-  */
-  table{
+table{
     margin: 0 auto;
     display:flex;
     justify-content: center;
     text-align: center; 
     border-collapse: collapse;
     margin-bottom: 30px;
+    
 }
 
 th {
     background-color: black;
-    color: #86C232;
-    padding: 2px 20px 2px 20px;
+    color: #86C232;  
 }
-td {
-    border: 1px solid #cecfd5;
-    padding: 10px 15px;
-  }
 
-.supplier-table h2{
+td {
+    border: 1px solid #cecfd5;  
+    font-size: small;
+}
+
+.list-table h2{
     margin-bottom:30px;
     text-align: center;
 }
@@ -55,8 +51,22 @@ td {
     background-color: #86C232;
 }
 
-.supplierForm {
-    display: flex;
-    justify-content: center; 
-    margin-top: 70px;   
+.slash{
+    font-weight: bolder;
+    margin-right: 12px;
+}
+
+.list-table button {
+    background-color: #86C232;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.list-table .clear{
+    background-color: white;
+    font-size: medium;
 }

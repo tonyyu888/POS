@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import moment from "moment";
-import './ProductCategoryTable.css';
+import './Table.css';
 import ProductCategoryForm from "./ProductCategoryForm";
 import ReactPaginate from 'react-paginate';
 import * as RiIcons from 'react-icons/ri';
@@ -9,6 +9,7 @@ import * as BsIcons from 'react-icons/bs';
 const ProductCategoryTable = () => {
     const [rows, setRows] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
+    const [addBtnPopupForm, setAddBtnPopupForm]= useState(false)
     const [inEditMode, setInEditMode] = useState({
       status: false,
       rowKey: null
@@ -99,7 +100,7 @@ const ProductCategoryTable = () => {
     
     useEffect(() => {
       getProductCategories();
-    }, []);
+    }, [addBtnPopupForm]);
 
     const displayRows =rows.slice(rowsVisited, rowsVisited+rowsPerPage).map(row => {
       return (
@@ -144,13 +145,13 @@ const ProductCategoryTable = () => {
                     </button>
                   </React.Fragment>
                 ) : (
-                      <span><button value={row.description} onClick={() => onEdit(row._id, row.description, row.active)}
+                      <button value={row.description} onClick={() => onEdit(row._id, row.description, row.active)}
                       >
                         <BsIcons.BsPencilSquare />
-                      </button></span>                                
+                      </button>                               
                 )       
               }                          
-              <span className="slash">/</span>
+             
               <button onClick={() => {handleDeleteClick(row._id)}} ><RiIcons.RiDeleteBinFill/></button>
             </td>
         </tr>
@@ -159,8 +160,10 @@ const ProductCategoryTable = () => {
   
     return (
       <div>
-        <div className="productCategory-table">
+        <div className="list-table">
           <h2>Product Category Maintanence</h2>
+          <button onClick={()=>setAddBtnPopupForm(true)}>New Product Category</button>
+          <ProductCategoryForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onProductCategoryFromClick={handleProductCategoryFormClick} />
           <table>
               <tbody>
                 <tr><th>Name</th><th>Description</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
@@ -178,9 +181,6 @@ const ProductCategoryTable = () => {
             disabledClassName={"paginationDisabled"}
             activeClassName= {"paginationActive"}
           />       
-        </div>
-        <div className="productCategoryForm">
-                <ProductCategoryForm onProductCategoryFromClick={handleProductCategoryFormClick} />
         </div>
       </div>
     )

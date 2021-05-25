@@ -4,7 +4,7 @@ import moment from "moment";
 import ReactPaginate from 'react-paginate';
 import * as  BsIcons from 'react-icons/bs';
 import * as  RiIcons from 'react-icons/ri';
-import './ProductTable.css';
+import './Table.css';
 
 
 const ProductTable = () => {
@@ -248,7 +248,7 @@ const ProductTable = () => {
                            <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice, row.supplier, row.active)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
-                    {/* <span className='slash'>/</span> */}
+                    
                     <button onClick={() => {handleDeleteClick(row._id)}}><RiIcons.RiDeleteBinFill/></button>
                 </td> 
             </tr>
@@ -258,7 +258,7 @@ const ProductTable = () => {
 
     return (
         <div>
-            <div className="product-table">
+            <div className="list-table">
                 <h2>Products</h2>
                 <button onClick={()=>setAddBtnPopupForm(true)}>New Product</button>
                 <ProductForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onProductFormClick = {handleProductFormClick} />
