@@ -20,7 +20,6 @@ const UserTable = () => {
     const [userLevelList, setUserLevelList] = useState([])
     const [password, setPassword] = useState("")
     const [active, setActive] = useState("true")
-    const [fulfilled, setfulfilled] = useState("false")
     
     const rowsPerPage = 10;
     const rowsVisited = pageNumber * rowsPerPage;
@@ -44,7 +43,7 @@ const UserTable = () => {
     }, [addBtnPopupForm])
 
     //update a User
-    let updateUser = (id, newFirstName, newLastName, newEmailAddress, newUserLevel, newPassword, newActive, newFulfilled) =>{
+    let updateUser = (id, newFirstName, newLastName, newEmailAddress, newUserLevel, newPassword, newActive) =>{
 
         let currentDate = new Date();
         let userToUpdate = {
@@ -54,7 +53,6 @@ const UserTable = () => {
             userLevel: newUserLevel,
             password: newPassword,
             active: newActive,
-            fulFilled: newFulfilled,
             lastUpdateDate: currentDate
         }
         let updateResponse = fetch(`/user/${id}`, {
@@ -71,7 +69,7 @@ const UserTable = () => {
         })
     }
 
-    const onEdit = (id, currentFirstName, currentLastName, currentEmailAddress, currentUserLevel, currentPassword, currentActive, currentFulfilled) =>{
+    const onEdit = (id, currentFirstName, currentLastName, currentEmailAddress, currentUserLevel, currentPassword, currentActive) =>{
         setInEditMode({status: true, rowKey: id})
         
         setFirstName(currentFirstName)
@@ -80,12 +78,11 @@ const UserTable = () => {
         setUserLevel(currentUserLevel)
         setPassword(currentPassword)
         setActive(currentActive)                
-        setfulfilled(currentFulfilled)
         getUserLevelList()
     }
 
-    const onSave = (id, newFirstName, newLastName, newEmailAddress, newUserLevel, newPassword, newActive, newFulfilled) => {
-        updateUser(id, newFirstName, newLastName, newEmailAddress, newUserLevel, newPassword, newActive, newFulfilled)
+    const onSave = (id, newFirstName, newLastName, newEmailAddress, newUserLevel, newPassword, newActive) => {
+        updateUser(id, newFirstName, newLastName, newEmailAddress, newUserLevel, newPassword, newActive)
     }
     
     const onCancel =() =>{
@@ -256,29 +253,17 @@ const UserTable = () => {
                         )
                     }  
                 </td>
-                <td>
-                    {
-                        inEditMode.status && inEditMode.rowKey === row._id ? (
-                            <select>
-                                <option value="false">true</option>
-                                <option value="true">false</option>
-                            </select>
-                        ) : (
-                            String(row.fulfilled)
-                        )
-                    }  
-                </td>
                 <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm A")}</td>
                 <td>{moment(row.lastUpdateAdded).format("MM/DD/yyyy hh:mm A")}</td>
                 <td>
                     {
                        inEditMode.status && inEditMode.rowKey === row._id ? (
                         <React.Fragment>
-                            <button onClick = {() => onSave(row._id, firstName, lastName, emailAddress, userLevel, password, active, fulfilled)}>Save</button>
+                            <button onClick = {() => onSave(row._id, firstName, lastName, emailAddress, userLevel, password, active)}>Save</button>
                             <button onClick = {() => onCancel()}>Cancel</button>
                         </React.Fragment>
                        ) : (
-                           <button value={row.description} onClick={() => onEdit(row._id, row.firstName, row.lastName, row.emailAddress, row.userLevel, row.password, row.active, row.fulfilled)}><BsIcons.BsPencilSquare /></button>
+                           <button value={row.description} onClick={() => onEdit(row._id, row.firstName, row.lastName, row.emailAddress, row.userLevel, row.password, row.active)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
                     <button onClick={() => {handleDeleteClick(row._id)}}><RiIcons.RiDeleteBinFill/></button>
@@ -296,7 +281,7 @@ const UserTable = () => {
                 <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />
                 <table>
                     <tbody>
-                        <tr><th>First Name</th><th>Last Name</th><th>Email Address</th><th>User Level</th><th>Password</th><th>Active</th><th>Fulfilled</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
+                        <tr><th>First Name</th><th>Last Name</th><th>Email Address</th><th>User Level</th><th>Password</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                         {displayRows}
                     </tbody>
                 </table>

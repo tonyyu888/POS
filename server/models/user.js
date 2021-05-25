@@ -18,7 +18,6 @@ const userSchema = new Schema({
     },],
     password: String,
     active: Boolean,
-    fulFilled: Boolean,
     dateAdded: Date,
     lastUpdateDate: Date
 });

@@ -12,7 +12,6 @@ const UserForm = (props) => {
     let [userLevelList, setUserLevelList] = useState([])
     let [password, setPassword] = useState("")
     let [active, setActive] = useState("true")
-    let [fulfilled, setfulfilled] = useState("false")
     let [createError, setCreateError] = useState("")
    
      //fetch userLevel
@@ -35,7 +34,6 @@ const UserForm = (props) => {
             userLevel,
             password,
             active,
-            fulfilled,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
         }
@@ -60,8 +58,7 @@ const UserForm = (props) => {
                 setEmailAddress("");
                 setUserLevel([])
                 setPassword("")
-                setActive("true");                
-                setfulfilled("false");                
+                setActive("true");                          
             }
 
             // the server didn't like the data for some reason
@@ -127,8 +124,8 @@ const UserForm = (props) => {
                     <input id="firstName" value={firstName} onChange={(event) => onInputChange(event,setFirstName)}/>
                 </div>
                 <div>
-                    <label htmlFor="lastName">First Name:</label>
-                    <input id="lastName" value={firstName} onChange={(event) => onInputChange(event,setLastName)}/>
+                    <label htmlFor="lastName">Last Name:</label>
+                    <input id="lastName" value={lastName} onChange={(event) => onInputChange(event,setLastName)}/>
                 </div>
                 <div>
                     <label htmlFor="emailAddress">Email Address:</label>
@@ -176,13 +173,6 @@ const UserForm = (props) => {
                     <select value={active} onChange={(event) => onInputChange(event, setActive)}>
                         <option value="true">true</option>
                         <option value="false">false</option>
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="fulfilled">Fulfilled:</label>                
-                    <select value={fulfilled} onChange={(event) => onInputChange(event, setActive)}>
-                        <option value="false">false</option>
-                        <option value="true">true</option>
                     </select>
                 </div>
                 <br/>            
