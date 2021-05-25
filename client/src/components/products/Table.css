@@ -14,6 +14,9 @@ th {
 
 td {
     border: 1px solid #cecfd5;  
+    padding: 5px 10px;
+    text-align: center;
+    
 }
 
 .list-table h2{
@@ -55,10 +58,7 @@ td {
     margin-top: 70px;   
 } */
 
-.slash{
-    font-weight: bolder;
-    margin-right: 12px;
-}
+
 
 /* New product button */
 .list-table button {
@@ -69,5 +69,6 @@ td {
     cursor: pointer;
     margin-bottom: 8px;
     font-weight: bold;
+    margin-right: 8px;
 }
 

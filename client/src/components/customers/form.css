@@ -1,26 +1,85 @@
-.create-form label{
+.createform{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background-color: rgba(0,0,0,0.2);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-in{
+    position:relative;
+    padding:25px;
+    width:100%;
+    max-width: 700px;
+    background-color: #fff;
+
+}
+
+.popup-in .closebtn{
+    position: absolute;
+    top: 16px;
+    right:16px;
+    font-weight: bold;
+    background-color: white;
+    font-size: larger;
+}
+
+.createform label{
     text-align:left;
     display:block;
 }
 
-.create-form h4{
+.createform h4{
     margin-bottom: 20px;
 }
 
-.create-form input{
+.createform input, select{
     width:100%;
     padding: 6px 10px;
-    margin:10px 0;
+    margin:8px 0;
     border: 1px solid #ddd;
     box-sizing: border-box;
-    display:block;
+    display:block;   
 }
 
-.create-form button{
+.createform .row{
+    width:100%;
+    clear:both;
+    
+}
+
+.createform .col3{
+    float:left;
+    width: 32%;
+    margin-right: 7.7px;
+}
+.createform .col2{
+    width:50%;
+    float:left;
+}
+
+.createform table{ 
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 3px;
+}
+.createform button{
     background-color: #86C232;
     border: 0;
     padding: 8px;
     border-radius: 8px;
     cursor: pointer;
 
+}
+
+.createform .clear{
+    font-weight: bold;
+    background-color: white;
+    font-size: larger;
 }
