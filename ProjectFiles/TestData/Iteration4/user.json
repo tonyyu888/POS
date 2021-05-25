@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "6099cdc63fedfb45458a073c"
+  },
+  "firstName": "Greg",
+  "lastName": "Hutton",
+  "emailAddress": "greg.hutton@gmail.com",
+  "userLevel": [
+    {
+      "$oid": "609b04383fedfb45458a5f6e"
+    },
+    {
+      "$oid": "609b044c3fedfb45458a5f7b"
+    }
+  ],
+  "password": "RTX123ABC",
+  "active": true,
+  "fulfilled": false,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+}]
