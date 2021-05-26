@@ -237,13 +237,15 @@ const CustomerForm = ({onCustomerFormClick, trigger, setTrigger}) => {
                     <label htmlFor="emailAddress">Email Address:</label>
                     <input id="emailAddress" value={emailAddress} onChange={(event) => onInputChange(event,setEmailAddress)}/>
                 </div>
-                <div>
-                    <label htmlFor="gstRate">GST Rate:</label>
-                    <input id="gstRate" value={gstRate} onChange={(event) => onInputChange(event,setGstRate)}/>
-                </div>
-                <div>
-                    <label htmlFor="pstRate">PST Rate:</label>
-                    <input id="pstRate" value={pstRate} onChange={(event) => onInputChange(event,setPstRate)}/>
+                <div className="row">
+                    <div className="col2-rate">
+                        <label htmlFor="gstRate">GST Rate:</label>
+                        <input id="gstRate" value={gstRate} onChange={(event) => onInputChange(event,setGstRate)}/>
+                    </div>
+                    <div className="col2-rate">
+                        <label htmlFor="pstRate">PST Rate:</label>
+                        <input id="pstRate" value={pstRate} onChange={(event) => onInputChange(event,setPstRate)}/>
+                    </div>
                 </div>
                 <div>
                     <label htmlFor="active">Active:</label>                

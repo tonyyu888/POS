@@ -4,7 +4,8 @@ import moment from "moment";
 import ReactPaginate from 'react-paginate';
 import * as  BsIcons from 'react-icons/bs';
 import * as  RiIcons from 'react-icons/ri';
-import './UserTable.css';
+import * as  SiIcons from 'react-icons/si';
+import './Table.css';
 
 
 const UserTable = () => {
@@ -213,7 +214,7 @@ const UserTable = () => {
                                             {
                                                 inEditMode.status && inEditMode.rowKey === row._id ? (
                                                 <td>    
-                                                    <button onClick={() => onUserLevelDelete(row._id, index) }>Delete</button>  
+                                                    <button className="clear" onClick={() => onUserLevelDelete(row._id, index) }><RiIcons.RiDeleteBinFill/></button>  
                                                 </td>
                                                 ) : null
                                             }                                        
@@ -224,7 +225,7 @@ const UserTable = () => {
                                 {
                                     inEditMode.status && inEditMode.rowKey === row._id ? (
                                     <td>
-                                        <button onClick={() => onUserLevelAdd(row._id) }>Add</button>
+                                        <button className="clear" onClick={() => onUserLevelAdd(row._id) }><SiIcons.SiAddthis/></button>
                                     </td>
                                     )  : null                
                                 }    
@@ -275,9 +276,9 @@ const UserTable = () => {
 
     return (
         <div>
-            <div className="user-table">
+            <div className="list-table">
                 <h2>Users</h2>
-                <button onClick={()=>setAddBtnPopupForm(true)}>New User</button>
+                <button className="add-u" onClick={()=>setAddBtnPopupForm(true)}>New User</button>
                 <UserForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onUserFormClick = {handleUserFormClick} />
                 <table>
                     <tbody>

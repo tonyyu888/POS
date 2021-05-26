@@ -4,6 +4,7 @@ import moment from "moment";
 import ReactPaginate from 'react-paginate';
 import * as  BsIcons from 'react-icons/bs';
 import * as  RiIcons from 'react-icons/ri';
+import * as  SiIcons from 'react-icons/si';
 import './Table.css';
 
 
@@ -207,7 +208,7 @@ const ProductTable = () => {
                                         {
                                             inEditMode.status && inEditMode.rowKey === row._id ? (
                                             <td>    
-                                                <button onClick={() => onSupplierDelete(row._id, index) }>Delete</button>  
+                                                <button className="clear" onClick={() => onSupplierDelete(row._id, index) }><RiIcons.RiDeleteBinFill/></button>  
                                             </td>
                                             ) : null
                                         }                                        
@@ -217,7 +218,7 @@ const ProductTable = () => {
                             <tr>{
                                 inEditMode.status && inEditMode.rowKey === row._id ? (
                                 <td>
-                                    <button onClick={() => onSupplierAdd(row._id) }>Add</button>
+                                    <button className="clear" onClick={() => onSupplierAdd(row._id) }><SiIcons.SiAddthis/></button>
                                 </td>
                                 )  : null                
                             }    

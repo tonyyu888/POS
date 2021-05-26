@@ -47,8 +47,7 @@
 
 .createform .row{
     width:100%;
-    clear:both;
-    
+    clear:both;  
 }
 
 .createform .col3{
@@ -59,6 +58,12 @@
 .createform .col2{
     width:50%;
     float:left;
+}
+
+.createform .col2-rate{
+    width:48%;
+    float:left;
+    margin-right: 11.5px;
 }
 
 .createform table{ 

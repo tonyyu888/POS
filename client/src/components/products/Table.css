@@ -79,3 +79,8 @@ td {
 .list-table .add-pc{
     margin-left: 360px;
 }
+
+.list-table .clear{
+    background-color: white;
+    font-size: medium;
+}

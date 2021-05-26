@@ -121,11 +121,6 @@ const ProductForm = (props) => {
         setSupplier(newSupplier)
     }
 
-    // const onMultipleInputChange = (event, setFunction) =>{
-    //     for(let i=0; i<event.length; i++){
-    //         setFunction(event[i][1])
-    //     }
-    // }
     const onClickAdd = ()=>{
         onCreateClicked();
         props.setTrigger(false);   
@@ -191,19 +186,6 @@ const ProductForm = (props) => {
                     
                 </tbody>
             </table>
-            {/* <Select 
-            value={supplier.name}
-            onChange={(e)=> onMultipleInputChange(e, setSupplier)}
-            isMulti
-            options={supplierList.map(item=>{return {value: item._id, label:item.name}})}
-            className='basic-multi-select'
-            /> */}
-               {/* <select value={supplier} onChange={(event) => onInputChange(event, setSupplier)}>
-                 <option>--Select--</option>
-                {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
-                )}
-                </select>
-                <button className="addSupplier">Add</button> */}
             </div>
             <div>
                 <label htmlFor="active">Active:</label>                
