@@ -24,6 +24,9 @@ const Customer = () => {
     const [contactNumber, setContactNumber] = useState([])
     const [contactPerson, setContactPerson] = useState([])
     const [emailAddress, setEmailAddress] = useState("");
+    const [gstRate, setGstRate] = useState("")
+    const [pstRate, setPstRate] = useState("")
+
     const [active, setActive] = useState("true");
 
     const rowsPerPage = 10;
@@ -34,7 +37,7 @@ const Customer = () => {
       setPageNumber(selected)
     }
     
-    const updateCustomer = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newActive) => {
+    const updateCustomer = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newGstRate, newPstRate, newActive) => {
       let currentDate = new Date();
       let customerToUpdate = {
           address1: newAddress1,
@@ -45,6 +48,8 @@ const Customer = () => {
           contactNumber: newContactNumber,
           contactPerson: newContactPerson,
           emailAddress: newEmailAddress,
+          gstRate:newGstRate,
+          pstRate:newPstRate,
           active: newActive,
           lastUpdateDate : currentDate
       }
@@ -66,7 +71,7 @@ const Customer = () => {
       })    
     }
 
-    const onEdit = (id, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentContactNumber, currentContactPerson, currentEmailAddress, currentActive) => {
+    const onEdit = (id, currentAddress1, currentAddress2, currentCity, currentProvince, currentPostalCode, currentContactNumber, currentContactPerson, currentEmailAddress, currentGstRate, currentPstRate, currentActive) => {
       setInEditMode({
         status: true,
         rowKey: id
@@ -80,11 +85,13 @@ const Customer = () => {
       setContactNumber(currentContactNumber);
       setContactPerson(currentContactPerson);           
       setEmailAddress(currentEmailAddress);
+      setGstRate(currentGstRate);
+      setPstRate(currentPstRate);
       setActive(currentActive);
     }      
     
-    const onSave = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newActive) => {
-      updateCustomer(id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newActive);
+    const onSave = (id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newGstRate, newPstRate, newActive) => {
+      updateCustomer(id, newAddress1, newAddress2, newCity, newProvince, newPostalCode, newContactNumber, newContactPerson, newEmailAddress, newGstRate, newPstRate, newActive);
     }
     
     const onCancel = () => {
@@ -388,6 +395,24 @@ const Customer = () => {
             }</td>
             <td>{
               inEditMode.status && inEditMode.rowKey === row._id ? (
+                <input value={gstRate}
+                  onChange={(event) => setGstRate(event.target.value)}
+                />
+              )  : (
+                row.gstRate
+              )                         
+            }</td>
+            <td>{
+              inEditMode.status && inEditMode.rowKey === row._id ? (
+                <input value={pstRate}
+                  onChange={(event) => setPstRate(event.target.value)}
+                />
+              )  : (
+                row.pstRate
+              )                         
+            }</td>
+            <td>{
+              inEditMode.status && inEditMode.rowKey === row._id ? (
 
                 <select value={active} onChange={(event) => setActive(event.target.value)}>
                 <option value="true">true</option>
@@ -404,7 +429,7 @@ const Customer = () => {
               {
                 inEditMode.status && inEditMode.rowKey === row._id ? (
                   <React.Fragment>
-                    <button onClick={() => onSave(row._id, address1, address2, city, province, postalCode,  contactNumber, contactPerson, emailAddress, active)}
+                    <button onClick={() => onSave(row._id, address1, address2, city, province, postalCode,  contactNumber, contactPerson, emailAddress, gstRate, pstRate, active)}
                     >
                       Save
                     </button>
@@ -415,7 +440,7 @@ const Customer = () => {
                     </button>
                   </React.Fragment>
                 ) : (
-                      <button value={row.address1} onClick={() => onEdit(row._id, row.address1, row.address2, row.city, row.province, row.postalCode,  row.contactNumber, row.contactPerson, row.emailAddress, row.active)}
+                      <button value={row.address1} onClick={() => onEdit(row._id, row.address1, row.address2, row.city, row.province, row.postalCode,  row.contactNumber, row.contactPerson, row.emailAddress, row.gstRate, row.pstRate, row.active)}
                       >
                         <BsIcons.BsPencilSquare />
                       </button>                              
@@ -436,7 +461,7 @@ const Customer = () => {
           <CustomerForm trigger={addBtnPopupForm} setTrigger={setAddBtnPopupForm} onCustomerFormClick={handleCustomerFormClick} />
           <table>
               <tbody>
-                <tr><th>Name</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Postal Code</th><th>Contact Number</th><th>Contact Person</th><th>Email Address</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
+                <tr><th>Name</th><th>Address1</th><th>Address2</th><th>City</th><th>Province</th><th>Postal Code</th><th>Contact Number</th><th>Contact Person</th><th>Email Address</th><th>GST Rate</th><th>PST Rate</th><th>Active</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
                 {displayRows}                
               </tbody>
           </table>

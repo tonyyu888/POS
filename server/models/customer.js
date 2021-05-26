@@ -26,6 +26,8 @@ const customerSchema = new Schema({
     },
   ],
   emailAddress: String,
+  gstRate: Number,
+  pstRate: Number,
   active: Boolean,
   dateAdded: Date,
   lastUpdateDate: Date
