@@ -4,23 +4,17 @@
   },
   "orderNumber": "05242021-001",
   "customer": {
-    "_id": {
-      "$oid": "6099c83f3fedfb45458a048d"
-    }
+    "$oid": "6099c83f3fedfb45458a048d"
   },
   "orderDate": {
     "$date": "2021-05-10T19:33:54.458Z"
   },
   "comment": "Order comment.",
   "salesPerson": {
-    "_id": {
-      "$oid": "6099cdc63fedfb45458a073c"
-    }
+    "$oid": "6099cdc63fedfb45458a073c"
   },
   "orderStatus": {
-    "_id": {
-      "$oid": "60a2867e9fc7acc82853b427"
-    }
+    "$oid": "60a2867e9fc7acc82853b427"
   },
   "dateAdded": {
     "$date": "2021-05-10T19:33:54.458Z"
