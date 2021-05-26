@@ -10,16 +10,15 @@
       "$oid": "609b04383fedfb45458a5f6e"
     },
     {
-      "$oid": "609b044c3fedfb45458a5f7b"
+      "$oid": "609b04213fedfb45458a5f58"
     }
   ],
   "password": "RTX123ABC",
   "active": true,
-  "fulfilled": false,
   "dateAdded": {
     "$date": "2021-05-10T05:25:53.202Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-05-10T05:25:53.202Z"
+    "$date": "2021-05-25T19:41:09.727Z"
   }
 }]

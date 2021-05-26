@@ -5,9 +5,7 @@
   "name": "Isopropyl Alcohol 99%",
   "description": "Isopropyl Alcohol 99%. 500ml",
   "productCategory": {
-    "_id": {
-      "$oid": "609b0fd23fedfb45458a6380"
-    }
+    "$oid": "609b0fd23fedfb45458a6380"
   },
   "unitPrice": 1.25,
   "supplier": [
@@ -32,14 +30,15 @@
   "name": "Cotton Swab",
   "description": "No name cotton swab. 400 count.",
   "productCategory": {
-    "_id": {
-      "$oid": "609b10193fedfb45458a639d"
-    }
+    "$oid": "609b10193fedfb45458a639d"
   },
   "unitPrice": 2.25,
   "supplier": [
     {
       "$oid": "6099d2f23fedfb45458a0a68"
+    },
+    {
+      "$oid": "609b02353fedfb45458a5dd5"
     }
   ],
   "active": true,
@@ -47,6 +46,6 @@
     "$date": "2021-05-10T05:25:53.202Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-05-10T05:25:53.202Z"
+    "$date": "2021-05-25T15:14:17.242Z"
   }
 }]
