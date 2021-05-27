@@ -7,7 +7,7 @@ import * as  RiIcons from 'react-icons/ri';
 const ProductForm = (props) => {
     let [name, setName] = useState()
     let [description, setDescription] = useState("")
-    let [productCategory, setProductCategory] = useState("")
+    let [productCategory, setProductCategory] = useState([])
     let [productCategoryList, setProductCategoryList]= useState([])
     let [unitPrice, setUnitPrice] = useState()
     let [supplier, setSupplier] = useState([])
@@ -69,7 +69,7 @@ const ProductForm = (props) => {
                 //temporary    
                 setName("");
                 setDescription("");
-                setProductCategory("")
+                setProductCategory([])
                 setUnitPrice(null)
                 setSupplier([])
                 setActive("true");
@@ -99,6 +99,7 @@ const ProductForm = (props) => {
         setFunction(event.target.value);   
     };
 
+    //edit supplier
     const onSupplierChange = (e, i)=>{
         let newSupplier = [...supplier]
         console.log("e.target:", e.target)
@@ -119,6 +120,27 @@ const ProductForm = (props) => {
         let newSupplier = [...supplier]
         newSupplier.splice(index, 1)
         setSupplier(newSupplier)
+    }
+
+    //edit product category
+    const onProductCategoryChange = (e, i)=> {
+        let newProductCategory= [...productCategory]
+        newProductCategory[i][e.target.name]=e.target.value
+        setProductCategory(newProductCategory)
+    }
+
+    const onProductCategoryAdd = ()=> {
+        let newProductCategory = [...productCategory]
+        newProductCategory.push({name:""})
+        setProductCategory(newProductCategory)
+        console.log('add productCategory:' , productCategory)
+
+    }
+
+    const onProductCategoryDelete =(index)=>{
+        let newProductCategory = [...productCategory]
+        newProductCategory.splice(index, 1)
+        setProductCategory(newProductCategory)
     }
 
     const onClickAdd = ()=>{
@@ -143,17 +165,42 @@ const ProductForm = (props) => {
                 <input id="description" value={description} onChange={(event) => onInputChange(event,setDescription)}/>
             </div>
             <div>
-            <label htmlFor="productcategory">Product Category:</label> 
-                <select value={productCategory} onChange={(event) => onInputChange(event, setProductCategory)}>
-                <option>--Select--</option>
-                  {productCategoryList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
-                )} 
-                </select>
+            <label htmlFor="productcategory">Product Category:</label>
+            <table>
+                <tbody>
+                    {
+                        productCategory.map((pc, index)=>{
+                            return (<tr key={index}>
+                                <td>{
+                                    <select name="_id" value={pc._id} onChange={(event)=> onProductCategoryChange(event, index)}>
+                                        <option>--Select</option>
+                                        {productCategoryList.map(item =><option key={item.name} value={item._id}>{item.name}</option>)}
+                                    </select>
+                                    }
+                                </td>
+                                {
+                                <td>
+                                    <button className="clear"
+                                    onClick ={()=> onProductCategoryDelete(index)}><RiIcons.RiDeleteBinFill/></button>
+                                </td>
+                                }
+                            </tr>)
+                        })
+                    }
+                    <tr>
+                        <td>
+                            <button onClick={onProductCategoryAdd}><SiIcons.SiAddthis/></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>   
             </div>
+
             <div>
             <label htmlFor="unitprice">Unit Price:</label>
             <input id="unitprice" value={unitPrice} placeholder="Enter in Numbers" onChange={(event)=> onInputChange(event,setUnitPrice)}/>
             </div>
+           
             <div>
             <label htmlFor="supplier">Supplier:</label> 
             <table>
@@ -164,8 +211,7 @@ const ProductForm = (props) => {
                                 <td>{
                                         <select  name="_id" value={s._id} onChange={(event) => onSupplierChange(event, index)}>
                                         <option>--Select--</option>
-                                        {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
-                                        )}
+                                        {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>)}
                                         </select>
                                     }
                                 </td>
@@ -183,10 +229,10 @@ const ProductForm = (props) => {
                              <button onClick= {onSupplierAdd}><SiIcons.SiAddthis/></button>
                          </td>
                     </tr>   
-                    
                 </tbody>
             </table>
             </div>
+
             <div>
                 <label htmlFor="active">Active:</label>                
                 <select value={active} onChange={(event) => onInputChange(event, setActive)}>

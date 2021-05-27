@@ -13,8 +13,10 @@ const ProductTable = () => {
     const [inEditMode, setInEditMode] = useState({status:false, rowKey:null})
     const [pageNumber, setPageNumber]= useState(0)
     const [addBtnPopupForm, setAddBtnPopupForm] = useState(false)
-    
+
     const [description, setDescription] = useState("")
+    const [productCategory, setProductCategory] = useState([])
+    const [productCategoryList, setProductCategoryList] = useState([])
     const [unitPrice, setUnitPrice] = useState(null)
     const [supplier, setSupplier] = useState([])
     const [supplierList, setSupplierList]= useState([])
@@ -42,14 +44,11 @@ const ProductTable = () => {
     }, [addBtnPopupForm])
 
     //update a Product
-    let updateProduct = (id, newDescription, newUnitPrice, newSupplier, newActive) =>{
-
-
-        console.log("newSupplier =", newSupplier );
-
+    let updateProduct = (id, newDescription, newProductCategory, newUnitPrice, newSupplier, newActive) =>{
         let currentDate = new Date();
         let productToUpdate = {
             description: newDescription,
+            productCategory: newProductCategory,
             unitPrice: newUnitPrice,
             supplier: newSupplier,
             active: newActive,
@@ -69,17 +68,18 @@ const ProductTable = () => {
         })
     }
 
-    const onEdit = (id, currentDescription, currentUnitPrice, currentSupplier, currentActive) =>{
+    const onEdit = (id, currentDescription, currentProductCategory, currentUnitPrice, currentSupplier, currentActive) =>{
         setInEditMode({status: true, rowKey: id})
         
         setDescription(currentDescription)
+        setProductCategory(currentProductCategory)
         setUnitPrice(currentUnitPrice)
         setSupplier(currentSupplier)
         setActive(currentActive);
     }
 
-    const onSave = (id, newDescription, newUnitPrice, newSupplier, newActive) => {
-        updateProduct(id, newDescription, newUnitPrice, newSupplier, newActive)
+    const onSave = (id, newDescription, newProductCategory, newUnitPrice, newSupplier, newActive) => {
+        updateProduct(id, newDescription,newProductCategory, newUnitPrice, newSupplier, newActive)
     }
     
     const onCancel =() =>{
@@ -118,6 +118,18 @@ const ProductTable = () => {
         getSupplierList()
     }, [])
 
+       //fetch productCategorylist 
+       const getProductCategoryList = async () =>{
+        let response= await fetch('/productCategory');
+        let data = await response.json();        
+        setProductCategoryList(data)  
+    }
+
+    useEffect(()=>{
+        getProductCategoryList()
+    }, [])
+
+    //edit Supplier
     const onSupplierChange = (e, id , index)=> {
 
         let newSupplier = [...supplier]
@@ -166,7 +178,53 @@ const ProductTable = () => {
         setRows(newRows);
       }
   
- 
+      //edit productCategory
+      const onProductCategoryChange = (e, id, index)=>{
+          let newProductCategory = [...productCategory]
+
+          newProductCategory[index]= e.target.value
+          setProductCategory(newProductCategory)
+
+          let newRows = [...rows]
+          for(let i=0; i<newRows.length; i++){
+              if(newRows[i]._id === id){
+                  newRows[i].productCategory = newProductCategory
+                  break;
+              }
+          }
+          setRows(newRows)
+      }
+
+      const onProductCategoryAdd = (id)=>{
+        let newRows = [...rows]
+
+        for(let i=0; i<newRows.length; i++){
+            if(newRows[i]._id === id){
+                newRows[i].productCategory.push({name:""})
+                setProductCategory(newRows[i].productCategory)
+                break
+            }
+        }
+        setRows(newRows)
+      }
+
+      const onProductCategoryDelete = (id, index)=>{
+        let newProductCategory = [...productCategory];
+        newProductCategory.splice(index, 1);
+        setProductCategory(newProductCategory);
+  
+        let newRows = [...rows];
+  
+        for (let i=0; i< newRows.length; i++) {
+          if (newRows[i]._id === id) {
+            newRows[i].productCategory = newProductCategory;
+            break;
+          }        
+        }
+   
+        setRows(newRows);
+      }
+      
 
     const displayRows = rows.slice(rowsVisited, rowsVisited+rowsPerPage).map(row => {
         return(
@@ -180,7 +238,39 @@ const ProductTable = () => {
                 )}
                 </td>
                 <td>
-                    <p>{row.productCategory.name} </p>
+                    <table className="inner-table">
+                        <tbody>
+                            {row.productCategory.map((pc, index)=>{
+                                return(<tr key={index}>
+                                    <td>{
+                                        inEditMode.status && inEditMode.rowKey === row._id ? (
+                                            <select name="_id" value={productCategory[index]._id} onChange={(e) => onProductCategoryChange(e, row._id, index)}>
+                                                <option>--Select--</option>
+                                                {productCategoryList.map(item=><option key={item.name} value={item._id}>{item.name}</option>)}
+                                            </select>
+                                        ):(
+                                            pc.name
+                                        )
+                                        }</td>
+                                        {
+                                            inEditMode.status && inEditMode.rowKey === row._id ? (
+                                                <td>
+                                                    <button className="clear" onClick={() => onProductCategoryDelete(row._id, index)}><RiIcons.RiDeleteBinFill/></button>
+                                                </td>
+                                            ): null
+                                        }
+                                </tr>)
+                            })}
+                            <tr>{
+                                inEditMode.status && inEditMode.rowKey === row._id ? (
+                                <td>
+                                    <button className="clear" onClick={() => onProductCategoryAdd(row._id) }><SiIcons.SiAddthis/></button>
+                                </td>
+                                )  : null                
+                            }    
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
                 <td>{
                     inEditMode.status && inEditMode.rowKey === row._id ?(
@@ -198,8 +288,7 @@ const ProductTable = () => {
                                             inEditMode.status && inEditMode.rowKey === row._id ? (
                                                 <select name="_id" value={supplier[index]._id} onChange={(e) => onSupplierChange(e, row._id, index)}>
                                                 <option >--Select--</option>
-                                                {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>
-                                                )}
+                                                {supplierList.map(item=><option key={item.name} value={item._id}>{item.name}</option>)}
                                                 </select>
                                             ):(
                                                 s.name
@@ -242,11 +331,11 @@ const ProductTable = () => {
                     {
                        inEditMode.status && inEditMode.rowKey === row._id ? (
                         <React.Fragment>
-                            <button onClick = {() => onSave(row._id, description, unitPrice, supplier, active)}>Save</button>
+                            <button onClick = {() => onSave(row._id, description, productCategory, unitPrice, supplier, active)}>Save</button>
                             <button onClick = {() => onCancel()}>Cancel</button>
                         </React.Fragment>
                        ) : (
-                           <button value={row.description} onClick={() => onEdit(row._id, row.description,row.unitPrice, row.supplier, row.active)}><BsIcons.BsPencilSquare /></button>
+                           <button value={row.description} onClick={() => onEdit(row._id, row.description, row.productCategory, row.unitPrice, row.supplier, row.active)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
                     
@@ -283,7 +372,7 @@ const ProductTable = () => {
             </div>
         </div>
         
-    );
+    )
 }
  
 export default ProductTable;
