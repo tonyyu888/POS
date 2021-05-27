@@ -1,0 +1,61 @@
+.createform{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background-color: rgba(0,0,0,0.2);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-in{
+    position:relative;
+    padding:32px;
+    width:100%;
+    max-width: 640px;
+    background-color: #fff;
+}
+
+.popup-in .closebtn{
+    position: absolute;
+    top: 16px;
+    right:16px;
+    font-weight: bold;
+    background-color: white;
+    font-size: larger;
+}
+
+.createform label{
+    text-align:left;
+    display:block;
+}
+
+.createform h4{
+    margin-bottom: 20px;
+}
+
+.createform input, select{
+    width:100%;
+    padding: 6px 10px;
+    margin:10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display:block;
+}
+
+.createform button{
+    background-color: #86C232;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+
+.createform .clear{
+    font-weight: bold;
+    background-color: white;
+    font-size: larger;
+}

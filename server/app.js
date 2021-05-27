@@ -13,7 +13,7 @@ var customer = require('./routes/customer');
 var supplier = require('./routes/supplier');
 var user = require('./routes/user');
 var userLevel = require('./routes/userLevel');
-
+var orderStatus = require('./routes/orderStatus');
 
 var app = express();
 
@@ -33,6 +33,7 @@ app.use('/customer',customer)
 app.use('/supplier',supplier)
 app.use('/user',user)
 app.use('/userLevel',userLevel)
+app.use('/orderStatus',orderStatus)
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);

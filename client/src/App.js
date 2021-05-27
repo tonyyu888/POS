@@ -11,6 +11,7 @@ import Orders from './components/orders/Orders';
 import OrderDetail from './components/orders/OrderDetail';
 import UserLevelTable from './components/users/UserLevelTable';
 import UserTable from './components/users/UserTable';
+import OrderStatusTable from './components/orders/OrderStatusTable';
 
 
 const App = () => {
@@ -40,6 +41,9 @@ const App = () => {
           </Route>
           <Route path='/order-detail'>
             <OrderDetail/>
+          </Route>
+          <Route path='/order-status'>
+            <OrderStatusTable/>
           </Route>
           <Route path='/user-level'>
             <UserLevelTable/>
