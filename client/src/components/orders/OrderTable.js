@@ -70,8 +70,11 @@ const OrderTable = () => {
     }    
 
     useEffect(() => {
-        setTimeout(function(){getOrders()}, 500);
-//        getOrders();
+        // setTimeout(function(){getOrders()}, 500);
+        getOrders();
+        getCustomerList();
+        getSalesPersonList();
+        getProductList();        
     }, [addBtnPopupForm])
 
     //update a Order
@@ -122,10 +125,6 @@ const OrderTable = () => {
         setOrderDetail(currentOrderDetail);
 
         console.log("*** Inside onEdit - orderDetail = ", orderDetail);
-
-        getCustomerList();
-        getSalesPersonList();
-        getProductList();        
     }
 
     const onSave = (id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderStatus, newOrderDetail) => {

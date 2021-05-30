@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const order = require('../models/order');
 
-//. populate("orderDetail.orderDetailRecord.productId", {name:1})
-
 //List all orders
 router.get('/', async (req, res) =>{
     let data = await order.find({}).populate("customer", {name:1}).populate("salesPerson", {firstName:1, lastName:1})

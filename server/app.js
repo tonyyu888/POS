@@ -15,7 +15,6 @@ var user = require('./routes/user');
 var userLevel = require('./routes/userLevel');
 var orderStatus = require('./routes/orderStatus');
 var order = require('./routes/order');
-var orderDetail = require('./routes/orderDetail');
 
 var app = express();
 
@@ -37,7 +36,6 @@ app.use('/user',user)
 app.use('/userLevel',userLevel)
 app.use('/orderStatus',orderStatus)
 app.use('/order', order);
-app.use('/orderDetail', orderDetail);
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);

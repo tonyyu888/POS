@@ -48,12 +48,6 @@ const Navbar = () => {
             class_name:'nav-text'
         },
         {
-            title:'Order Detail',
-            path:'/order-detail',
-            icon: <RiIcons.RiFileList3Line />,
-            class_name:'nav-text'
-        },
-        {
             title:'Order Status',
             path:'/order-status',
             icon: <RiIcons.RiFileList3Line />,

@@ -8,7 +8,6 @@ import ProductCategoryTable from './components/products/ProductCategoryTable';
 import CustomerTable from './components/customers/CustomerTable';
 import SupplierTable from './components/suppliers/SupplierTable';
 import OrderTable from './components/orders/OrderTable';
-import OrderDetail from './components/orders/OrderDetail';
 import UserLevelTable from './components/users/UserLevelTable';
 import UserTable from './components/users/UserTable';
 import OrderStatusTable from './components/orders/OrderStatusTable';
@@ -38,9 +37,6 @@ const App = () => {
           </Route>
           <Route path='/orders'>
             <OrderTable/>
-          </Route>
-          <Route path='/order-detail'>
-            <OrderDetail/>
           </Route>
           <Route path='/order-status'>
             <OrderStatusTable/>
