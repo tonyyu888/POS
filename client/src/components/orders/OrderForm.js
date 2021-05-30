@@ -64,8 +64,6 @@ const OrderForm = (props) => {
 
     async function onCreateClicked() {
 
-        console.log("### Inside onCreateClicked");
-
         let currentDate = new Date();
         let orderToCreate = {
             orderNumber,
@@ -74,14 +72,13 @@ const OrderForm = (props) => {
             comment,
             salesPerson,
             orderStatus, // set order status of "Created" here
+            orderDetail,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
         }
 
         console.log('Creating a Order:', orderToCreate )
         
-        let newOrderId = null;
-
         try {
             let createOrderResponse = await fetch('/order', {
                 method: 'POST',
@@ -90,10 +87,6 @@ const OrderForm = (props) => {
                 },
                 body: JSON.stringify(orderToCreate)                
             })
-
-            const newOrderSaved = await createOrderResponse.json();
-
-            newOrderId = newOrderSaved._id;
 
             console.log('Creating a order:', orderToCreate )
 
@@ -105,6 +98,7 @@ const OrderForm = (props) => {
                 setOrderDate(new Date());
                 setComment("");
                 setSalesPerson("");
+                setOrderDetail([]);
             }
 
             // the server didn't like the data for some reason
@@ -121,50 +115,6 @@ const OrderForm = (props) => {
         catch (error) {
             // the server cannot be reached
             console.error('Fetch failed to reach the server:', error);
-        }
-
-        //post order detail
-        let orderDetailToCreate = {
-            orderId: newOrderId,
-            orderDetailRecord: orderDetail,
-            dateAdded : currentDate,
-            lastUpdateDate : currentDate
-        }
-
-
-        console.log("orderDetailToCreate = ", orderDetailToCreate)
-
-        try {
-            let createOrderDetailResponse = await fetch('/orderDetail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(orderDetailToCreate)
-            })
-
-            console.log('Creating a order detail:', orderDetailToCreate );
-
-            if (createOrderDetailResponse.status === 200) {
-                props.onOrderFormClick("Success");
-
-                setOrderDetail([]);
-            }
-
-            // the server didn't like the data for some reason
-            console.log('Create response is:', createOrderDetailResponse)
-            if (createOrderDetailResponse.status !== 200) {
-                let errorMessage = await createOrderDetailResponse.text()
-                console.log('We had an error.  it was: ', errorMessage)
-                setCreateError(errorMessage)
-            }
-            else {
-                setCreateError(undefined)
-            }
-        }
-        catch (error) {
-            // the server cannot be reached
-            console.error('Fetch failed to reach the server:', error)
         }
     }
 
@@ -188,7 +138,7 @@ const OrderForm = (props) => {
 
     const onOrderDetailAdd = () =>{
         let newOrderDetail = [...orderDetail]
-        newOrderDetail.push({productId: "", quantity: "", price: ""})
+        newOrderDetail.push({product: "", quantity: "", price: ""})
         setOrderDetail(newOrderDetail)
     }
 
