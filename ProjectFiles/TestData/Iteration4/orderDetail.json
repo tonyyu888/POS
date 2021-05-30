@@ -1,20 +1,59 @@
 [{
   "_id": {
-    "$oid": "6099cef33fedfb45458a07f8"
+    "$oid": "60b16e5b48459b527bc1dcf7"
   },
-  "ordedId": {
+  "orderId": {
     "$oid": "6099c1593fedfb45458a037a"
   },
-  "product": {
-    "$oid": "6099d1e13fedfb45458a09ad"
-  },
-  "quantity": 10,
-  "priceOverride": 0,
-  "active": true,
+  "orderDetailRecord": [
+    {
+      "productId": {
+        "$oid": "6099d1e13fedfb45458a09ad"
+      },
+      "quantity": 10,
+      "price": 0
+    }
+  ],
   "dateAdded": {
     "$date": "2021-05-10T05:25:53.202Z"
   },
   "lastUpdateDate": {
     "$date": "2021-05-10T05:25:53.202Z"
   }
+},{
+  "_id": {
+    "$oid": "60b3a1483dfd5c53dc6d937b"
+  },
+  "orderId": {
+    "$oid": "60b3a1483dfd5c53dc6d937a"
+  },
+  "orderDetailRecord": [
+    {
+      "_id": {
+        "$oid": "60b3a1483dfd5c53dc6d937c"
+      },
+      "productId": {
+        "$oid": "6099d1e13fedfb45458a09ad"
+      },
+      "quantity": 5,
+      "price": 5
+    },
+    {
+      "_id": {
+        "$oid": "60b3a1483dfd5c53dc6d937d"
+      },
+      "productId": {
+        "$oid": "6099e32b3fedfb45458a0f90"
+      },
+      "quantity": 8,
+      "price": 8
+    }
+  ],
+  "dateAdded": {
+    "$date": "2021-05-30T14:29:27.981Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-30T14:29:27.981Z"
+  },
+  "__v": 0
 }]
