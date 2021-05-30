@@ -255,7 +255,7 @@ const OrderForm = (props) => {
                                                         return ( <tr key = {index}>
                                                                     <td>{
 
-                                                                        <select name="productId" value={od._id} onChange={(e) => onOrderDetailChange(e, index)}>
+                                                                        <select name="product" value={od._id} onChange={(e) => onOrderDetailChange(e, index)}>
                                                                             <option>--Select--</option>
                                                                             {productList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
                                                                             )} 

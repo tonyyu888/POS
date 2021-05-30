@@ -7,7 +7,7 @@ const order = require('../models/order');
 //List all orders
 router.get('/', async (req, res) =>{
     let data = await order.find({}).populate("customer", {name:1}).populate("salesPerson", {firstName:1, lastName:1})
-                                   .populate("orderStatus", {name:1}).populate("orderDetail", {orderDetailRecord:1});
+                                   .populate("orderStatus", {name:1}).populate("orderDetail.product", {name:1});
     console.info('Records retrieved from mongoose:', data?.length);
     res.send(data);
 })

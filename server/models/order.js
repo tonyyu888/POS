@@ -1,7 +1,8 @@
 require('./db');
 const mongoose = require('mongoose');
-require('./customer');
-require('./user');
+//require('./customer');
+//require('./user');
+//require('./Product');
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
@@ -24,17 +25,16 @@ const orderSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "orderStatus"
     },
+    orderDetail: [{
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product"
+        },
+        quantity: Number,
+        price: Number
+    },],
     dateAdded: Date,
     lastUpdateDate: Date
 });
-
-orderSchema.virtual("orderDetail", {
-    ref: "orderDetail",
-    localField: "_id",
-    foreignField: "orderId"
-})
-
-orderSchema.set("toObject",{virtuals: true});
-orderSchema.set("toJSON", {virtuals: true});
 
 module.exports = mongoose.model('order', orderSchema, 'order');

@@ -5,7 +5,10 @@ const Schema = mongoose.Schema;
 const orderDetailSchema = new Schema({
     orderId: mongoose.Schema.Types.ObjectId,
     orderDetailRecord: [{
-        productId: mongoose.Schema.Types.ObjectId,
+        productId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product"
+        },
         quantity: Number,
         price: Number
     },],

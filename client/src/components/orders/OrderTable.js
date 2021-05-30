@@ -32,8 +32,6 @@ const OrderTable = () => {
     const [salesPersonList, setSalesPersonList]= useState([]);
     const [productList, setProductList]= useState([]);
 
-//    const [orderDetailList, setOrderDetailList]= useState([])
-
     const rowsPerPage = 10;
     const rowsVisited = pageNumber * rowsPerPage;
     const pageCount = Math.ceil(rows.length / rowsPerPage);
@@ -50,15 +48,6 @@ const OrderTable = () => {
         setRows(data);
     }
 
-/*    
-    //fetch order detail data and set rows
-    const getOrderDetails = async () => {
-        let response= await fetch('/orderDetail');
-        let data = await response.json();
-        console.log("data:", data);
-        setOrderDetailList(data);
-    }
-*/
     //fetch sales person list 
     const getSalesPersonList = async () => {
         let response= await fetch('/user');
@@ -80,35 +69,17 @@ const OrderTable = () => {
         setProductList(data);
     }    
 
-    //load order details data into order's orderDetail array
-/*    
-    const loadOrderDetailIntoOrder = () => {
-
-        console.log("### Inside loadOrderDetailIntoOrder()")
-        let newRows = [...rows];
-
-        let op = newRows.map( (e, i) => {
-
-            let temp = orderDetailList.find(element => element.orderId === e._id)
-
-            if (temp.orderDetailRecord) {
-                e.push({orderDetail: temp.orderDetailRecord})            
-            }           
-            return e;
-        } )
-
-        console.log("op = ", op);
-        setRows(op);
-    }
-*/
-
     useEffect(() => {
         setTimeout(function(){getOrders()}, 500);
 //        getOrders();
     }, [addBtnPopupForm])
 
     //update a Order
-    let updateOrder = (id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderDetail) => {
+    let updateOrder = (id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderStatus, newOrderDetail) => {
+
+
+        console.log("*** Inside updateOrder = ")
+        console.log("1 *** newOrderDetail = ", newOrderDetail)
 
         let currentDate = new Date();
         let orderToUpdate = {
@@ -117,9 +88,8 @@ const OrderTable = () => {
             orderDate: newOrderDate,
             comment: newComment,
             salesPerson: newSalesPerson,
-
-            ordeDetail: newOrderDetail,
-
+            orderStatus: newOrderStatus,
+            orderDetail: newOrderDetail,
             lastUpdateDate: currentDate
         };
         let updateResponse = fetch(`/order/${id}`, {
@@ -139,47 +109,27 @@ const OrderTable = () => {
     const onEdit = (id, currentOrderNumber, currentCustomer, currentOrderDate, currentComment, currentSalesPerson, currentOrderStatus, currentOrderDetail) => {
         setInEditMode({status: true, rowKey: id});
         
-
-        console.log("#143 - currentOrderDetail = ",currentOrderDetail)
+        console.log("*** Inside onEdit - currentOrderDetail = ", currentOrderDetail);
 
         setOrderNumber(currentOrderNumber);
-
-        console.log("#147")
-
         setCustomer(currentCustomer);
-
-        console.log("#151")
-
         setOrderDate(currentOrderDate);
-
-        console.log("#155")
-
         setComment(currentComment);
-
-        console.log("#159")
-
         setSalesPerson(currentSalesPerson);
-
-        console.log("#163")
-
         setOrderStatus(currentOrderStatus);
 
-        console.log("#167")
-
+        console.log("+++ onEdit - setOrderDetail")
         setOrderDetail(currentOrderDetail);
 
-        console.log("#171")
-
+        console.log("*** Inside onEdit - orderDetail = ", orderDetail);
 
         getCustomerList();
         getSalesPersonList();
         getProductList();        
-
-        console.log("#178")
     }
 
-    const onSave = (id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderDetail) => {
-        updateOrder(id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderDetail)
+    const onSave = (id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderStatus, newOrderDetail) => {
+        updateOrder(id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderStatus, newOrderDetail)
     }
     
     const onCancel = () => {
@@ -206,15 +156,17 @@ const OrderTable = () => {
         }
     }
 
-
     const onOrderDetailAdd = (id) => {
 
         let newRows = [...rows];
   
-        for (let i=0; i< newRows.length; i++) {
+        for (let i=0; i < newRows.length; i++) {
           if (newRows[i]._id === id) {
-            newRows[i].orderDetail[0].orderDetailRecord.push({productId: "", quantity: 0.00, price: 0.00 });
-            setOrderDetail(newRows[i].orderDetail[0].orderDetailRecord);
+            newRows[i].orderDetail.push({product: "", quantity: 0.00, price: 0.00 });
+
+            console.log("+++ onOrderDetailAdd - setOrderDetail")
+
+            setOrderDetail(newRows[i].orderDetail);
             break;
           }        
         }
@@ -224,20 +176,15 @@ const OrderTable = () => {
 
     const onOrderDetailChange = (e, id, index) => {
 
-
-        console.log("e.target.name = ", e.target.name)
-        console.log("e.target.value = ", e.target.value)
-
-
         let newOrderDetail = [...orderDetail]
         newOrderDetail[index][e.target.name] = e.target.value 
         setOrderDetail(newOrderDetail); 
   
         let newRows = [...rows];
   
-        for (let i=0; i< newRows.length; i++) {
+        for (let i=0; i < newRows.length; i++) {
           if (newRows[i]._id === id) {
-            newRows[i].orderDetail[0].orderDetailRecord[index] = newOrderDetail;
+            newRows[i].orderDetail = newOrderDetail;
             break;
           }        
         }
@@ -249,13 +196,14 @@ const OrderTable = () => {
 
         let newOrderDetail = [...orderDetail];
         newOrderDetail.splice(index, 1);
+
         setOrderDetail(newOrderDetail);
   
         let newRows = [...rows];
   
-        for (let i=0; i< newRows.length; i++) {
+        for (let i=0; i < newRows.length; i++) {
           if (newRows[i]._id === id) {
-            newRows[i].orderDetail[0].orderDetailRecord[index] = newOrderDetail;
+            newRows[i].orderDetail = newOrderDetail;
             break;
           }        
         }
@@ -264,11 +212,6 @@ const OrderTable = () => {
       }   
 
     const displayRows = rows.slice(rowsVisited, rowsVisited+rowsPerPage).map(row => {
-//    const displayRows = rows.slice(0, 1).map(row => {
-
-            console.log("266")
-            console.log("rows = ",  rows)
-
         return(
             <tr key= {row.orderNumber}>
                 <td>{row.orderNumber}</td>
@@ -324,71 +267,46 @@ const OrderTable = () => {
                     <table>
                         <tbody>               
                         {                              
+                            row.orderDetail.map( (odi, index) => {
+                                return ( <tr key={index}>                          
+                                            <td>{
+                                                    inEditMode.status && inEditMode.rowKey === row._id ? (
 
-//                            row.orderDetail.map( (od, indexOd) => {
-                            row.orderDetail[0].orderDetailRecord.map( (odi, index) => {
-
-//                              console.log("row.orderDetail[indexOd].orderDetailRecord = ", row.orderDetail[indexOd].orderDetailRecord)
-//                              console.log("od = ", od)
-//                              console.log("index = ", indexOd)
-
-//                              row.orderDetail.map( (cn, index) => { 
-//                                od.orderDetailRecord.map( (odi, index) => {
-
-                                        console.log("odi = ", odi)
-                                        console.log("index = ", index)
-                                        console.log("odi.productId = ", odi.productId)
-                                        console.log("odi.name = ", odi.name)
-                                        console.log("odi.quantity = ", odi.quantity)
-                                        console.log("odi.price = ", odi.price)
-                                        console.log("inEditMode = ", inEditMode)
-                                        console.log("orderDetail[index] = ", orderDetail);
-                                        console.log("row.orderDetail[0].orderDetailRecord = ", row.orderDetail[0].orderDetailRecord )
-
-                                        return ( <tr key={index}>                          
-                                                    <td>{
-                                                            inEditMode.status && inEditMode.rowKey === row._id ? (
-
-                                                            <select name="productId" value={orderDetail[index].productId} onChange={(e) => onOrderDetailChange(e, row._id, index)}>
-                                                                <option>--Select--</option>
-                                                                {productList.map(item => <option key={item.name} value={item._id}>{item.name}</option>
-                                                                )} 
-                                                            </select>
-                                                            ) : (
-                                                            odi.productId
-                                                            )                         
-                                                    }</td>
-                                                    <td>{
-                                                            inEditMode.status && inEditMode.rowKey === row._id ? (
-                                                            <input name="quantity" value={orderDetail[index].quantity}
-                                                                onChange={(e) => onOrderDetailChange(e, row._id, index)}
-                                                            />
-                                                            ) : (
-                                                            odi.quantity
-                                                            )                         
-                                                    }</td>
-                                                    <td>{
-                                                            inEditMode.status && inEditMode.rowKey === row._id ? (
-                                                            <input name="price" value={orderDetail[index].price}
-                                                                onChange={(e) => onOrderDetailChange(e, row._id, index)}
-                                                            />
-                                                            ) : (
-                                                            odi.price
-                                                            )                         
-                                                    }</td>
-                                                    {
-                                                        inEditMode.status && inEditMode.rowKey === row._id ? (
-                                                            <td>
-                                                            <button className="clear" onClick={ () => onOrderDetailDelete(row._id, index) }><RiIcons.RiDeleteBinFill/></button>
-                                                            </td>
-                                                        )  : null  
-                                                    }
-                                                </tr> )
-
-
-//                                })
-
-
+                                                    <select name="product" value={orderDetail[index].product._id} onChange={(e) => onOrderDetailChange(e, row._id, index)}>
+                                                        <option>--Select--</option>
+                                                        {productList.map(item => <option key={item.name} value={item._id}>{item.name}</option>
+                                                        )} 
+                                                    </select>
+                                                    ) : (
+                                                    odi.product.name
+                                                    )                         
+                                            }</td>
+                                            <td>{
+                                                    inEditMode.status && inEditMode.rowKey === row._id ? (
+                                                    <input name="quantity" value={orderDetail[index].quantity}
+                                                        onChange={(e) => onOrderDetailChange(e, row._id, index)}
+                                                    />
+                                                    ) : (
+                                                    odi.quantity
+                                                    )                         
+                                            }</td>
+                                            <td>{
+                                                    inEditMode.status && inEditMode.rowKey === row._id ? (
+                                                    <input name="price" value={orderDetail[index].price}
+                                                        onChange={(e) => onOrderDetailChange(e, row._id, index)}
+                                                    />
+                                                    ) : (
+                                                    odi.price
+                                                    )                         
+                                            }</td>
+                                            {
+                                                inEditMode.status && inEditMode.rowKey === row._id ? (
+                                                    <td>
+                                                    <button className="clear" onClick={ () => onOrderDetailDelete(row._id, index) }><RiIcons.RiDeleteBinFill/></button>
+                                                    </td>
+                                                )  : null  
+                                            }
+                                        </tr> )
 
                             })
                         }
@@ -405,10 +323,6 @@ const OrderTable = () => {
                     </table>
                 </td>
 
-
-
-
-
                 <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm A")}</td>
                 <td>{moment(row.lastUpdateAdded).format("MM/DD/yyyy hh:mm A")}</td>
                 <td>
@@ -419,7 +333,7 @@ const OrderTable = () => {
                             <button onClick = {() => onCancel()}>Cancel</button>
                         </React.Fragment>
                        ) : (
-                           <button value={row.orderNumber} onClick={() => onEdit(row._id, row.orderNumber, row.customer, row.orderDate, row.comment, row.salesPerson, row.orderStatus, row.orderDetail[0].orderDetailRecord)}><BsIcons.BsPencilSquare /></button>
+                           <button value={row.orderNumber} onClick={() => onEdit(row._id, row.orderNumber, row.customer, row.orderDate, row.comment, row.salesPerson, row.orderStatus, row.orderDetail)}><BsIcons.BsPencilSquare /></button>
                        )
                     }
                     <button onClick={() => {handleDeleteClick(row._id)}}><RiIcons.RiDeleteBinFill/></button>
