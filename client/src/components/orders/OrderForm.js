@@ -102,7 +102,7 @@ const OrderForm = (props) => {
 
                 getOrderNumber("");
                 setCustomer("");
-                setOrderDate("");
+                setOrderDate(new Date());
                 setComment("");
                 setSalesPerson("");
             }
