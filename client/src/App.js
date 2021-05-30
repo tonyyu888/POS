@@ -7,7 +7,7 @@ import ProductTable from './components/products/ProductTable';
 import ProductCategoryTable from './components/products/ProductCategoryTable';
 import CustomerTable from './components/customers/CustomerTable';
 import SupplierTable from './components/suppliers/SupplierTable';
-import Orders from './components/orders/Orders';
+import OrderTable from './components/orders/OrderTable';
 import OrderDetail from './components/orders/OrderDetail';
 import UserLevelTable from './components/users/UserLevelTable';
 import UserTable from './components/users/UserTable';
@@ -37,7 +37,7 @@ const App = () => {
             <ProductCategoryTable/>
           </Route>
           <Route path='/orders'>
-            <Orders/>
+            <OrderTable/>
           </Route>
           <Route path='/order-detail'>
             <OrderDetail/>
