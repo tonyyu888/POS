@@ -7,19 +7,51 @@
     "$oid": "6099c83f3fedfb45458a048d"
   },
   "orderDate": {
-    "$date": "2021-05-10T19:33:54.458Z"
+    "$date": "2021-05-10T06:00:00Z"
   },
-  "comment": "Order comment.",
+  "comment": "Order comment - edited 2",
   "salesPerson": {
     "$oid": "6099cdc63fedfb45458a073c"
   },
   "orderStatus": {
     "$oid": "60a2867e9fc7acc82853b427"
   },
+  "orderDetail": [
+    {
+      "_id": {
+        "$oid": "60b3c41d243caa5570867205"
+      },
+      "product": {
+        "$oid": "6099d1e13fedfb45458a09ad"
+      },
+      "quantity": 10,
+      "price": 20
+    },
+    {
+      "_id": {
+        "$oid": "60b3c41d243caa5570867206"
+      },
+      "product": {
+        "$oid": "6099d1e13fedfb45458a09ad"
+      },
+      "quantity": 50,
+      "price": 5
+    },
+    {
+      "_id": {
+        "$oid": "60b3c49e243caa557086720d"
+      },
+      "product": {
+        "$oid": "6099e32b3fedfb45458a0f90"
+      },
+      "quantity": 20,
+      "price": 5
+    }
+  ],
   "dateAdded": {
     "$date": "2021-05-10T19:33:54.458Z"
   },
   "lastUpdateDate": {
-    "$date": "2021-05-10T19:33:54.458Z"
+    "$date": "2021-05-30T17:00:23.539Z"
   }
 }]
