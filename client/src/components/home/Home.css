@@ -1,0 +1,173 @@
+main {
+    background: #f3f4f6;
+    grid-area: main;
+}
+
+.home-container {
+    padding: 20px 35px;
+    height:100vh;
+    background: linear-gradient(to right, rgb(27, 29, 65), rgb(61, 92, 70));
+    
+}
+
+.home-title{
+    display:flex;
+    align-items: center;
+}
+
+.home-title > img {
+    max-height:100px;
+    object-fit:contain;
+    margin-right:20px;
+}
+
+.home-greeting > h1 {
+    font-size: 24px;
+    color: #85C232;;
+    margin-bottom:5px;
+}
+
+.home-greeting > p {
+    font-size: 14px;
+    font-weight:700;
+    color: #a5aaad;
+}
+
+.home-cards {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:30px;
+    margin:20px 0;
+}
+
+.card {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 70px;
+    padding:25px;
+    border-radius:5px;
+    background: #289B4F;
+}
+
+.card-inner {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-inner > span {
+    font-size: 25px;
+    color: white;
+}
+
+.big-cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:30px;
+    margin-top:50px; 
+    height: 60vh;
+}
+
+.big-card-left{
+    padding:25px;
+    border-radius: 5px;
+    background: linear-gradient(to right, rgb(40, 155, 79), rgb(38, 109, 132));;
+}
+
+.big-card-right{
+    padding:25px;
+    border-radius: 5px;
+    background:linear-gradient(to right,  rgb(38, 109, 132), rgb(40, 155, 79));
+}
+
+.todo{
+    margin-top: 10px ;
+}
+
+.todo li{
+    list-style: none; 
+    font-style: italic;
+    color: rgb(27, 29, 65);
+    font-weight: bold; 
+}
+
+.todo input{
+    margin-right: 10px;
+}
+
+.todo button{
+    margin-left: 10px;
+    border:none;
+    margin-top: 5px;
+    background-color:  rgb(40, 155, 79);   
+}
+
+.todo-form h1{
+    font-size: 30px;
+    margin-bottom: 10px;
+    color:white;
+}
+
+.todo-form input{
+    width:80%;
+    padding:6px 10px;
+    margin:10px 0;
+}
+
+.todo-form button{
+    background: rgb(27, 29, 65);
+    color: #85C232;
+    font-weight: bold;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.mail-container {
+    margin:0 auto;  
+}
+
+.mail-container h1{
+    font-size: 30px;
+    margin-bottom: 10px;
+    color:  #a5aaad;
+}
+
+.mail-container input, .mail-container textarea{
+    width:100%;
+    padding:6px 10px;
+    margin:10px 0;
+    box-sizing: border-box;
+    display: block;
+}
+
+.mail-container button{
+    background: rgb(27, 29, 65);
+    color: #85C232;
+    font-weight: bold;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.mail-container .attach input {
+   text-align: right;
+   display: block;
+}
+
+
+@media only screen and (max-width: 855px) {
+    .home-cards {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 0;
+    }
+    .big-cards {
+       grid-template-columns: 1fr;
+       margin-top: 30px;
+    }
+
+}

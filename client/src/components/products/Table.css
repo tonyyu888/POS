@@ -15,8 +15,7 @@ th {
 td {
     border: 1px solid #cecfd5;  
     padding: 5px 10px;
-    text-align: center;
-    
+    text-align: center;  
 }
 
 .list-table h2{
@@ -52,15 +51,6 @@ td {
     background-color: #86C232;
 }
 
-/* .product-form {
-    display: flex;
-    justify-content: center; 
-    margin-top: 70px;   
-} */
-
-
-
-/* New product button */
 .list-table button {
     background-color: #86C232;
     border: 0;
