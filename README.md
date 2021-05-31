@@ -154,12 +154,15 @@ $ cd server
 $ npm install --save-dev nodemon
 $ perl -p -i -e 's/"start": "node /"start": "nodemon /' package.json
 $ npm install dotenv
+$ npm install nodemailer
+$ npm install multer
 $ cd ../client
 $ npm install moment
 $ npm install react-datepicker
 $ npm install react-router-dom
 $ npm install react-icons --save
 $ npm install react-paginate
+$ npm install uuid
 $ cd ..
 $ git add .
 $ git commit -m "adding nodemon to speed development"
