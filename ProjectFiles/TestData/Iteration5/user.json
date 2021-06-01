@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "6099cdc63fedfb45458a073c"
+  },
+  "firstName": "Greg",
+  "lastName": "Hutton",
+  "emailAddress": "greg.hutton@gmail.com",
+  "userLevel": [
+    {
+      "$oid": "609b04383fedfb45458a5f6e"
+    },
+    {
+      "$oid": "609b04213fedfb45458a5f58"
+    }
+  ],
+  "password": "RTX123ABC",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-25T19:41:09.727Z"
+  }
+},{
+  "_id": {
+    "$oid": "60b656141f23371e1085f48f"
+  },
+  "userLevel": [
+    {
+      "$oid": "609b04383fedfb45458a5f6e"
+    }
+  ],
+  "firstName": "Marcus",
+  "lastName": "Evanstone",
+  "emailAddress": "marcus.evanstone@yahoo.ca",
+  "password": "WhAtIsUp668",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:45:24.480Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:45:24.480Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b6563f1f23371e1085f490"
+  },
+  "userLevel": [
+    {
+      "$oid": "609b044c3fedfb45458a5f7b"
+    }
+  ],
+  "firstName": "Randy",
+  "lastName": "Paulson",
+  "emailAddress": "randy.paulson@hotmail.com",
+  "password": "kj2jY6F",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:46:07.552Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:46:07.552Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b656701f23371e1085f491"
+  },
+  "userLevel": [
+    {
+      "$oid": "609b04213fedfb45458a5f58"
+    }
+  ],
+  "firstName": "Andrea",
+  "lastName": "Richardson",
+  "emailAddress": "andrearich@gmail.com",
+  "password": "JidlH86Hs",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:46:55.840Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:46:55.840Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b656a41f23371e1085f492"
+  },
+  "userLevel": [
+    {
+      "$oid": "609b04383fedfb45458a5f6e"
+    }
+  ],
+  "firstName": "Ruby",
+  "lastName": "Jordan",
+  "emailAddress": "ruby.jordan@gmail.com",
+  "password": "j7GF65s",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:47:48.544Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:47:48.544Z"
+  },
+  "__v": 0
+}]

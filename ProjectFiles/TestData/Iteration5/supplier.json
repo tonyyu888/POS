@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "60b64f051f23371e1085f470"
+  },
+  "name": "Essence of Cleopatra",
+  "address1": "PO Box 58040, RPO Chaparral,",
+  "address2": "",
+  "city": "Calgary",
+  "province": "Alberta",
+  "postalCode": "T2X 3V2",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60b64f051f23371e1085f471"
+      },
+      "name": "Phone",
+      "phoneNumber": "403-481-2862"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60b64f051f23371e1085f472"
+      },
+      "firstName": "Lloyd",
+      "lastName": "Mark"
+    }
+  ],
+  "emailAddress": "lloydmark@gmail.com",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:15:17.399Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:15:17.399Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b651591f23371e1085f473"
+  },
+  "name": "Ayurvedic Aromatherapy",
+  "address1": "PO Box 78378, RPO Westwind",
+  "address2": "",
+  "city": "Calgary",
+  "province": "Alberta",
+  "postalCode": "T3E 6N3",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60b651591f23371e1085f474"
+      },
+      "name": "Phone",
+      "phoneNumber": "403-452-8754"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60b651591f23371e1085f475"
+      },
+      "firstName": "Judith",
+      "lastName": "Santos"
+    }
+  ],
+  "emailAddress": "judithsantos@gmail.com",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:25:12.759Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:25:12.759Z"
+  },
+  "__v": 0
+}]

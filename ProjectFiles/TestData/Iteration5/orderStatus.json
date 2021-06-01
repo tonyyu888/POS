@@ -1,0 +1,66 @@
+[{
+  "_id": {
+    "$oid": "60a2867e9fc7acc82853b427"
+  },
+  "name": "Created",
+  "description": "Order was created by sales",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "60a286e99fc7acc82853b44a"
+  },
+  "name": "Filled",
+  "description": "Order was packaged",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "60a287209fc7acc82853b456"
+  },
+  "name": "Shipped",
+  "description": "Order was shipped",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "60a287389fc7acc82853b45e"
+  },
+  "name": "Completed",
+  "description": "Order was completed",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-10T05:25:53.202Z"
+  }
+},{
+  "_id": {
+    "$oid": "60adc45d1f333982307d05d5"
+  },
+  "name": "Cancelled",
+  "description": "Order was cancelled",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-05-25T21:45:53.202Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-05-25T21:45:53.202Z"
+  }
+}]

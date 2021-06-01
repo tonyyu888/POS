@@ -1,0 +1,526 @@
+[{
+  "_id": {
+    "$oid": "60b6525b1f23371e1085f47a"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6517e1f23371e1085f476"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Cold Sore Remedy",
+  "description": "Cold Sore Remedy 4 ml.",
+  "unitPrice": 15.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:29:31.624Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:29:31.624Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b652911f23371e1085f47b"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6517e1f23371e1085f476"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Muscle & Joint Pain Relief",
+  "description": "Muscle & Joint Pain Relief 120 ml.",
+  "unitPrice": 21.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:30:25.071Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:30:25.071Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b652bc1f23371e1085f47c"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651871f23371e1085f477"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Cold & Flu Blend",
+  "description": "Cold & Flu Blend 12 ml.",
+  "unitPrice": 14.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:31:08.647Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:31:08.647Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b652e21f23371e1085f47d"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651871f23371e1085f477"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Stress Relief",
+  "description": "Stress Relief 12 ml.",
+  "unitPrice": 15.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:31:45.767Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:31:45.767Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b653031f23371e1085f47e"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651871f23371e1085f477"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Sleep Softly",
+  "description": "Sleep Softly 12 ml.",
+  "unitPrice": 16.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:32:19.223Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:32:19.223Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b6532c1f23371e1085f47f"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651871f23371e1085f477"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Uplift Your Sprits",
+  "description": "Uplift Your Sprits 12 ml.",
+  "unitPrice": 15.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:32:59.759Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:32:59.759Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b653551f23371e1085f480"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651971f23371e1085f478"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Cellulite Treatment",
+  "description": "Cellulite Treatment 120 ml.",
+  "unitPrice": 19.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:33:40.951Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:35:57.896Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b6537a1f23371e1085f481"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651971f23371e1085f478"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Sweet Almond",
+  "description": "Sweet Almond 120 ml.",
+  "unitPrice": 11.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:34:18.432Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:34:18.432Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b653a01f23371e1085f482"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6519f1f23371e1085f479"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Bergamot",
+  "description": "Bergamot 12 ml.",
+  "unitPrice": 13.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:34:56.415Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:34:56.415Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b653d31f23371e1085f483"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6519f1f23371e1085f479"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Geranium",
+  "description": "Geranium 12 ml.",
+  "unitPrice": 21.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:35:47.368Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:35:47.368Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b654021f23371e1085f484"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6519f1f23371e1085f479"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b651591f23371e1085f473"
+    }
+  ],
+  "name": "Peppermint",
+  "description": "Peppermint 12 ml.",
+  "unitPrice": 10.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:36:33.888Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:36:33.888Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b654431f23371e1085f485"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6517e1f23371e1085f476"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Christmas Blend",
+  "description": "Christmas Blend 12 ml.",
+  "unitPrice": 15.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:37:39.535Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:37:39.535Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b6547c1f23371e1085f486"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651871f23371e1085f477"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Headache Relief",
+  "description": "Headache Relief 12 ml.",
+  "unitPrice": 14.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:38:35.944Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:38:35.944Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b6549d1f23371e1085f487"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651871f23371e1085f477"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Immune Boost",
+  "description": "Immune Boost 12 ml.",
+  "unitPrice": 15.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:39:09.048Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:39:09.048Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b654c31f23371e1085f488"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651871f23371e1085f477"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Allergy Relief",
+  "description": "Allergy Relief 12 ml.",
+  "unitPrice": 15.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:39:47.264Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:39:47.264Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b654eb1f23371e1085f489"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651971f23371e1085f478"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Acne Blend",
+  "description": "Acne Blend 30 ml.",
+  "unitPrice": 23.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:40:27.616Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:40:27.616Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b6550b1f23371e1085f48a"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651971f23371e1085f478"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Massage Oil Relaxing",
+  "description": "Massage Oil Relaxing 120 ml.",
+  "unitPrice": 16.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:40:59.536Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:40:59.536Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b655481f23371e1085f48b"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b651971f23371e1085f478"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Youth Serum w/ Argan Oil",
+  "description": "Youth Serum w/ Argan Oil 30 ml.",
+  "unitPrice": 29.95,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:42:00.551Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:42:00.551Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b655691f23371e1085f48c"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6519f1f23371e1085f479"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Eucalyptus",
+  "description": "Eucalyptus 12 ml.",
+  "unitPrice": 8.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:42:33.584Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:42:33.584Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b655801f23371e1085f48d"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6519f1f23371e1085f479"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Tea Tree",
+  "description": "Tea Tree 12 ml.",
+  "unitPrice": 8.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:42:56.656Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:42:56.656Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b655ae1f23371e1085f48e"
+  },
+  "productCategory": [
+    {
+      "$oid": "60b6519f1f23371e1085f479"
+    }
+  ],
+  "supplier": [
+    {
+      "$oid": "60b64f051f23371e1085f470"
+    }
+  ],
+  "name": "Lavender",
+  "description": "Lavender 12 ml.",
+  "unitPrice": 13.99,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:43:41.944Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:43:41.944Z"
+  },
+  "__v": 0
+}]
