@@ -14,15 +14,13 @@ const OrderForm = (props) => {
     let [customer, setCustomer] = useState("");
     let [orderDate, setOrderDate] = useState(new Date());
     let [comment, setComment] = useState("");
-    let [salesPerson, setSalesPerson] = useState("");
-    let [orderStatus, setOrderStatus] = useState("60a2867e9fc7acc82853b427");  //hardcoded for now
+    let [salesPerson, setSalesPerson] = useState("");    
+    const orderStatus = "60a2867e9fc7acc82853b427"; //hardcoded for now
 
     let [customerList, setCustomerList]= useState([]);
     let [salesPersonList, setSalesPersonList]= useState([]);
     let [productList, setProductList]= useState([]);
-
     let [orderDetail, setOrderDetail] = useState([]);
-
     let [createError, setCreateError] = useState("");
 
      //fetch customer
@@ -52,7 +50,6 @@ const OrderForm = (props) => {
         let sequenceNumber = Math.floor(100 + Math.random() * 900);
         let newOrderNumber = (tempDate.getMonth() + 1).toString().padStart(2, "0") + '' + tempDate.getDate() + '' + tempDate.getFullYear() +  '-' + sequenceNumber.toString().padStart(3, "0");
         setOrderNumber(newOrderNumber);
-        console.log("newOrderNumber = ", newOrderNumber);       
     }
 
     useEffect( () => {
@@ -71,7 +68,7 @@ const OrderForm = (props) => {
             orderDate,
             comment,
             salesPerson,
-            orderStatus, // set order status of "Created" here
+            orderStatus,
             orderDetail,
             dateAdded : currentDate,
             lastUpdateDate : currentDate
@@ -156,25 +153,22 @@ const OrderForm = (props) => {
                 <button className="closebtn" onClick={()=>props.setTrigger(false)}><AiIcons.AiOutlineClose/></button>
                 {props.children}
                 <div>
-
                     <table>
                         <tbody>
-
                             <tr>
                                 <td>
                                     <label htmlFor="orderDate">Order Date:</label> 
                                     <Datepicker format={"MM/DD/yyyy"} value={moment(orderDate).format("MM/DD/yyyy")} onChange={date => setOrderDate(date)} />
                                 </td>
                                 <td>
-                                </td>    
+                                </td>
                             </tr>
-
                             <tr>
                                 <td>
                                     <label htmlFor="customer">Customer:</label> 
                                     <select value={customer} onChange={(event) => onInputChange(event, setCustomer)}>
                                         <option>--Select--</option>
-                                        {customerList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
+                                            {customerList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
                                         )} 
                                     </select>
                                 </td>
@@ -182,7 +176,7 @@ const OrderForm = (props) => {
                                     <label htmlFor="salesPerson">Sales Person:</label> 
                                     <select value={salesPerson._id} onChange={(event) => onInputChange(event, setSalesPerson)}>
                                         <option>--Select--</option>
-                                        {salesPersonList.map(item=> <option key={item.firstName} value={item._id}>{item.firstName + " "+ item.lastName}</option>
+                                            {salesPersonList.map(item=> <option key={item.firstName} value={item._id}>{item.firstName + " "+ item.lastName}</option>
                                         )} 
                                     </select>
                                 </td>    
@@ -194,55 +188,53 @@ const OrderForm = (props) => {
                                 </td>
                             </tr>
 
-                            <div className="row">
-                                <div className="col2">
-                                    <label htmlFor="orderDetail">Order Detail:</label>
-                                        <table>
-                                            <tbody>
-                                                <tr><th>Product</th><th>Quantity</th><th>Price</th><th>Action</th></tr>                                                
-                                                {
-                                                    orderDetail.map( (od, index) => {
-                                                        return ( <tr key = {index}>
-                                                                    <td>{
-
-                                                                        <select name="product" value={od._id} onChange={(e) => onOrderDetailChange(e, index)}>
-                                                                            <option>--Select--</option>
-                                                                            {productList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
-                                                                            )} 
-                                                                        </select>
-
-                                                                    }</td>
-                                                                    <td>{
-                                                                        <input name="quantity" value={od.quantity} onChange={ (e) => onOrderDetailChange(e, index) }
-                                                                        />
-                                                                    }</td>
-                                                                    <td>{
-                                                                        <input name="price" value={od.price} onChange={ (e) => onOrderDetailChange(e, index) }
-                                                                    />
-                                                                    }</td>
-                                                                    {
-                                                                    <td>
-                                                                        <button className="clear" onClick={ () => onOrderDetailDelete(index) }><RiIcons.RiDeleteBinFill/></button>
-                                                                    </td>
-                                                                    }
-                                                                </tr> )
-                                                    })
-                                                }
-                                                <tr>
-                                                    <td>
-                                                    <button onClick={ onOrderDetailAdd }><SiIcons.SiAddthis/></button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                            </div>
-
-
+                            <tr>
+                                <td>
+                                    <div className="row">
+                                        <div className="col2">
+                                            <label htmlFor="orderDetail">Order Detail:</label>
+                                                <table>
+                                                    <tbody>
+                                                        <tr><th>Product</th><th>Quantity</th><th>Price</th><th>Action</th></tr>                                                
+                                                        {
+                                                            orderDetail.map( (od, index) => {
+                                                                return ( <tr key = {index}>
+                                                                            <td>{
+                                                                                    <select name="product" value={od._id} onChange={(e) => onOrderDetailChange(e, index)}>
+                                                                                    <option>--Select--</option>
+                                                                                        {productList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
+                                                                                    )} 
+                                                                                </select>
+                                                                            }</td>
+                                                                            <td>{
+                                                                                    <input name="quantity" value={od.quantity} onChange={ (e) => onOrderDetailChange(e, index) }
+                                                                                />
+                                                                            }</td>
+                                                                            <td>{
+                                                                                    <input name="price" value={od.price} onChange={ (e) => onOrderDetailChange(e, index) }
+                                                                            />
+                                                                            }</td>
+                                                                            {
+                                                                            <td>
+                                                                                <button className="clear" onClick={ () => onOrderDetailDelete(index) }><RiIcons.RiDeleteBinFill/></button>
+                                                                            </td>
+                                                                            }
+                                                                        </tr> )
+                                                            })
+                                                        }
+                                                        <tr>
+                                                            <td>
+                                                                <button onClick={ onOrderDetailAdd }><SiIcons.SiAddthis/></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-                </div>
-                <div>
                 </div>
                 <br/>            
                 <button disabled={ createOrderDataInvalid } onClick={ onClickAdd } >Add Order</button>

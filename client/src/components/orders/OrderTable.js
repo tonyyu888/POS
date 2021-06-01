@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import moment from "moment";
 
+import moment from "moment";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -10,6 +10,7 @@ import ReactPaginate from 'react-paginate';
 import * as  BsIcons from 'react-icons/bs';
 import * as  RiIcons from 'react-icons/ri';
 import * as  SiIcons from 'react-icons/si';
+
 import './Table.css';
 
 const OrderTable = () => {
@@ -23,7 +24,8 @@ const OrderTable = () => {
     const [orderDate, setOrderDate] = useState(new Date());
     const [comment, setComment] = useState("");
     const [salesPerson, setSalesPerson] = useState("");
-    const [orderStatus, setOrderStatus] = useState("Created");
+    
+    const orderStatus = "60a2867e9fc7acc82853b427"; //hardcoded for now
 
     const [orderDetail, setOrderDetail] = useState([]);
 
@@ -79,11 +81,6 @@ const OrderTable = () => {
 
     //update a Order
     let updateOrder = (id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderStatus, newOrderDetail) => {
-
-
-        console.log("*** Inside updateOrder = ")
-        console.log("1 *** newOrderDetail = ", newOrderDetail)
-
         let currentDate = new Date();
         let orderToUpdate = {
             orderNumber: newOrderNumber,
@@ -112,19 +109,13 @@ const OrderTable = () => {
     const onEdit = (id, currentOrderNumber, currentCustomer, currentOrderDate, currentComment, currentSalesPerson, currentOrderStatus, currentOrderDetail) => {
         setInEditMode({status: true, rowKey: id});
         
-        console.log("*** Inside onEdit - currentOrderDetail = ", currentOrderDetail);
-
         setOrderNumber(currentOrderNumber);
         setCustomer(currentCustomer);
         setOrderDate(currentOrderDate);
         setComment(currentComment);
         setSalesPerson(currentSalesPerson);
-        setOrderStatus(currentOrderStatus);
-
-        console.log("+++ onEdit - setOrderDetail")
+        //setOrderStatus(currentOrderStatus);
         setOrderDetail(currentOrderDetail);
-
-        console.log("*** Inside onEdit - orderDetail = ", orderDetail);
     }
 
     const onSave = (id, newOrderNumber, newCustomer, newOrderDate, newComment, newSalesPerson, newOrderStatus, newOrderDetail) => {
@@ -162,9 +153,6 @@ const OrderTable = () => {
         for (let i=0; i < newRows.length; i++) {
           if (newRows[i]._id === id) {
             newRows[i].orderDetail.push({product: "", quantity: 0.00, price: 0.00 });
-
-            console.log("+++ onOrderDetailAdd - setOrderDetail")
-
             setOrderDetail(newRows[i].orderDetail);
             break;
           }        
@@ -260,11 +248,10 @@ const OrderTable = () => {
                 </td>
                 <td>{row.orderStatus.name}</td>
 
-
-
                 <td>
                     <table>
                         <tbody>               
+                        <tr><th>Product</th><th>Quantity</th><th>Price</th></tr>                            
                         {                              
                             row.orderDetail.map( (odi, index) => {
                                 return ( <tr key={index}>                          
@@ -287,7 +274,7 @@ const OrderTable = () => {
                                                     />
                                                     ) : (
                                                     odi.quantity
-                                                    )                         
+                                                    )
                                             }</td>
                                             <td>{
                                                     inEditMode.status && inEditMode.rowKey === row._id ? (
@@ -322,8 +309,8 @@ const OrderTable = () => {
                     </table>
                 </td>
 
-                <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm A")}</td>
-                <td>{moment(row.lastUpdateAdded).format("MM/DD/yyyy hh:mm A")}</td>
+{/*                 <td>{moment(row.dateAdded).format("MM/DD/yyyy hh:mm A")}</td>
+                <td>{moment(row.lastUpdateAdded).format("MM/DD/yyyy hh:mm A")}</td> */}
                 <td>
                     {
                        inEditMode.status && inEditMode.rowKey === row._id ? (
@@ -349,7 +336,8 @@ const OrderTable = () => {
                 <OrderForm trigger = {addBtnPopupForm} setTrigger = {setAddBtnPopupForm} onOrderFormClick = {handleOrderFormClick} />
                 <table>
                     <tbody>
-                        <tr><th>Order Number</th><th>Customer</th><th>Order Date</th><th>Comment</th><th>Sales Person</th><th>Order Status</th><th>Order Detail</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr>
+                        {/* <tr><th>Order Number</th><th>Customer</th><th>Order Date</th><th>Comment</th><th>Sales Person</th><th>Order Status</th><th>Order Detail</th><th>Date Added</th><th>Last Update</th><th>Action</th></tr> */}
+                        <tr><th>Order Number</th><th>Customer</th><th>Order Date</th><th>Comment</th><th>Sales Person</th><th>Order Status</th><th>Order Detail</th><th>Action</th></tr>
                         {displayRows}
                     </tbody>
                 </table>
