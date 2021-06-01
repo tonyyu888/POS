@@ -101,24 +101,22 @@ const Home = () => {
                 // let personCountArr =[]
                 let thisMonthArr = []
                 let Pcount = []
-                Pcount.push({person:"abc", count:0});
-                console.log("count line 104:",Pcount)
                 for (let i=0; i<data.length; i++){
                     if((new Date(data[i].dateAdded).getMonth()+1) === thisMonth){
                         thisMonthArr.push(data[i])
-                        console.log("count line 109:",Pcount)
-                        let objIndex = Pcount.findIndex((e, x) => e[x].person === data[i].salesPerson._id)
+                        let objIndex = Pcount.findIndex((e) => e.person === data[i].salesPerson._id)
 
                         if (objIndex !== -1) {
                             Pcount[objIndex].count = Pcount[objIndex].count + 1
                         }
                         else {
-                            Pcount.push({person:data[i].salesPerson._id, count:1});
+                            Pcount.push({person:data[i].salesPerson._id, topDog: data[i].salesPerson.firstName + " " + data[i].salesPerson.lastName, count:1});
                         }
 
                     } 
                 }
-                let topGuy = Pcount.reduce((namex, countx) => namex = namex > countx.count ? namex : countx.name, 0);
+                Pcount.sort(function(a,b){return a.count-b.count})
+                let topGuy = Pcount.reduce((accumulatorX, currentX) => accumulatorX = accumulatorX.count > currentX.count ? accumulatorX : currentX.topDog, 0);
                 console.log('topDog:', topGuy)
                 
                 // let name = {first: thisMonthArr, last: top.firstName}
