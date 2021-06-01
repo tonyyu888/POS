@@ -1,13 +1,14 @@
-main {
+/* main {
     background: #f3f4f6;
     grid-area: main;
-}
+} */
 
 .home-container {
+    /* position:absolute; */
     padding: 20px 35px;
-    height:100vh;
+    margin:0;
+    height:100%;
     background: linear-gradient(to right, rgb(27, 29, 65), rgb(61, 92, 70));
-    
 }
 
 .home-title{
@@ -56,6 +57,11 @@ main {
     justify-content: space-between;
 }
 
+/* .card-inner .logo-image{
+    content:url('../images/ftpPOS.png');
+
+} */
+
 .card-inner > span {
     font-size: 25px;
     color: white;
@@ -66,7 +72,6 @@ main {
     grid-template-columns: 1fr 1fr;
     gap:30px;
     margin-top:50px; 
-    height: 60vh;
 }
 
 .big-card-left{
@@ -133,7 +138,8 @@ main {
 .mail-container h1{
     font-size: 30px;
     margin-bottom: 10px;
-    color:  #a5aaad;
+    /* color:  #a5aaad; */
+    color: white;
 }
 
 .mail-container input, .mail-container textarea{
@@ -159,7 +165,10 @@ main {
 }
 
 
-@media only screen and (max-width: 855px) {
+@media only screen and (max-width: 655px) {
+    .home-container{
+        height:100vh;
+    }
     .home-cards {
         grid-template-columns: 1fr;
         gap: 10px;
