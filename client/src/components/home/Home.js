@@ -90,74 +90,30 @@ const Home = () => {
                 }
                 setOrderCount(Ocount)
 
-                //set best SalesPerson
-                //let occurance = {}
-                // let currentPerson;
-                // let cPCount; 
-                // let topCount;
-                // let top;
-                
-                // let thisMonthArr=[]
-                // let personCountArr =[]
-                let thisMonthArr = []
                 let Pcount = []
                 for (let i=0; i<data.length; i++){
                     if((new Date(data[i].dateAdded).getMonth()+1) === thisMonth){
-                        thisMonthArr.push(data[i])
+                        //thisMonthArr.push(data[i])
                         let objIndex = Pcount.findIndex((e) => e.person === data[i].salesPerson._id)
 
                         if (objIndex !== -1) {
                             Pcount[objIndex].count = Pcount[objIndex].count + 1
                         }
                         else {
-                            Pcount.push({person:data[i].salesPerson._id, topDog: data[i].salesPerson.firstName + " " + data[i].salesPerson.lastName, count:1});
+                            Pcount.push({person:data[i].salesPerson._id, topPerson: data[i].salesPerson.firstName + " " + data[i].salesPerson.lastName, count:1});
                         }
 
                     } 
                 }
                 Pcount.sort(function(a,b){return a.count-b.count})
-                let topGuy = Pcount.reduce((accumulatorX, currentX) => accumulatorX = accumulatorX.count > currentX.count ? accumulatorX : currentX.topDog, 0);
-                console.log('topDog:', topGuy)
+                let topGuy = Pcount.reduce((accumulatorX, currentX) => accumulatorX = accumulatorX.count > currentX.count ? accumulatorX : currentX.topPerson, 0);
                 
-                // let name = {first: thisMonthArr, last: top.firstName}
-                // console.log('top name:', name)
-                //setBestGuy(top)
-                //console.log("thisMonthArr", thisMonthArr)
-                // thisMonthArr.sort((a, b)=> a.salesPerson._id > b.salesPerson._id)
-                // console.log("thisMonthArr", thisMonthArr)
-
-                // for(let j=0; j<thisMonthArr.length; j++){
-                //     let top = thisMonthArr[0].salesPerson._id;
-                    
-
-                //let thisMonthArr = data.filter(k=>(new Date(data[k].dateAdded).getMonth()+1) === thisMonth)
-                // for(let j=0; j<thisMonthArr.length; j++){
-                //     let top = thisMonthArr[0].salesPerson._id;
-                //     currentPerson= data[j].salesPerson._id;
-                //     bCount=occurance[top]
-                //     console.log('top', top)
-
-                //     if(cPCount !== undefined){
-                //         cPCount++
-                //     }else{
-                //         cPCount=1
-                //     }
-                //     if(cPCount > bCount){
-                //         top=currentPerson
-                //     // console.log('top', top)
-                //     }
-                //}
-                // setBestGuy(top)
-                //console.log('best:', bestGuy)
+                //let topGuy = Pcount.reduce((p, c) => p.count > c.count ? p.personName : c.personName);
+                setBestGuy(topGuy)
+                console.log('topPerson:', topGuy)
         }
         getOrders()
     }, [])
-
-
-  
-
-
-
 
     return (
         <main>
