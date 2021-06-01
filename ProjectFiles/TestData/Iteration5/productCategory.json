@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "60b6517e1f23371e1085f476"
+  },
+  "name": "Signature Blends",
+  "description": "Blended products",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:25:50.159Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:27:11.680Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b651871f23371e1085f477"
+  },
+  "name": "Synergies",
+  "description": "Stress and relief products",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:25:59.751Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:27:50.183Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b651971f23371e1085f478"
+  },
+  "name": "Face/Skin/Hair",
+  "description": "Beauty products",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:26:14.983Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:28:04.559Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b6519f1f23371e1085f479"
+  },
+  "name": "Essential Oils",
+  "description": "Essential oil products",
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:26:22.759Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:28:16.671Z"
+  },
+  "__v": 0
+}]

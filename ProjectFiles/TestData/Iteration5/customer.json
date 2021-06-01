@@ -1,0 +1,231 @@
+[{
+  "_id": {
+    "$oid": "60b647721f23371e1085f443"
+  },
+  "name": "Anderson Drug",
+  "address1": "602 2nd Ave. W,",
+  "address2": "",
+  "city": "Hanna",
+  "province": "Alberta",
+  "postalCode": "T0J 1P0",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60b647721f23371e1085f444"
+      },
+      "name": "Phone",
+      "phoneNumber": "403-854-4357"
+    },
+    {
+      "_id": {
+        "$oid": "60b647721f23371e1085f445"
+      },
+      "name": "Fax",
+      "phoneNumber": "403-854-4816"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60b648321f23371e1085f44a"
+      },
+      "firstName": "Mark",
+      "lastName": "Benson"
+    }
+  ],
+  "emailAddress": "admin@hanna.ca",
+  "gstRate": 5,
+  "pstRate": 0,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T14:42:57.726Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:09:25.383Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b6491d1f23371e1085f44b"
+  },
+  "name": "Value Drug Mart",
+  "address1": "306 10th St.,",
+  "address2": "",
+  "city": "Wainwright",
+  "province": "Alberta",
+  "postalCode": "T9W 1P6",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60b6491d1f23371e1085f44c"
+      },
+      "name": "Phone",
+      "phoneNumber": "780-842-4488"
+    },
+    {
+      "_id": {
+        "$oid": "60b6491d1f23371e1085f44d"
+      },
+      "name": "Fax",
+      "phoneNumber": "877-686-6066"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60b6491d1f23371e1085f44e"
+      },
+      "firstName": "Joe",
+      "lastName": "Carson"
+    }
+  ],
+  "emailAddress": "value872@valuedrug.ca",
+  "gstRate": 5,
+  "pstRate": 0,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T14:50:05.518Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:09:43.719Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b64a2e1f23371e1085f44f"
+  },
+  "name": "Boyle Value Drug Mart",
+  "address1": "5118 - 3rd St.,",
+  "address2": "",
+  "city": "Boyle",
+  "province": "Alberta",
+  "postalCode": "T0A 0M0",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60b64a2e1f23371e1085f450"
+      },
+      "name": "Phone",
+      "phoneNumber": "780-689-2590"
+    },
+    {
+      "_id": {
+        "$oid": "60b64a2e1f23371e1085f451"
+      },
+      "name": "Fax",
+      "phoneNumber": "780-689-2590"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60b64a2e1f23371e1085f452"
+      },
+      "firstName": "Amy",
+      "lastName": "Smith"
+    }
+  ],
+  "emailAddress": "value23@valuedrug.ca",
+  "gstRate": 5,
+  "pstRate": 0,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T14:54:38.470Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T14:55:03.911Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b64b5b1f23371e1085f456"
+  },
+  "name": "Eastalta Co-op Ltd",
+  "address1": "4518 47th Ave.,",
+  "address2": "",
+  "city": "Vermillion",
+  "province": "Alberta",
+  "postalCode": "T0B 2W0",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60b64b5b1f23371e1085f457"
+      },
+      "name": "Phone",
+      "phoneNumber": "780-366-2667"
+    },
+    {
+      "_id": {
+        "$oid": "60b64b5b1f23371e1085f458"
+      },
+      "name": "Fax",
+      "phoneNumber": "780-853-6088"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60b64b5b1f23371e1085f459"
+      },
+      "firstName": "Gordon",
+      "lastName": "Barker"
+    }
+  ],
+  "emailAddress": "store762@coopltd.ca",
+  "gstRate": 5,
+  "pstRate": 0,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T14:59:39.094Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:03:39.679Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b64d501f23371e1085f45d"
+  },
+  "name": "Shamrock Pharmacy",
+  "address1": "9831 100 Ave.,",
+  "address2": "",
+  "city": "Grande Prairie",
+  "province": "Alberta",
+  "postalCode": "T8V 0T7",
+  "contactNumber": [
+    {
+      "_id": {
+        "$oid": "60b64d501f23371e1085f45e"
+      },
+      "name": "Phone",
+      "phoneNumber": "780-532-2652"
+    },
+    {
+      "_id": {
+        "$oid": "60b64d501f23371e1085f45f"
+      },
+      "name": "Fax",
+      "phoneNumber": "780-539-3932"
+    }
+  ],
+  "contactPerson": [
+    {
+      "_id": {
+        "$oid": "60b64d501f23371e1085f460"
+      },
+      "firstName": "Cole",
+      "lastName": "Neuman"
+    }
+  ],
+  "emailAddress": "wkitzmann@mypharmacare.ca",
+  "gstRate": 5,
+  "pstRate": 0,
+  "active": true,
+  "dateAdded": {
+    "$date": "2021-06-01T15:08:00.599Z"
+  },
+  "lastUpdateDate": {
+    "$date": "2021-06-01T15:08:33.151Z"
+  },
+  "__v": 0
+}]
