@@ -75,8 +75,6 @@ const ProductForm = (props) => {
                 setActive("true");
                 
             }
-
-            // the server didn't like the data for some reason
             console.log('Create response is:', createResponse)
             if (createResponse.status !== 200) {
                 let errorMessage = await createResponse.text()
@@ -88,7 +86,6 @@ const ProductForm = (props) => {
             }
         }
         catch (error) {
-            // the server cannot be reached
             console.error('Fetch failed to reach the server:', error)
         }
     }

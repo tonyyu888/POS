@@ -63,20 +63,14 @@ td {
 }
 
 .list-table .add-p{
-    margin-left: 120px;
+    margin-left: 15px;
 }
 
 .list-table .add-pc{
-    margin-left: 360px;
+    margin-left: 15px;
 }
 
 .list-table .clear{
     background-color: white;
     font-size: medium;
 }
-/* 
-@media only screen and (max-width: 655px) {
-    .list-table button {
-        margin-left: 200px;
-    }
-} */

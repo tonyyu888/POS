@@ -10,8 +10,6 @@ const MailBox = () => {
 
     const handleSubmit= (e)=> {
         e.preventDefault();
-        // let data = {to:to, subject:subject, body:body, file: file[0]}
-        // console.log('data:' , data)
         const data = new FormData();
         data.append("to", to);
         data.append("subject", subject);

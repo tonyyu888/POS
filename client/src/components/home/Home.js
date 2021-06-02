@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import MailBox from './MailBox'
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+import {HiClipboardList} from 'react-icons/hi';
+import {FaUserFriends} from 'react-icons/fa';
+import {RiUserStarFill} from 'react-icons/ri';
 import './Home.css'
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
@@ -11,8 +14,6 @@ const Home = () => {
     const [customerCount, setCustomerCount] = useState(0)
     const [orderCount, setOrderCount] = useState(0)
     const [bestGuy, setBestGuy] = useState('')
-   // const [currentPersonCount, setCurrentPersonCount] = useState(1)
-   // const [bestGuyCount, setBestGuyCount] = useState(1)
 
     //populate todos when app initially renders
     useEffect(()=>{
@@ -105,10 +106,7 @@ const Home = () => {
 
                     } 
                 }
-                Pcount.sort(function(a,b){return a.count-b.count})
-                let topGuy = Pcount.reduce((accumulatorX, currentX) => accumulatorX = accumulatorX.count > currentX.count ? accumulatorX : currentX.topPerson, 0);
-                
-                //let topGuy = Pcount.reduce((p, c) => p.count > c.count ? p.personName : c.personName);
+                let topGuy = Pcount.reduce((p, c) => p.count > c.count ? p.topPerson : c.topPerson);
                 setBestGuy(topGuy)
                 console.log('topPerson:', topGuy)
         }
@@ -121,31 +119,47 @@ const Home = () => {
                  <div className="home-title">
                      <div className="home-greeting">
                         <h1>Hello User</h1>
-                        <p>Welcome to the dashboard</p>
+                        <p>Welcome to ftpPOS dashboard</p>
                      </div>
                  </div>
                 <div className="home-cards">
-                    <div className="card card1">
-                        <div className="card-inner">
-                            <div className="logo-image">logo</div>  
-                        </div>
+                    <div className="card logo">
+                        <div className="logo-image">logo</div>  
                     </div>
-                    <div className="card card2">
+                    <div className="card card3">
                         <div className="card-inner">
-                            <p className="smallcard-p">New Orders</p>
-                            <span className="count">{orderCount}</span>  
+                            <div className="labeling">
+                                <p className="icons"><HiClipboardList/></p>
+                                <p className="smallcard-p">New Orders</p>
+                            </div>
+                            <div className="counters">
+                                <div className="count">{orderCount}</div>
+                                <div classname="small-text">this month</div>
+                            </div>
                         </div>
                     </div>
                     <div className="card card3">
                         <div className="card-inner">
-                            <p className="smallcard-p">New Customers</p>
-                            <span className="count">{customerCount}</span>  
+                            <div className="labeling">
+                                <p className="icons"><FaUserFriends/></p>
+                                <p className="smallcard-p">New Customers</p>
+                            </div>
+                            <div className="counters">
+                                <div className="count">{customerCount}</div>
+                                <div classname="small-text">this month</div>
+                            </div>
                         </div>
                     </div>
-                    <div className="card card4">
+                    <div className="card card3">
                         <div className="card-inner">
-                            <p className="smallcard-p">Top Salesman</p>
-                            <span className="count">{bestGuy}</span>  
+                            <div className="labeling">
+                                <p className="icons"><RiUserStarFill/></p>
+                                <p className="smallcard-p">Top Salesman</p>
+                            </div>
+                            <div className="counters">
+                                <div className="count">{bestGuy}</div>
+                                <div classname="small-text">this month</div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,15 +1,14 @@
-/* main {
-    background: #f3f4f6;
-    grid-area: main;
-} */
-
 .home-container {
-    /* position:absolute; */
     padding: 20px 35px;
     margin:0;
-    height:100%;
+    height:100vh;
     /* background: linear-gradient(to right, rgb(27, 29, 65), rgb(61, 92, 70)); */
-    background-image: url("ftpPOSBackground.PNG");
+    
+    background-image: url("../images/similar-colors3.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
 }
 
 .home-title{
@@ -25,7 +24,8 @@
 
 .home-greeting > h1 {
     font-size: 24px;
-    color: #85C232;;
+    color: #85C232;
+    /* color: black; */
     margin-bottom:5px;
 }
 
@@ -48,8 +48,16 @@
     justify-content: space-around;
     height: 70px;
     padding:25px;
-    border-radius:5px;
+    border-radius:12px;
+}
+
+.card3{
     background: #289B4F;
+    border: 1px solid white;
+}
+
+.logo {
+    padding: 0;
 }
 
 .card-inner {
@@ -57,15 +65,31 @@
     align-items: center;
     justify-content: space-between;
 }
+.logo-image{
+    background-image:url('../images/ftpPOS.png');
+    background-size: cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    height: 100%;
+} 
 
-/* .card-inner .logo-image{
-    content:url('../images/ftpPOS.png');
-
-} */
-
-.card-inner > span {
-    font-size: 25px;
+.card-inner .smallcard-p{
+    font-weight: bold; 
+    
+}
+.card-inner .counters{
     color: white;
+}
+
+.card-inner .icons{
+    font-size: x-large;
+}
+
+.count{
+    font-size: 25px;
+}
+.counters .small-text{
+    font-size: 5px; 
 }
 
 .big-cards{
@@ -78,13 +102,17 @@
 .big-card-left{
     padding:25px;
     border-radius: 5px;
-    background: linear-gradient(to right, rgb(40, 155, 79), rgb(38, 109, 132));;
+    background: linear-gradient(to right, rgb(40, 155, 79), rgb(38, 109, 132));
+    border: 1px solid white;
+    border-radius:12px;
 }
 
 .big-card-right{
     padding:25px;
     border-radius: 5px;
     background:linear-gradient(to right,  rgb(38, 109, 132), rgb(40, 155, 79));
+    border: 1px solid white;
+    border-radius:12px;
 }
 
 .todo{
@@ -166,7 +194,7 @@
 }
 
 
-@media only screen and (max-width: 655px) {
+@media only screen and (max-width: 855px) {
     .home-container{
         height:100vh;
     }

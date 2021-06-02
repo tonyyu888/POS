@@ -42,9 +42,7 @@ const ProductCategoryTable = () => {
       })
       .then(response => response.json())
       .then(json => {
-          // reset inEditMode and unit price state values
           onCancel();
-          // fetch the updated data
           getProductCategories();
           console.log("updateResponse = ", updateResponse);
       })    
@@ -92,7 +90,6 @@ const ProductCategoryTable = () => {
     }
 
     const getProductCategories = async () => {
-      // fetch uses the "proxy" value set in client/package.json
       let response = await fetch('/productCategory');
       let data = await response.json();
       setRows(data);
