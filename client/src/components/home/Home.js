@@ -56,9 +56,6 @@ const Home = () => {
 
         let today= new Date();
         let thisMonth = today.getMonth() +1
-        
-        // console.log("date",new Date(data[0].dateAdded).getMonth()+1)//5
-        // console.log("thismonth", thisMonth)//5
 
         let count= 0
         for (let i=0; i<data.length; i++){

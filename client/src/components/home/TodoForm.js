@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {SiAddthis} from 'react-icons/si';
 import { v4 as uuidv4 } from 'uuid';
 import './Home.css'
@@ -14,8 +14,8 @@ const TodoForm = ({addTodo}) => {
         setTodo({ ...todo, task: e.target.value})
     }
 
-   const handleSubmit = (e)=> {
-        e.preventDefault()
+   const handleSubmit = ()=> {
+        //e.preventDefault()
         if(todo.task.trim()){ //get rid of whitespace in the string
             addTodo({...todo, id: uuidv4() })
             setTodo({ ...todo, tesk:""})

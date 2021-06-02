@@ -89,7 +89,8 @@
     font-size: 25px;
 }
 .counters .small-text{
-    font-size: 5px; 
+    font-size: 12px; 
+    text-align: end;
 }
 
 .big-cards{
@@ -198,7 +199,7 @@
     .home-container{
         height:100vh;
     }
-    .home-cards {
+    .home-cards{
         grid-template-columns: 1fr;
         gap: 10px;
         margin-bottom: 0;
