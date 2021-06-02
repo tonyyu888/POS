@@ -14,11 +14,11 @@ const TodoForm = ({addTodo}) => {
         setTodo({ ...todo, task: e.target.value})
     }
 
-   const handleSubmit = ()=> {
-        //e.preventDefault()
+   const handleSubmit = (e)=> {
+        e.preventDefault();
         if(todo.task.trim()){ //get rid of whitespace in the string
             addTodo({...todo, id: uuidv4() })
-            setTodo({ ...todo, tesk:""})
+            setTodo({ ...todo, task:""})
             console.log('todo:', todo)
         }
     }
