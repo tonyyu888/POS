@@ -57,8 +57,8 @@ const Home = () => {
         let today= new Date();
         let thisMonth = today.getMonth() +1
         
-        console.log("date",new Date(data[0].dateAdded).getMonth()+1)//5
-        console.log("thismonth", thisMonth)//5
+        // console.log("date",new Date(data[0].dateAdded).getMonth()+1)//5
+        // console.log("thismonth", thisMonth)//5
 
         let count= 0
         for (let i=0; i<data.length; i++){
@@ -79,8 +79,8 @@ const Home = () => {
                 let today= new Date();
                 let thisMonth = today.getMonth() +1
                 
-                console.log("month of data",new Date(data[0].dateAdded).getMonth()+1)//5
-                console.log("thismonth", thisMonth)//6
+                // console.log("month of data",new Date(data[0].dateAdded).getMonth()+1)//5
+                // console.log("thismonth", thisMonth)//6
         
                 //get order count
                 let Ocount=0
@@ -106,9 +106,8 @@ const Home = () => {
 
                     } 
                 }
-                let topGuy = Pcount.reduce((p, c) => p.count > c.count ? p.topPerson : c.topPerson);
+                let topGuy = Pcount.reduce((p, c) => p.count > c.count ? p.topPerson : c.topPerson,0);
                 setBestGuy(topGuy)
-                console.log('topPerson:', topGuy)
         }
         getOrders()
     }, [])
@@ -134,7 +133,7 @@ const Home = () => {
                             </div>
                             <div className="counters">
                                 <div className="count">{orderCount}</div>
-                                <div classname="small-text">this month</div>
+                                <div className="small-text">this month</div>
                             </div>
                         </div>
                     </div>
@@ -146,7 +145,7 @@ const Home = () => {
                             </div>
                             <div className="counters">
                                 <div className="count">{customerCount}</div>
-                                <div classname="small-text">this month</div>
+                                <div className="small-text">this month</div>
                             </div>
                         </div>
                     </div>
@@ -158,7 +157,7 @@ const Home = () => {
                             </div>
                             <div className="counters">
                                 <div className="count">{bestGuy}</div>
-                                <div classname="small-text">this month</div>
+                                <div className="small-text">this month</div>
                             </div>
                         </div>
                     </div>
