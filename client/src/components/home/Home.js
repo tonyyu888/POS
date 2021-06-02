@@ -123,7 +123,7 @@ const Home = () => {
                  </div>
                 <div className="home-cards">
                     <div className="card logo">
-                        <div className="logo-image">logo</div>  
+                        <div className="logo-image"></div>  
                     </div>
                     <div className="card card3">
                         <div className="card-inner">
