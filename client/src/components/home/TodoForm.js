@@ -19,7 +19,6 @@ const TodoForm = ({addTodo}) => {
         if(todo.task.trim()){ //get rid of whitespace in the string
             addTodo({...todo, id: uuidv4() })
             setTodo({ ...todo, task:""})
-            console.log('todo:', todo)
         }
     }
 

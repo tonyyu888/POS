@@ -81,10 +81,10 @@ const MailBox = () => {
                 <div className="btn-send">
                     <button>Send</button>
                 </div>
-
+{/* 
                 <p>{to}</p>
                 <p>{subject}</p>
-                <p>{body}</p>
+                <p>{body}</p> */}
             </form>
         </div>
     );
