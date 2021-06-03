@@ -72,6 +72,7 @@ const MailBox = () => {
                         type="file"
                         name="image"
                         value={path}
+                        required
                         onChange={(e) => {
                             setPath(e.target.value);
                             setFile(e.target.files);
