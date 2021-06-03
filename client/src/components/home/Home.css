@@ -66,8 +66,8 @@
     justify-content: space-between;
 }
 .logo-image{
-    background-image:url('../images/ftpPOS.png');
-    background-size: cover;
+    background-image:url('../images/pos.png');
+    background-size: contain;
     background-position:center;
     background-repeat:no-repeat;
     height: 100%;
