@@ -249,13 +249,13 @@ const OrderTable = () => {
                 <td>{row.orderStatus.name}</td>
 
                 <td>
-                    <table>
+                    <table width="100%">
                         <tbody>               
                         <tr><th>Product</th><th>Quantity</th><th>Price</th></tr>                            
                         {                              
                             row.orderDetail.map( (odi, index) => {
                                 return ( <tr key={index}>                          
-                                            <td>{
+                                            <td width="60%">{
                                                     inEditMode.status && inEditMode.rowKey === row._id ? (
 
                                                     <select name="product" value={orderDetail[index].product._id} onChange={(e) => onOrderDetailChange(e, row._id, index)}>

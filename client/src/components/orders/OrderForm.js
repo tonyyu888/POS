@@ -189,17 +189,17 @@ const OrderForm = (props) => {
                             </tr>
 
                             <tr>
-                                <td>
-                                    <div className="row">
-                                        <div className="col2">
+                                <td colspan="2">
+                                    {/* <div className="row">
+                                        <div className="col2"> */}
                                             <label htmlFor="orderDetail">Order Detail:</label>
-                                                <table>
+                                                <table width="100%">
                                                     <tbody>
                                                         <tr><th>Product</th><th>Quantity</th><th>Price</th><th>Action</th></tr>                                                
                                                         {
                                                             orderDetail.map( (od, index) => {
                                                                 return ( <tr key = {index}>
-                                                                            <td>{
+                                                                            <td width="60%">{
                                                                                     <select name="product" value={od._id} onChange={(e) => onOrderDetailChange(e, index)}>
                                                                                     <option>--Select--</option>
                                                                                         {productList.map(item=> <option key={item.name} value={item._id}>{item.name}</option>
@@ -229,8 +229,8 @@ const OrderForm = (props) => {
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                        </div>
-                                    </div>
+                                        {/* </div>
+                                    </div> */}
                                 </td>
                             </tr>
                         </tbody>
